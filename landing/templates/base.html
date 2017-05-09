@@ -1,0 +1,99 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Type It Now Transcription Services</title>
+    <meta name="viewport" content="width-device=width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Megan Emily Duffy">
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <link rel="stylesheet" href="{% static "css/mediaqueries.css" %}">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,700i,800|Oswald|Roboto:400,500,700,700i,900" rel="stylesheet">
+    <!-- Script References -->
+    <script src="{% static "js/jquery.min.js" %}"></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+    <script src="{% static "js/script-main.js" %}"></script>
+
+    {% block head_js %}{% endblock head_js %}
+</head>
+<body>
+
+<!-- Navigation Bar -->
+
+<nav class="navbar navbar-fixed-top transparent">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                data-target="#navbar-collapse">
+            <span class="sr-only">Toggle Navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <div class="flex-nav-header">
+            <div id="nav-logo"><a href="#"><img src="{% static "icons/typewriter.png" %}" alt="logo"></a></div>
+            <a class="navbar-brand page-scroll" href="#page-top">Type It Now Transcription</a>
+        </div>
+    </div>
+
+    <div class="collapse navbar-default navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown">About</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#about-anchor">- About Us</a></li>
+                    <li><a href="#services-anchor">- Services</a></li>
+                    <li><a href="#process-anchor">- How It Works</a></li>
+                    <li><a href="#testimonials-anchor">- Testimonials</a></li>
+                    <li><a href="#">- FAQ</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown">Get A Quote</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">- Instant Quote</a></li>
+                    <li><a href="#">- Custom Quote</a></li>
+                </ul>
+            </li>
+
+            <li><a class="page-scroll" href="#">Contact Us</a></li>
+            <li><a class="page-scroll" href="{% url 'register' %}">Register</a></li>
+            <li><a class="page-scroll" href="#">Login</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Navigation Bar -->
+
+<!-- Messages -->
+{% if messages %}
+    <div class="alert alert-success">
+        <div class="messages">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+<!-- Messages -->
+
+<!-- Content -->
+    {% block content %}
+    {% endblock %}
+<!-- Content -->
+
+<hr>
+
+<!-- Footer -->
+<div class="footer">
+    <p>Made By Megan and Django </p>
+</div>
+<!-- Footer -->
+
+</body>
+
+
+</html>
