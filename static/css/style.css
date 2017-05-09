@@ -1,7 +1,5 @@
 body {
     font-family: "Roboto";
-    text-align: center;
-    color: white;
 }
 
 .container {
@@ -13,6 +11,8 @@ body {
     /*background-color: #edf6f8;*/
     background: url("../img/pexels-photo-57832.jpeg") center fixed;
     background-size: cover;
+    text-align: center;
+    color: white;
 }
 
 /* Index Style */
@@ -479,6 +479,27 @@ body {
 
 .carousel-control.left, .carousel-control.right {
     background-image: none
+}
+
+/* Forms */
+.page-div {
+    margin-top:100px;
+}
+
+.form-div legend {
+    font-size: 35px;
+    font-weight:bold;
+}
+
+.form-div input {
+    width: 50%;
+}
+
+/* Profile */
+
+.profo-pic {
+    height:150px;
+    width:150px;
 }
 
 

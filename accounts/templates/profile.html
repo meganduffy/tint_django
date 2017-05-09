@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="page-div">
+        <div class="container">
+            <h2>Success!</h2>
+            <p>Welcome back {{ user.email }} </p>
+            <p>Your last login was: {{ user.previous_login }}</p>
+            <p>You joined: {{ user.date_joined }}</p>
+            {% if user.image %}
+                <p>Profile Picture:</p>
+                <img src="/media/{{ user.image }}" class="profo-pic"/>
+            {% endif %}
+            <br><br>
+            <button class="btn btn-success" onclick="location.href='editprofile'">Edit Profile</button>
+        </div>
+    </div>
+{% endblock %}

@@ -4,6 +4,7 @@ from django.contrib import messages, auth
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect
 from django.template.context_processors import csrf
+from django.contrib.auth.decorators import login_required
 from accounts.forms import UserRegistrationForm
 
 
@@ -31,3 +32,6 @@ def register(request):
 
     return render(request, 'register-form.html', args)
 
+
+def profile(request):
+    return render(request, 'profile.html')

@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load bootstrap_tags %}
 {% block content %}
+    <div class="page-div">
+    <div class="container">
     <form role="form" method="post" action="{% url 'register' %}" enctype="multipart/form-data">
         <legend>Create a new account</legend>
         {% csrf_token %}
@@ -9,4 +11,6 @@
             <button type="submit" class="btn btn-primary">Create account</button>
         </div>
     </form>
+    </div>
+    </div>
 {% endblock %}

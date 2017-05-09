@@ -32,4 +32,5 @@ urlpatterns = [
 
     # Accounts
     url(r'^register/$', accounts_views.register, name='register'),
+    url(r'^profile/$', accounts_views.profile, name='profile'),
 ]
