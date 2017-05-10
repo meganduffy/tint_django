@@ -60,8 +60,14 @@
             </li>
 
             <li><a class="page-scroll" href="#">Contact Us</a></li>
-            <li><a class="page-scroll" href="{% url 'register' %}">Register</a></li>
-            <li><a class="page-scroll" href="#">Login</a></li>
+            {% if user.is_active %}
+                <li><a class="page-scroll" href="{% url 'profile' %}">Profile</a></li>
+                <li><a class="page-scroll" href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+                <li><a class="page-scroll" href="{% url 'register' %}">Register</a></li>
+                <li><a class="page-scroll" href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+
         </ul>
     </div>
 </nav>

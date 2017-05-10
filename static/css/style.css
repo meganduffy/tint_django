@@ -502,6 +502,12 @@ body {
     width:150px;
 }
 
+/* Messages */
+
+.alert {
+    position:relative !important;
+    top: 80px !important;
+}
 
 /* Navbar */
 
