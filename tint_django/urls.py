@@ -29,6 +29,7 @@ urlpatterns = [
 
     # Landing
     url(r'^$', landing_views.get_index, name='index'),
+    url(r'^faq/$', landing_views.get_faq, name='faq'),
 
     # Accounts
     url(r'^register/$', accounts_views.register, name='register'),
