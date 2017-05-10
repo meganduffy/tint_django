@@ -504,9 +504,9 @@ body {
 
 /* Messages */
 
-.alert {
+div.alert.alert-success {
     position:relative !important;
-    top: 80px !important;
+    top: 70px !important;
 }
 
 /* Navbar */
