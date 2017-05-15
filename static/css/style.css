@@ -31,6 +31,10 @@ body {
     height: 100px;
 }
 
+#process-anchor {
+    height:60px;
+}
+
 /* Landing Style */
 
 .landing {
@@ -500,6 +504,40 @@ body {
 .profo-pic {
     height:150px;
     width:150px;
+}
+
+/* FAQ */
+
+.faq {
+    background: url("../img/pexels-photo-57832.jpeg") center fixed;
+    background-size: cover;
+    padding-top: 100px;
+    text-align:center;
+}
+
+.faq-plus {
+    height:30px;
+    width:30px;
+    background:url("../icons/plus.png") center;
+    background-size:cover;
+    display:inline-block;
+}
+
+.panel-heading {
+    display:flex;
+    flex-flow:row nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align:left;
+}
+
+.panel-heading h3 {
+    line-height: 30px;
+    margin-left:10px;
+}
+
+.panel-heading:hover a {
+    text-decoration:none;
 }
 
 /* Messages */
