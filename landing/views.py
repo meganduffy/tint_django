@@ -9,3 +9,7 @@ def get_index(request):
 
 def get_faq(request):
     return render(request, 'faq.html')
+
+
+def get_instant_quote(request):
+    return render(request, 'instant-quote.html')

@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="instantquote">
+    <div class="page-div">
+        <div class="container">
+            <div class="instantquote-form">
+                <div class="container">
+                    <form id="IQForm" name="IQForm" action="" onsubmit="return false" novalidate>
+                        <fieldset>
+                            <legend>Instant Quote</legend>
+                            <div class="row">
+
+                                <div class="col-sm-6 form-group">
+                                    <label for="category">Category</label>
+                                    <select class="form-control" id="category" name="category" onchange="calculateTotal()">
+                                        <option value="none">Select Category</option>
+                                        <option value="general">General</option>
+                                        <option value="legal">Legal</option>
+                                        <option value="medical">Medical</option>
+                                        <option value="personal">Personal</option>
+                                        <option value="academic">Academic</option>
+
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-6 form-group">
+                                    <label for="speakers">Number of Speakers</label>
+                                    <select class="form-control" id="speakers" name="speakers" onchange="calculateTotal()">
+                                        <option value="none">Select Number of Speakers</option>
+                                        <option value="1">1 Speaker</option>
+                                        <option value="2">2 Speakers</option>
+                                        <option value="3">3+ Speakers</option>
+                                        <option value="4">4+ Speakers</option>
+                                        <option value="10">10+ Speakers</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-6 form-group">
+                                    <label for="audio-quality">Audio Quality</label>
+                                    <select class="form-control" id="audio-quality" name="audio-quality" onchange="calculateTotal()">
+                                        <option value="none">Select Audio Quality</option>
+                                        <option value="bad">Bad</option>
+                                        <option value="fair">Fair</option>
+                                        <option value="good">Good</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-6 form-group">
+                                    <label for="tat">Turn Around Time</label>
+                                    <select class="form-control" id="tat" name="tat" onchange="calculateTotal()">
+                                        <option value="none">Select Turn Around Time</option>
+                                        <option value="24hr">24hr</option>
+                                        <option value="48hr">48hr</option>
+                                        <option value="standard">Standard</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-6 form-group">
+                                    <label for="style">Transcription Style</label>
+                                    <select class="form-control" id="style" name="style" onchange="calculateTotal()">
+                                        <option value="none">Select Transcription Style</option>
+                                        <option value="verbatim">Verbatim</option>
+                                        <option value="intelligent-verbatim">Intelligent Verbatim</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-6 form-group">
+                                    <label for="stamps">Time Stamps</label>
+                                    <input type="radio" name="stamps" value="y-stamps" onclick="calculateTotal()" />
+                                    Yes
+                                    <input type="radio" name="stamps" value="n-stamps" onclick="calculateTotal()" />
+                                    No
+                                </div>
+
+                                <div class="col-sm-6 form-group">
+                                    <label for="audio-minutes">Time In Audio Minutes</label>
+                                    <input type="text" name="audio-minutes" id ="audio-minutes" value="" />
+                                </div>
+
+                                <div class="col-sm-6 form-group">
+                                    <label for="total-cost">Total Cost</label>
+                                    <p>Total Cost: €<span id="totalCost"></span></p>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+                                </div>
+
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}

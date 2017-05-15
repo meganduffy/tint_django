@@ -30,6 +30,7 @@ urlpatterns = [
     # Landing
     url(r'^$', landing_views.get_index, name='index'),
     url(r'^faq/$', landing_views.get_faq, name='faq'),
+    url(r'^instantquote/$', landing_views.get_instant_quote, name='instantquote'),
 
     # Accounts
     url(r'^register/$', accounts_views.register, name='register'),

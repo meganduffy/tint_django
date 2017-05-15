@@ -14,7 +14,7 @@
     <!-- Script References -->
     <script src="{% static "js/jquery.min.js" %}"></script>
     <script src="{% static "js/bootstrap.min.js" %}"></script>
-    <script src="{% static "js/script-main.js" %}"></script>
+    <script src="{% static "js/script-quote.js" %}"></script>
 
     {% block head_js %}{% endblock head_js %}
 </head>
@@ -54,7 +54,7 @@
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown">Get A Quote</a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Instant Quote</a></li>
+                    <li><a href="{% url 'instantquote' %}">Instant Quote</a></li>
                     <li><a href="#">Custom Quote</a></li>
                 </ul>
             </li>
