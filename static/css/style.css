@@ -499,6 +499,11 @@ body {
     width: 50%;
 }
 
+/* IQ Form */
+#total-cost {
+    display:none;
+}
+
 /* Profile */
 
 .profo-pic {

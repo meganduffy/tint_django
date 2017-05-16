@@ -11,6 +11,8 @@
                             <legend>Instant Quote</legend>
                             <div class="row">
 
+
+
                                 <div class="col-sm-6 form-group">
                                     <label for="category">Category</label>
                                     <select class="form-control" id="category" name="category" onchange="calculateTotal()">
@@ -72,13 +74,21 @@
                                     <input type="radio" name="stamps" value="n-stamps" onclick="calculateTotal()" />
                                     No
                                 </div>
+                            </div>
+
+                            <div class="row">
 
                                 <div class="col-sm-6 form-group">
-                                    <label for="audio-minutes">Time In Audio Minutes</label>
-                                    <input type="text" name="audio-minutes" id ="audio-minutes" value="" />
+                                    <label for="audio-minutes">Time In Audio Minutes</label><br>
+                                    <input type="text" name="audio-minutes" id ="audio-minutes" oninput="calculateTotal()" value="" />
                                 </div>
 
                                 <div class="col-sm-6 form-group">
+                                    <label for="minute-cost">Cost Per Minute</label>
+                                    <p>Cost Per Minute: €:<span id="minuteCost"></span></p>
+                                </div>
+
+                                <div class="col-sm-6 form-group" id="total-cost">
                                     <label for="total-cost">Total Cost</label>
                                     <p>Total Cost: €<span id="totalCost"></span></p>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
                                 </div>

@@ -42,43 +42,47 @@ timeStamps["y-stamps"] = 0.15;
 timeStamps["n-stamps"] = 0;
 
 function getCategoryPrice() {
-    categoryPrice=0;
+    var default_price = 0;
     //this function finds the category price based on the dropdown selection
     //get a reference to the form id="IQForm"
     var theForm = document.forms["IQForm"];
     //get a reference to the select id="category"
     var selectedCategory = theForm.elements["category"];
     //set categoryPrice to value user chose
-    categoryPrice = category[selectedCategory.value];
+    categoryPrice = category[selectedCategory.value] || default_price;
     //return categoryPrice
     return categoryPrice;
 }
 
 function getSpeakersPrice() {
+    var default_price = 0;
     var theForm = document.forms["IQForm"];
     var selectedSpeakers = theForm.elements["speakers"];
-    speakersPrice = speakers[selectedSpeakers.value];
+    speakersPrice = speakers[selectedSpeakers.value] || default_price;
     return speakersPrice;
 }
 
 function getAudioQualityPrice() {
+    var default_price = 0;
     var theForm = document.forms["IQForm"];
     var selectedAudioQuality = theForm.elements["audio-quality"];
-    audioQualityPrice = audioQuality[selectedAudioQuality.value];
+    audioQualityPrice = audioQuality[selectedAudioQuality.value] || default_price;
     return audioQualityPrice;
 }
 
 function getTATPrice() {
+    var default_price = 0;
     var theForm = document.forms["IQForm"];
     var selectedTAT = theForm.elements["tat"];
-    TATPrice = TAT[selectedTAT.value];
+    TATPrice = TAT[selectedTAT.value] || default_price;
     return TATPrice;
 }
 
 function getStylePrice() {
+    var default_price = 0;
     var theForm = document.forms["IQForm"];
     var selectedStyle = theForm.elements["style"];
-    stylePrice = transcriptStyle[selectedStyle.value];
+    stylePrice = transcriptStyle[selectedStyle.value] || default_price;
     return stylePrice;
 }
 
@@ -102,12 +106,23 @@ function getTimeStampPrice() {
 function getMinutes() {
     var theForm = document.forms["IQForm"];
     var minutes = theForm.elements["audio-minutes"];
-    var howmany = 0;
+    var howmany = 1;
     //if textbox is not blank
-    if(minutes.value!="") {
-        howmany = parseInt(minutes.value);
+    if (minutes.value != "") {
+        howmany = parseInt(minutes.value) || howmany;
     }
     return howmany;
+}
+
+function isMinutesValid() {
+    var valid = true;
+    var theForm = document.forms["IQForm"];
+    var minutes = theForm.elements["audio-minutes"];
+
+    if (minutes.value == "" || minutes.value == 1) {
+        valid = false;
+    }
+    return valid;
 }
 
 function calculateTotal() {
@@ -117,16 +132,29 @@ function calculateTotal() {
     console.log("TAT:" + getTATPrice());
     console.log("Style:" + getStylePrice());
     console.log("TimeSt:" + getTimeStampPrice());
+    console.log("Minutes:" + getMinutes() + " and type:" + typeof getMinutes());
 
     var multiplier = parseFloat(getCategoryPrice()) + parseFloat(getSpeakersPrice()) + parseFloat(getAudioQualityPrice()) + parseFloat(getTATPrice()) + parseFloat(getStylePrice()) + parseFloat(getTimeStampPrice());
     console.log("Multiplier: " + multiplier.toFixed(2));
 
     var total = parseFloat(getMinutes()) * parseFloat(multiplier);
-    console.log("Total:"+total.toFixed(2));
+    console.log("Total:" + total.toFixed(2));
 
     console.log("**********************************************");
 
-    //display result
-    document.getElementById('totalCost').innerHTML =
-        String(total.toFixed(2));
+    //display cost per minute (eg. multiplier)
+    document.getElementById('minuteCost').innerHTML =
+        String(multiplier.toFixed(2));
+
+    if (isMinutesValid()) {
+        //display total cost (eg. total)
+        document.getElementById('total-cost').style.display='block';
+        document.getElementById('totalCost').innerHTML =
+            String(total.toFixed(2));
+    }
+    else {
+        document.getElementById('total-cost').style.display='none';
+    }
+
+
 }
