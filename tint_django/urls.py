@@ -31,6 +31,10 @@ urlpatterns = [
     url(r'^$', landing_views.get_index, name='index'),
     url(r'^faq/$', landing_views.get_faq, name='faq'),
     url(r'^instantquote/$', landing_views.get_instant_quote, name='instantquote'),
+    url(r'^customquote/$', landing_views.get_custom_quote, name='customquote'),
+    url(r'^customquoteconfirm/$', landing_views.get_custom_quote_confirm, name='customquoteconfirm'),
+    url(r'^contact/$', landing_views.get_contact, name='contact'),
+    url(r'^contactconfirm/$', landing_views.get_contact_confirm, name='contactconfirm'),
 
     # Accounts
     url(r'^register/$', accounts_views.register, name='register'),
