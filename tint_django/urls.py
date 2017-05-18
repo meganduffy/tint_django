@@ -19,6 +19,7 @@ from django.views.static import serve
 from .settings import MEDIA_ROOT
 from landing import views as landing_views
 from accounts import views as accounts_views
+from upload import views as upload_views
 
 urlpatterns = [
     # Admin
@@ -42,4 +43,7 @@ urlpatterns = [
     url(r'^profile/editprofile/$', accounts_views.edit_profile, name='editprofile'),
     url(r'^login/$', accounts_views.login, name='login'),
     url(r'^logout/$', accounts_views.logout, name='logout'),
+
+    # Upload
+    url(r'^uploadfiles/$', upload_views.UploadFileForm, name='uploadfiles'),
 ]

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django_countries',
     'landing',
     'accounts',
+    'upload'
 ]
 
 MIDDLEWARE = [
