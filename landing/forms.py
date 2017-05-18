@@ -6,9 +6,13 @@ from django_countries.widgets import CountrySelectWidget
 
 class CustomQuoteForm(forms.ModelForm):
 
-    first_name = forms.CharField(label='First Name *')
+    first_name = forms.CharField(
+        label='First Name *'
+    )
 
-    last_name = forms.CharField(label='Second Name *')
+    last_name = forms.CharField(
+        label='Second Name *'
+    )
 
     email1 = forms.CharField(
         label='Email Address *',
@@ -24,10 +28,14 @@ class CustomQuoteForm(forms.ModelForm):
 
     new_client = forms.BooleanField(required=False)
 
-    description = forms.CharField(label='Description of Project',
-                                  widget=forms.Textarea)
+    description = forms.CharField(
+        label='Description of Project',
+        widget=forms.Textarea
+    )
 
-    audio_minutes = forms.IntegerField(label='Estimated Time of Audio In Minutes *')
+    audio_minutes = forms.IntegerField(
+        label='Estimated Time of Audio In Minutes *'
+    )
 
     class Meta:
         model = CustomQuote

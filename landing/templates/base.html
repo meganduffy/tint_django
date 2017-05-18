@@ -61,6 +61,7 @@
 
             <li><a class="page-scroll" href="{% url 'contact' %}">Contact Us</a></li>
             {% if user.is_active %}
+                <li><a href="#">Upload</a></li>
                 <li><a class="page-scroll" href="{% url 'profile' %}">Profile</a></li>
                 <li><a class="page-scroll" href="{% url 'logout' %}">Logout</a></li>
             {% else %}
