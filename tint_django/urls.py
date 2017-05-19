@@ -45,5 +45,5 @@ urlpatterns = [
     url(r'^logout/$', accounts_views.logout, name='logout'),
 
     # Upload
-    url(r'^uploadfiles/$', upload_views.UploadFileForm, name='uploadfiles'),
+    url(r'^uploadfiles/$', upload_views.get_upload_file_form, name='uploadfiles'),
 ]
