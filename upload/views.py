@@ -10,11 +10,11 @@ def get_upload_file_form(request):
         form = UploadFilesForm(request.POST, request.FILES)
         if form.is_valid():
             print "FORM IS VALID"
+            print request.FILES.getlist('file')
             for f in request.FILES.getlist('file'):
                 # UploadFiles.objects.create(file=f)
                 UploadFiles(file=f).save()
-                print "file name:"
-                print f
+                print "file name: '%s' has been saved" % f
             messages.success(request, 'Your file(s) have been uploaded!')
             form.save()
             return redirect('index')
