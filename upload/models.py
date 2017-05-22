@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+import uuid
 from django.db import models
 from django.conf import settings
+from paypal.standard.forms import PayPalPaymentsForm
 from .choices import *
 
 
@@ -22,4 +24,20 @@ class TranscriptDetails(models.Model):
     timestamps = models.CharField(max_length=13, choices=TIMESTAMP_CHOICES)
     tat = models.CharField(max_length=8, choices=TAT_CHOICES)
     audio_quality = models.CharField(max_length=4, choices=AUDIO_QUAL_CHOICES)
+    total_price = models.DecimalField(max_digits=6, decimal_places=2)
+    status = models.CharField(max_length=5, default='Processing', choices=STATUS_CHOICES)
+
+    @property
+    def paypal_form(self):
+        paypal_dict = {
+            "business": settings.PAYPAL_RECEIVER_EMAIL,
+            "amount": self.total_price,
+            "currency": "EUR",
+            "item_name": "%s-%s Transcript" % (self.category, self.text_format),
+            "invoice": "%s-%s" % (self.pk, uuid.uuid4()),
+            "notify_url": settings.PAYPAL_NOTIFY_URL,
+            "return_url": "%s/paypal-return" % settings.SITE_URL,
+            "cancel_return": "%s/paypal-cancel" % settings.SITE_URL
+        }
+        return PayPalPaymentsForm(initial=paypal_dict)
 

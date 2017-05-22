@@ -13,13 +13,15 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.static import serve
+from paypal.standard.ipn import urls as paypal_urls
 from .settings import MEDIA_ROOT
 from landing import views as landing_views
 from accounts import views as accounts_views
 from upload import views as upload_views
+from paypal_store import views as paypal_views
 
 urlpatterns = [
     # Admin
@@ -46,5 +48,11 @@ urlpatterns = [
 
     # Upload
     url(r'^uploadfiles/$', upload_views.get_upload_file_form, name='uploadfiles'),
-    url(r'^transcriptdetails', upload_views.get_transcript_detail_form, name='transcriptdetails')
+    url(r'^transcriptdetails', upload_views.get_transcript_detail_form, name='transcriptdetails'),
+    url(r'^orderreview', upload_views.get_order_review, name='orderreview'),
+
+    # Paypal Store
+    url(r'^a-very-hard-to-guess-url/', include(paypal_urls)),
+    url(r'^paypal-return', paypal_views.paypal_return, name='paypal-return'),
+    url(r'^paypal-cancel', paypal_views.paypal_cancel, name='paypal-cancel'),
 ]
