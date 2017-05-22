@@ -22,9 +22,11 @@ class TranscriptDetailsForm(forms.ModelForm):
                                      widget=forms.Select(attrs={'onchange': 'calculateTotal()', 'id': 'speakers'}))
     timestamps = forms.ChoiceField(choices=TIMESTAMP_CHOICES,
                                    widget=forms.Select(attrs={'onchange': 'calculateTotal()', 'id': 'timestamps'}))
-    tat = forms.ChoiceField(choices=TAT_CHOICES, widget=forms.Select(attrs={'onchange': 'calculateTotal()', 'id': 'tat'}))
+    tat = forms.ChoiceField(choices=TAT_CHOICES,
+                            widget=forms.Select(attrs={'onchange': 'calculateTotal()', 'id': 'tat'}))
     audio_quality = forms.ChoiceField(choices=AUDIO_QUAL_CHOICES,
-                                      widget=forms.Select(attrs={'onchange': 'calculateTotal()', 'id': 'audio-quality'}))
+                                      widget=forms.Select(
+                                          attrs={'onchange': 'calculateTotal()', 'id': 'audio-quality'}))
 
     class Meta:
         model = TranscriptDetails

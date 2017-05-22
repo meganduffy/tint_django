@@ -22,119 +22,87 @@
                     <legend>Transcription Details</legend>
                     {% csrf_token %}
 
-                    {#                    <div class="row">#}
-                    {#                        <div class="col-sm-4 form-group">#}
-                    {#                            {{ form.category.errors }}#}
-                    {#                            {{ form.category.label_tag }}#}
-                    {#                            <select name="category" class="form-control" id="category">#}
-                    {#                                <option value="none">Select Category</option>#}
-                    {#                                {% for id, name in form.category.field.choices %}#}
-                    {#                                    <option value="{{ id }}">{{ name }}</option>#}
-                    {#                                {% endfor %}#}
-                    {#                            </select>#}
-                    {#                        </div>#}
-                    {##}
-                    {#                        <div class="col-sm-4 form-group">#}
-                    {#                            {{ form.text_format.errors }}#}
-                    {#                            {{ form.text_format.label_tag }}#}
-                    {#                            <select name="text-format" class="form-control" id="text-format">#}
-                    {#                                <option value="none">Select Text Format</option>#}
-                    {#                                {% for id, name in form.text_format.field.choices %}#}
-                    {#                                    <option value="{{ id }}">{{ name }}</option>#}
-                    {#                                {% endfor %}#}
-                    {#                            </select>#}
-                    {#                        </div>#}
-                    {##}
-                    {#                        <div class="col-sm-4 form-group">#}
-                    {#                            {{ form.num_speakers.errors }}#}
-                    {#                            {{ form.num_speakers.label_tag }}#}
-                    {#                            <select name="num-speakers" class="form-control" id="num-speakers">#}
-                    {#                                <option value="none">Select Number of Speakers</option>#}
-                    {#                                {% for id, name in form.num_speakers.field.choices %}#}
-                    {#                                    <option value="{{ id }}">{{ name }}</option>#}
-                    {#                                {% endfor %}#}
-                    {#                            </select>#}
-                    {#                        </div>#}
-                    {##}
-                    {#                        <div class="col-sm-4 form-group">#}
-                    {#                            {{ form.timestamps.errors }}#}
-                    {#                            {{ form.timestamps.label_tag }}#}
-                    {#                            <select name="timestamps" class="form-control" id="timestamps">#}
-                    {#                                <option value="none">Select Time Stamp Option</option>#}
-                    {#                                {% for id, name in form.timestamps.field.choices %}#}
-                    {#                                    <option value="{{ id }}">{{ name }}</option>#}
-                    {#                                {% endfor %}#}
-                    {#                            </select>#}
-                    {#                        </div>#}
-                    {##}
-                    {#                        <div class="col-sm-4 form-group">#}
-                    {#                            {{ form.tat.errors }}#}
-                    {#                            {{ form.tat.label_tag }}#}
-                    {#                            <select name="tat" class="form-control" id="tat">#}
-                    {#                                <option value="none">Select Turn Around Time</option>#}
-                    {#                                {% for id, name in form.tat.field.choices %}#}
-                    {#                                    <option value="{{ id }}">{{ name }}</option>#}
-                    {#                                {% endfor %}#}
-                    {#                            </select>#}
-                    {#                        </div>#}
-                    {##}
-                    {#                        <div class="col-sm-4 form-group">#}
-                    {#                            {{ form.audio_quality.errors }}#}
-                    {#                            {{ form.audio_quality.label_tag }}#}
-                    {#                            <select name="audio-quality" class="form-control" id="audio-quality">#}
-                    {#                                <option value="none">Select Audio Quality</option>#}
-                    {#                                {% for id, name in form.audio_quality.field.choices %}#}
-                    {#                                    <option value="{{ id }}">{{ name }}</option>#}
-                    {#                                {% endfor %}#}
-                    {#                            </select>#}
-                    {#                        </div>#}
-                    {##}
-                    {##}
-                    {#                    </div>#}
-                    <div class="col-sm-6">
-                        {{ form|as_bootstrap }}
+                    <div class="row">
+                        <div class="col-sm-4 form-group">
+                            {{ form.category.label_tag }}
+                            <select name="category" class="form-control" id="category" onclick="calculateTotal()">
+                                <option value="none">Select Category</option>
+                                {% for id, name in form.category.field.choices %}
+                                    <option value="{{ id }}">{{ name }}</option>
+                                {% endfor %}
+                            </select>
+                            {{ form.category.errors }}
+                        </div>
+
+                        <div class="col-sm-4 form-group">
+                            {{ form.text_format.label_tag }}
+                            <select name="text_format" class="form-control" id="style" onclick="calculateTotal()">
+                                <option value="none">Select Text Format</option>
+                                {% for id, name in form.text_format.field.choices %}
+                                    <option value="{{ id }}">{{ name }}</option>
+                                {% endfor %}
+                            </select>
+                            {{ form.text_format.errors }}
+                        </div>
+
+                        <div class="col-sm-4 form-group">
+                            {{ form.num_speakers.label_tag }}
+                            <select name="num_speakers" class="form-control" id="speakers" onclick="calculateTotal()">
+                                <option value="none">Select Number of Speakers</option>
+                                {% for id, name in form.num_speakers.field.choices %}
+                                    <option value="{{ id }}">{{ name }}</option>
+                                {% endfor %}
+                            </select>
+                            {{ form.num_speakers.errors }}
+                        </div>
+
+                        <div class="col-sm-4 form-group">
+                            {{ form.timestamps.label_tag }}
+                            <select name="timestamps" class="form-control" id="timestamps" onclick="calculateTotal()">
+                                <option value="none">Select Time Stamp Option</option>
+                                {% for id, name in form.timestamps.field.choices %}
+                                    <option value="{{ id }}">{{ name }}</option>
+                                {% endfor %}
+                            </select>
+                            {{ form.timestamps.errors }}
+                        </div>
+
+                        <div class="col-sm-4 form-group">
+                            {{ form.tat.label_tag }}
+                            <select name="tat" class="form-control" id="tat" onclick="calculateTotal()">
+                                <option value="none">Select Turn Around Time</option>
+                                {% for id, name in form.tat.field.choices %}
+                                    <option value="{{ id }}">{{ name }}</option>
+                                {% endfor %}
+                            </select>
+                            {{ form.tat.errors }}
+                        </div>
+
+                        <div class="col-sm-4 form-group">
+                            {{ form.audio_quality.label_tag }}
+                            <select name="audio_quality" class="form-control" id="audio-quality" onclick="calculateTotal()">
+                                <option value="none">Select Audio Quality</option>
+                                {% for id, name in form.audio_quality.field.choices %}
+                                    <option value="{{ id }}">{{ name }}</option>
+                                {% endfor %}
+                            </select>
+                            {{ form.audio_quality.errors }}
+                        </div>
+
+
                     </div>
 
-                    {#                    <div class="col-sm-4 form-group">#}
-                    {#                        <select name="category" class="form-control" id="category">#}
-                    {#                            <option value="none">Select Category</option>#}
-                    {#                            {% for option in form.category.field.choices %}#}
-                    {#                                <option>{{ option.name }}</option>#}
-                    {#                            {% endfor %}#}
-                    {#                        </select>#}
-                    {#                    </div>#}
-                    {##}
-                    {#                    <div class="col-sm-4 form-group">#}
-                    {#                        {{ form.text_format }}#}
-                    {#                    </div>#}
-                    {##}
-                    {#                    <div class="col-sm-4 form-group">#}
-                    {#                        {{ form.num_speakers }}#}
-                    {#                    </div>#}
-                    {##}
-                    {#                    <div class="col-sm-4 form-group">#}
-                    {#                        {{ form.timestamps }}#}
-                    {#                    </div>#}
-                    {##}
-                    {#                    <div class="col-sm-4 form-group">#}
-                    {#                        {{ form.tat }}#}
-                    {#                    </div>#}
-                    {##}
-                    {#                    <div class="col-sm-4 form-group">#}
-                    {#                        {{ form.audio_quality }}#}
-                    {#                    </div>#}
-
-                    <div class="col-sm-6 form-group">
+                    <div class="col-sm-4 form-group">
                         <label for="minute-cost">Cost Per Minute</label>
                         <p>Cost Per Minute: €<span id="minuteCost">0.00</span></p>
                     </div>
 
-                    <div class="col-sm-6 form-group" id="total-cost">
+                    <div class="col-sm-4 form-group" id="total-cost">
                         <label for="total-cost">Total Cost</label>
                         <p>Total Cost: €<span id="totalCost"></span></p>
                         ​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
                     </div>
-                    <div class="form-group">
+                    <div class="col-sm-4 form-group">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
