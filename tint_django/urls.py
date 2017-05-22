@@ -46,4 +46,5 @@ urlpatterns = [
 
     # Upload
     url(r'^uploadfiles/$', upload_views.get_upload_file_form, name='uploadfiles'),
+    url(r'^transcriptdetails', upload_views.get_transcript_detail_form, name='transcriptdetails')
 ]

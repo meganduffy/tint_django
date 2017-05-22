@@ -3,12 +3,18 @@
 {% block content %}
     <div class="page-div">
         <div class="container">
-            <form class="dropzone" role="form" method="post" action="{% url 'uploadfiles' %}" enctype="multipart/form-data">
+            <form class="dropzone" id="myDropzone" role="form" method="post" action="{% url 'uploadfiles' %}" enctype="multipart/form-data">
                 <legend>Upload Files</legend>
                 {% csrf_token %}
-                <div class="form-group">
-                <button type="submit" class="btn btn-primary" id="submit-all">Upload File(s)</button>
-            </div>
+                <div class="form-control">
+                    <label for="{{ form.file.id_for_label }}">Your files:</label>
+                </div>
+                <div class="form-control">
+                    <div>{{ form.file }}</div>
+                </div>
+                <div class="form-group" style="margin-top:150px;">
+                    <button type="submit" class="btn btn-primary" id="submit-all" >Upload File(s) and Proceed</button>
+                </div>
             </form>
 
         </div>
@@ -22,7 +28,7 @@
 
             init: function () {
                 var submitButton = document.querySelector("#submit-all")
-                    myDropzone = this;
+                myDropzone = this;
 
                 submitButton.addEventListener("click", function () {
                     myDropzone.processQueue();
