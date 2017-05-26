@@ -12,7 +12,7 @@ from mutagen import File
 
 def get_audio_length(f):
     f = File(f).info.length
-    return int(ceil(f/60))
+    return int(ceil(f / 60))
 
 
 @login_required(login_url='/login/')
@@ -46,6 +46,7 @@ def get_transcript_detail_form(request):
     total_time = UploadFiles.objects.filter(user=request.user, status='Processing').aggregate(Sum('file_length_mins'))
     if request.method == 'POST':
         form = TranscriptDetailsForm(request.POST)
+
         def find_total():
             multiplier = 0
             user_category_choice = request.POST.getlist('category', None)
@@ -92,12 +93,15 @@ def get_transcript_detail_form(request):
                 multiplier += 0.05
             total_time_num = total_time['file_length_mins__sum']
             return multiplier * total_time_num
+
         if form.is_valid():
             print
             transcript_details = form.save(commit=False)
             transcript_details.user = request.user
             transcript_details.total_price = find_total()
             transcript_details.save()
+            UploadFiles.objects.filter(user=request.user, status='Processing').update(
+                transcript_details=transcript_details.id, status='In Progress')
             messages.success(request, 'Form has been submitted!!')
             return redirect('orderreview')
     else:
@@ -108,11 +112,11 @@ def get_transcript_detail_form(request):
     return render(request, "transcript-detail-form.html", args)
 
 
+@login_required(login_url='/login/')
 def get_order_review(request):
-    uploads = UploadFiles.objects.filter(user=request.user, status='Processing')
     transcript_details = TranscriptDetails.objects.filter(user=request.user, status='Processing')
     total_time = UploadFiles.objects.filter(user=request.user, status='Processing').aggregate(Sum('file_length_mins'))
 
-    args = {'uploads': uploads, 'transcript_details': transcript_details, 'total_time': total_time}
+    args = {'transcript_details': transcript_details, 'total_time': total_time}
 
     return render(request, "order_review.html", args)

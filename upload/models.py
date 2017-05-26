@@ -4,11 +4,13 @@ import uuid
 from django.db import models
 from django.conf import settings
 from paypal.standard.forms import PayPalPaymentsForm
+from paypal.standard.ipn.signals import valid_ipn_received, invalid_ipn_received
 from .choices import *
 
 
 class UploadFiles(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='uploads')
+    transcript_details = models.ForeignKey('TranscriptDetails', related_name='uploaded_files', blank=True, null=True)
     file = models.FileField(upload_to='client_files/%Y/%m/%d', blank=True, null=True)
     uploaded_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     file_name = models.CharField(max_length=500, default='')
@@ -37,7 +39,13 @@ class TranscriptDetails(models.Model):
             "invoice": "%s-%s" % (self.pk, uuid.uuid4()),
             "notify_url": settings.PAYPAL_NOTIFY_URL,
             "return_url": "%s/paypal-return" % settings.SITE_URL,
-            "cancel_return": "%s/paypal-cancel" % settings.SITE_URL
+            "cancel_return": "%s/paypal-cancel" % settings.SITE_URL,
+            "custom": "%s-%s" % (self.pk, self.status)
         }
         return PayPalPaymentsForm(initial=paypal_dict)
 
+from .signals import payment_accepted, invalid_handler
+
+valid_ipn_received.connect(payment_accepted)
+
+invalid_ipn_received.connect(invalid_handler)

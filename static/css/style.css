@@ -45,6 +45,53 @@ body {
     margin-left: 0 !important;
 }
 
+.landing-heading {
+    padding-top:100px;
+    margin-top:0;
+}
+
+.landing-icons {
+    display:flex;
+    flex-flow:row nowrap;
+    justify-content: space-around;
+    align-items: center;
+    padding-top:200px;
+}
+
+.landing-icon-box {
+    display:flex;
+    flex-flow:column nowrap;
+    justify-content: space-around;
+    align-items: center;
+    width:30%;
+}
+
+.landing-icon-text {
+    color:white;
+}
+
+#landing-icon-1, #landing-icon-2, #landing-icon-3 {
+    height:200px;
+    width:200px;
+    /*flex:1;*/
+}
+
+#landing-icon-1 {
+    background:url("../icons/headphones-big.png") center no-repeat;
+    background-size:contain;
+}
+
+#landing-icon-2 {
+    background:url("../icons/typewriter-big.png") center no-repeat;
+    background-size:contain;
+}
+
+#landing-icon-3 {
+    background:url("../icons/document-big.png") center no-repeat;
+    background-size:contain;
+}
+
+
 /*About Style */
 .about {
     display: flex;
@@ -340,7 +387,6 @@ body {
     -webkit-box-shadow: 0 8px 6px -6px #999;
     -moz-box-shadow: 0 8px 6px -6px #999;
     box-shadow: 0 8px 6px -6px #999;
-
 }
 
 .quote-btn:hover {
@@ -348,6 +394,10 @@ body {
     border: 4px solid #50A6C2;
     color: #50A6C2;
     transition: .8s;
+}
+
+.quote-title a:hover {
+    text-decoration: none;
 }
 
 /* Process Style */

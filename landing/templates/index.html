@@ -3,7 +3,21 @@
     <div class="index">
 
         <div class="landing" id="page-top">
-
+            <h1 class="landing-heading">From €0.99 Per Audio Minute...</h1>
+            <div class="landing-icons">
+                <div class="landing-icon-box">
+                    <div id="landing-icon-1"></div>
+                    <h1 class="landing-icon-text">Professional Transcription</h1>
+                </div>
+                <div class="landing-icon-box">
+                    <div id="landing-icon-2"></div>
+                    <h1 class="landing-icon-text">Excelent Formatting</h1>
+                </div>
+                <div class="landing-icon-box">
+                   <div id="landing-icon-3"></div>
+                    <h1 class="landing-icon-text">99% Accurate</h1>
+                </div>
+            </div>
         </div>
 
         <div id="about-anchor"></div>
@@ -76,7 +90,7 @@
                         <p>Custom Transcription Services
                             Custom Transcription Services
                             Custom Transcription Services</p>
-                        <button class="btn btn-success services-btn" href="#">Transcribe</button>
+                        <button class="btn services-btn"><a href="{% url 'instantquote' %}">Transcribe</a></button>
                     </div>
                 </div>
 
@@ -89,20 +103,20 @@
                         <p>Audio and Video Transcription Services
                             Audio and Video Transcription Services
                             Audio and Video Transcription Services</p>
-                        <button class="btn btn-success services-btn" href="#">Transcribe</button>
+                        <button class="btn services-btn"><a href="{% url 'instantquote' %}">Transcribe</a></button>
                     </div>
                 </div>
 
                 <div class="services-box">
                     <div class="services-title">
-                        <h3>Student Discount</h3>
+                        <h3>Academic Discount</h3>
                     </div>
                     <div class="services-content">
                         <div id="services-icon-3"></div>
                         <p>Student Discount
                             Student Discount
                             Student Discount</p>
-                        <button class="btn btn-success services-btn" href="#">Transcribe</button>
+                        <button class="btn services-btn"><a href="{% url 'instantquote' %}">Transcribe</a></button>
                     </div>
                 </div>
             </div>
@@ -114,7 +128,7 @@
                         <div class="quote-title">
                             <h2>Want an Instant Quote?</h2>
                         </div>
-                        <button class="btn btn-success quote-btn" href="#">Instant Quote Calculator</button>
+                        <button class="btn quote-btn"><a href="{% url 'instantquote' %}">Instant Quote Calculator</a></button>
                     </div>
                 </div>
                 <div class="quote-circ-background">
@@ -123,7 +137,7 @@
                         <div class="quote-title">
                             <h2>Want a Custom Quote?</h2>
                         </div>
-                        <button class="btn btn-success quote-btn" href="#">Custom Quote Form</button>
+                        <button class="btn quote-btn"><a href="{% url 'customquote' %}">Custom Quote Form</a></button>
                     </div>
                 </div>
 

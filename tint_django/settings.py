@@ -25,7 +25,7 @@ SECRET_KEY = 'xfch%ek+8hms7-q$4!c=@kq!@b9$#$$wx)abq8oan95=1tt+k8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['1867e77a.ngrok.io', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -142,6 +142,7 @@ STATICFILES_DIRS = (
 )
 
 # PayPal Settings
-SITE_URL = 'http://127.0.0.1:8000'
-PAYPAL_NOTIFY_URL = 'http://127.0.0.1/a-very-hard-to-guess-url/'
+# SITE_URL = 'http://127.0.0.1:8000'
+SITE_URL = 'http://1867e77a.ngrok.io'
+PAYPAL_NOTIFY_URL = 'http://1867e77a.ngrok.io/a-very-hard-to-guess-url/'
 PAYPAL_RECEIVER_EMAIL = 'meganemilyduffy@gmail.com'
