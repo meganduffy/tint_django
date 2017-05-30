@@ -6,12 +6,13 @@ from django.conf import settings
 from paypal.standard.forms import PayPalPaymentsForm
 from paypal.standard.ipn.signals import valid_ipn_received, invalid_ipn_received
 from .choices import *
+from .validators import validate_file_extension
 
 
 class UploadFiles(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='uploads')
     transcript_details = models.ForeignKey('TranscriptDetails', related_name='uploaded_files', blank=True, null=True)
-    file = models.FileField(upload_to='client_files/%Y/%m/%d', blank=True, null=True)
+    file = models.FileField(upload_to='client_files/%Y/%m/%d', validators=[validate_file_extension], blank=True, null=True)
     uploaded_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     file_name = models.CharField(max_length=500, default='')
     file_length_mins = models.CharField(max_length=255, default='', blank=True, null=True)
@@ -28,6 +29,7 @@ class TranscriptDetails(models.Model):
     audio_quality = models.CharField(max_length=4, choices=AUDIO_QUAL_CHOICES)
     total_price = models.DecimalField(max_digits=6, decimal_places=2)
     status = models.CharField(max_length=5, default='Processing', choices=STATUS_CHOICES)
+    saved = models.BooleanField(default=False)
 
     @property
     def paypal_form(self):

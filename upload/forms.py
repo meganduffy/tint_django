@@ -8,6 +8,7 @@ class UploadFilesForm(forms.ModelForm):
         attrs={'multiple': True})
     )
 
+
     class Meta:
         model = UploadFiles
         fields = ('file',)

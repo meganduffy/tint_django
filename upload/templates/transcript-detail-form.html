@@ -3,20 +3,24 @@
 {% block content %}
     <div class="page-div">
         <div class="container">
+        {% if uploads %}
             <div class="col-sm-12">
                 <h1>TOTAL TIME: <span id="total-time">{{ total_time.file_length_mins__sum }}</span>mins</h1>
             </div>
             <br>
             {% for upload in uploads %}
                 <div class="col-sm-6">
-                    <p><strong>ID: </strong>{{ upload.id }}</p>
                     <p><strong>File Name:</strong> {{ upload.file_name }}</p>
                     <p><strong>Uploaded at:</strong> {{ upload.uploaded_at }}</p>
                     <p><strong>File Length:</strong> {{ upload.file_length_mins }}mins</p>
                     <p><strong>Status:</strong> {{ upload.status }}</p>
+                    <a class="btn btn-danger" href="{% url 'removefile' upload.id %}" style="float:right;">Remove File</a>
+                    <br>
                     <hr>
                 </div>
             {% endfor %}
+            <h3>Want to add more files to your order?</h3>
+            <a class="btn btn-default" href="{% url 'uploadfiles' %}">Upload More Files</a>
             <div class="container">
                 <form id="TDForm" name="TDForm" role="form" method="post" action="{% url 'transcriptdetails' %}">
                     <legend>Transcription Details</legend>
@@ -108,6 +112,10 @@
                 </form>
 
             </div>
+        {% else %}
+        <h1>It looks like you haven't uploaded any files yet!</h1>
+        <a class="btn btn-primary" href="{% url 'uploadfiles' %}">Upload Files</a>
+        {% endif %}
         </div>
     </div>
 

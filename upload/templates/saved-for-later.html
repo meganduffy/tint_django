@@ -2,13 +2,12 @@
 {% load staticfiles %}
 {% block content %}
     <div class="page-div">
-        <div class="order-review">
+        <div class="saved-for-later">
             <div class="container">
 
-                <h1>Order Review</h1>
+                <h1>Saved For Later</h1>
 
-                <div class="order-main">
-
+                <div class="saved-for-later-main">
                     {% for detail in transcript_details %}
                         <p><strong>Order Number: </strong>{{ detail.id }}</p>
                         <div class="order-item">
@@ -34,11 +33,9 @@
                             </div>
 
                         </div>
-                        <h2>Not ready to purchase just yet?</h2>
-                        <h3>Save your order for later!</h3>
-                        <a class="btn btn-success" href="{% url 'save_order_for_later' detail.id %}">Save For Later!</a>
                     {% endfor %}
                 </div>
+
             </div>
         </div>
     </div>

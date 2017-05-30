@@ -1,0 +1,24 @@
+/* ORDER REVIEW */
+
+.order-item {
+    margin-bottom:20px;
+    display:flex;
+    flex-flow:row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.transcript-details-box {
+    flex: 1;
+    min-width:150px;
+}
+
+.upload-details-box {
+    flex:1;
+    min-width:150px;
+}
+
+.purchase-order-box {
+    flex:1;
+    min-width:150px;
+}

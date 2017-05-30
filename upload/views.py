@@ -1,5 +1,4 @@
 from __future__ import unicode_literals
-import uuid
 from math import ceil
 from django.shortcuts import render, redirect
 from django.contrib import messages
@@ -113,10 +112,35 @@ def get_transcript_detail_form(request):
 
 
 @login_required(login_url='/login/')
+def remove_file(request, upload_id):
+    user_file = UploadFiles.objects.get(id=upload_id)
+    user_file.delete()
+    messages.success(request, '%s has been removed from your order!' % user_file.file_name)
+    return redirect('/transcriptdetails')
+
+
+@login_required(login_url='/login/')
 def get_order_review(request):
-    transcript_details = TranscriptDetails.objects.filter(user=request.user, status='Processing')
+    transcript_details = TranscriptDetails.objects.filter(user=request.user, status='Processing').order_by('-id')[:1]
     total_time = UploadFiles.objects.filter(user=request.user, status='Processing').aggregate(Sum('file_length_mins'))
 
     args = {'transcript_details': transcript_details, 'total_time': total_time}
 
     return render(request, "order_review.html", args)
+
+
+@login_required(login_url='/login/')
+def save_order_for_later(request, detail_id):
+    TranscriptDetails.objects.filter(id=detail_id).update(saved=True)
+    messages.success(request, 'Order Number %s has been moved to Saved For Later' % detail_id)
+    return redirect('/saved-for-later')
+
+
+def get_saved_for_later(request):
+    transcript_details = TranscriptDetails.objects.filter(user=request.user, status='Processing', saved=True).order_by(
+        '-id')
+    total_time = UploadFiles.objects.filter(user=request.user, status='Processing').aggregate(Sum('file_length_mins'))
+
+    args = {'transcript_details': transcript_details, 'total_time': total_time}
+
+    return render(request, "saved-for-later.html", args)
