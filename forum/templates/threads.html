@@ -10,13 +10,19 @@
                 </div>
                 <div class="col-sm-12">
                     {% if user.is_authenticated %}
-                        <p>
-                            <a href="{% url 'new_thread' subject.id %}" class="btn btn-primary">New Thread</a>
+                        <p class="new-thread-btn">
+                            <a href="{% url 'new_thread' subject.id %}" class="btn btn-primary">Start New Thread</a>
                         </p>
                     {% endif %}
+                <hr>
                     {% for thread in subject.threads.all %}
                         {% include "thread_item.html" %}
                     {% endfor %}
+                    {% if user.is_authenticated %}
+                        <p class="new-thread-btn">
+                            <a href="{% url 'new_thread' subject.id %}" class="btn btn-primary">Start New Thread</a>
+                        </p>
+                    {% endif %}
                 </div>
             </div>
         </div>

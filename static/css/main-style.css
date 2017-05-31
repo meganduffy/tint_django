@@ -15,6 +15,10 @@ body {
     color: white;
 }
 
+a:hover {
+    text-decoration: none;
+}
+
 /* Index Style */
 
 .services, .quote {

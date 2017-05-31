@@ -6,14 +6,14 @@
     <div class="page-div">
         <div class="container">
             {% for subject in subjects %}
-                <section class="subject">
+                <section class="styled-section">
 
                     <h2><a href="{% url 'threads' subject.id %}">{{ subject.name }}</a></h2>
                     <p><a href="{% url 'threads' subject.id %}">
                             {% autoescape off %}{{ subject.description }}{% endautoescape %}
                     </a></p>
 
-                    <table>
+                    <table align="center" class="forum-subject-table">
                         <tr>
                             <th>THREADS</th>
                             <th>POSTS</th>
@@ -26,5 +26,5 @@
                 </section>
             {% endfor %}
         </div>
-    </div>☺
+    </div>
 {% endblock %}

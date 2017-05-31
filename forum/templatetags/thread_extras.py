@@ -34,7 +34,7 @@ def user_vote_button(thread, subject, user):
             link = """
             <div class="col-md-3 btn-vote">
            <a href="%s" class="btn btn-default btn-sm">
-             Add my vote!
+             Vote!
            </a>
            </div>
             """ % reverse('cast_vote', kwargs={'thread_id' : thread.id, 'subject_id':subject.id})

@@ -2,11 +2,10 @@
 {% load thread_extras %}
 {% load staticfiles %}
 {% block content %}
-
-    <div class="row header">
-
+    <div class="page-div">
         <div class="container">
             <h2>{{ thread.name }}</h2>
+            <!-- THREAD EXTRAS TABLE -->
             <div class="col-sm-12">
                 <table class="table">
                     <tbody>
@@ -29,22 +28,21 @@
                     </tbody>
                 </table>
             </div>
+            <!-- THREAD EXTRAS TABLE -->
             {% if thread.poll %}
                 <div class="container">
-                    <div class="col-sm-6">
+                    <div class="col-sm-6"></div>
+                    <div class="col-sm-6 poll">
                         <h2>Poll</h2>
                         <strong>{{ thread.poll.question }}</strong><br><br>
 
                         <p>Here’s how the votes are so far:</p>
                         {% for subject in thread.poll.subjects.all %}
-                            <div class="col-sm-10">
+                            <div class="col-sm-9">
                                 <strong>{{ subject.name }}</strong>
                                 <span class="pull-right">{{ subject|vote_percentage }}%</span>
                             </div>
-                            {% autoescape off %}
-                            {% user_vote_button thread subject user %}
-                            {% endautoescape %}
-                            <div class="col-md-10">
+                            <div class="col-md-9">
                                 <div class="progress">
                                     <div class="progress-bar progress-bar-info" role="progressbar"
                                          aria-value="{{ subject|vote_percentage }}" aria-valuemin="0"
@@ -52,21 +50,40 @@
                                     </div>
                                 </div>
                             </div>
+                            {% autoescape off %}
+                                {% user_vote_button thread subject user %}
+                            {% endautoescape %}
                         {% endfor %}
                     </div>
-                </div>
-            {% endif %}
+                    <div class="col-sm-6">
+                        {% if user.is_authenticated %}
+                            <p>
+                                <a href="{% url 'new_post' thread.id %}" class="btn btn-primary comment-btn">Leave A
+                                    Comment</a>
+                            </p>
+                        {% endif %}
+                        {% for post in thread.posts.all %}
+                            {% include "post.html" %}
+                        {% endfor %}
+                    {% if user.is_authenticated %}
+                        <p>
+                            <a href="{% url 'new_post' thread.id %}" class="btn btn-primary comment-btn">Leave A
+                                Comment</a>
+                        </p>
+                    {% endif %}
+                    </div>
 
-            {% if user.is_authenticated %}
-                <p>
-                    <a href="{% url 'new_post' thread.id %}" class="btn btn-primary">New post</a>
-                </p>
+                </div>
+            {% else %}
+                {% for post in thread.posts.all %}
+                    {% include "post.html" %}
+                {% endfor %}
+                {% if user.is_authenticated %}
+                    <p>
+                        <a href="{% url 'new_post' thread.id %}" class="btn btn-primary comment-btn">Leave A Comment</a>
+                    </p>
+                {% endif %}
             {% endif %}
         </div>
-    </div>
-    <div class="container">
-        {% for post in thread.posts.all %}
-            {% include "post.html" %}
-        {% endfor %}
     </div>
 {% endblock %}
