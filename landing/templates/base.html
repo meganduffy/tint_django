@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{% static "css/main-style.css" %}">
     <link rel="stylesheet" href="{% static "css/mediaqueries.css" %}">
     <link rel="stylesheet" href="{% static "css/uploadapp-style.css" %}">
+    <link rel="stylesheet" href="{% static "css/font-awesome-4.7.0/css/font-awesome.css" %}">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,700i,800|Oswald|Roboto:400,500,700,700i,900" rel="stylesheet">
     <!-- Script References -->
     <script src="{% static "js/jquery.min.js" %}"></script>
@@ -66,6 +67,7 @@
 
             <li><a class="page-scroll" href="{% url 'contact' %}">Contact Us</a></li>
             {% if user.is_active %}
+                <li><a href="{% url 'forum' %}">Forum</a></li>
                 <li><a href="{% url 'uploadfiles' %}">Upload</a></li>
                 <li><a class="page-scroll" href="{% url 'profile' %}">Profile</a></li>
                 <li><a class="page-scroll" href="{% url 'logout' %}">Logout</a></li>

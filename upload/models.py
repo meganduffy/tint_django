@@ -30,6 +30,7 @@ class TranscriptDetails(models.Model):
     total_price = models.DecimalField(max_digits=6, decimal_places=2)
     status = models.CharField(max_length=5, default='Processing', choices=STATUS_CHOICES)
     saved = models.BooleanField(default=False)
+    purchased_at = models.DateTimeField(blank=True, null=True)
 
     @property
     def paypal_form(self):

@@ -40,10 +40,14 @@ INSTALLED_APPS = [
     'django_forms_bootstrap',
     'django_countries',
     'paypal.standard.ipn',
+    'tinymce',
+    'emoticons',
     'landing',
     'accounts',
     'upload',
-    'paypal_store'
+    'paypal_store',
+    'forum',
+    'polls'
 ]
 
 MIDDLEWARE = [
@@ -146,6 +150,9 @@ STATICFILES_DIRS = (
 SITE_URL = 'http://143042c6.ngrok.io'
 PAYPAL_NOTIFY_URL = 'http://143042c6.ngrok.io/a-very-hard-to-guess-url/'
 PAYPAL_RECEIVER_EMAIL = 'meganemilyduffy@gmail.com'
+
+# tinymce settings
+TINYMCE_JS_ROOT = os.path.join(BASE_DIR, "static", 'js', 'tinymce', 'tinymce.min.js')
 
 
 VALID_FILE_TYPES = ['.M4A', '.MP3', '.WMV', '.MP4', '.WAV', '.MOV', '.AVI', '.VOB', '.AMR', '.WMA', '.OGG', '.AIF']

@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.utils import timezone
 from paypal.standard.models import ST_PP_COMPLETED
 from upload.models import TranscriptDetails
 
@@ -9,12 +10,11 @@ def payment_accepted(sender, **kwargs):
         print "Payment status is: %s" % ipn_obj.payment_status
         print ipn_obj
         transcript_id = ipn_obj.custom.split('-')[0]
-        transcript_status = ipn_obj.custom.split('-')[1]
         transcript_details = TranscriptDetails.objects.filter(id=transcript_id)
         if ipn_obj.reciever_email != settings.PAYPAL_RECEIVER_EMAIL:
             return
         else:
-            TranscriptDetails.objects.filter(id=transcript_id).update(status="In Progress")
+            transcript_details.update(status="In Progress", purchased_at=timezone.now())
     else:
         print "Payment didn't go through"
 
