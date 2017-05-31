@@ -61,15 +61,14 @@ class UserLoginForm(forms.Form):
 
 
 class UserProfileForm(forms.ModelForm):
+    first_name = forms.CharField(
+        label='Add First Name',
+        required=False
+    )
 
-    class Meta:
-        model = User
-        fields = ['email', 'location', 'company', 'phone_number', 'image']
-        widgets = {'location': CountrySelectWidget()}
-
-    email = forms.CharField(
-        label='Update Email Address',
-        widget=forms.EmailInput
+    second_name = forms.CharField(
+        label='Add Second Name',
+        required=False
     )
 
     location = CountryField(
@@ -77,13 +76,21 @@ class UserProfileForm(forms.ModelForm):
     )
 
     company = forms.CharField(
-        label='Add/Update Company Name'
+        label='Add/Update Company Name',
+        required=False
     )
 
     phone_number = forms.CharField(
-        label='Add/Update Phone Number'
+        label='Add/Update Phone Number',
+        required=False
     )
 
     image = forms.ImageField(
-        label='Add/Update Profile Image'
+        label='Add/Update Profile Image',
+        required=False
     )
+
+    class Meta:
+        model = User
+        fields = ['first_name', 'second_name', 'location', 'company', 'phone_number', 'image']
+        widgets = {'location': CountrySelectWidget()}

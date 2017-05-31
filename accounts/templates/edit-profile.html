@@ -2,15 +2,85 @@
 {% load bootstrap_tags %}
 {% block content %}
     <div class="page-div">
-    <div class="container">
-    <form role="form" method="post" action="{% url 'editprofile' %}" enctype="multipart/form-data">
-        <legend>Edit Profile</legend>
-        {% csrf_token %}
-        {{ form| as_bootstrap }}
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary">Create account</button>
+        <div class="container">
+            <form role="form" method="post" action="{% url 'editprofile' %}" enctype="multipart/form-data">
+                <legend>Edit Profile</legend>
+                {% csrf_token %}
+
+                {% if not user.first_name %}
+
+                    <div id="div_id_first_name" class="form-group  col-sm-6">
+                        <label for="id_first_name" class="control-label ">
+                            Add First Name
+                        </label>
+                        <div class="">
+                            <input class=" form-control" id="id_first_name" name="first_name" type="text"/>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if not user.last_name %}
+                    <div id="div_id_second_name" class="form-group  col-sm-6">
+                        <label for="id_second_name" class="control-label">
+                            Add Second Name
+                        </label>
+                        <div class="">
+                            <input class=" form-control" id="id_second_name" name="second_name" type="text"/>
+                        </div>
+                    </div>
+                {% endif %}
+
+
+                <div id="div_id_company" class="form-group col-sm-6 ">
+                    <label for="id_company" class="control-label ">
+                        {% if user.company %}Update Company Name{% else %}Add Company Name{% endif %}
+                    </label>
+                    <div class="">
+                        <input class=" form-control" id="id_company" name="company" type="text"/>
+                    </div>
+                </div>
+
+
+                <div id="div_id_phone_number" class="form-group col-sm-6 ">
+                    <label for="id_phone_number" class="control-label">
+                        {% if user.phone_number %}Update Phone Number{% else %}Add Phone Number{% endif %}
+                    </label>
+                    <div class="">
+                        <input class=" form-control" id="id_phone_number" name="phone_number" type="text"/>
+                    </div>
+                </div>
+
+                <div id="div_id_location" class="form-group  col-sm-6">
+                    <label for="id_location" class="control-label  ">
+                        {% if user.location %}Update Location{% else %}Add Location{% endif %}
+                    </label>
+                    <div class="">
+                        <select class=" form-control" id="id_location" name="location"
+                                onchange="var e=document.getElementById(&#39;flag_&#39; + this.id); if (e) e.src = &#39;/static/flags/{code}.gif&#39;.replace(&#39;{code}&#39;, this.value.toLowerCase() || &#39;__&#39;).replace(&#39;{code_upper}&#39;, this.value.toUpperCase() || &#39;__&#39;);">
+                            <option value="" selected="selected">Select Location</option>
+                            {% for id, name in form.location.field.choices %}
+                                <option value="{{ id }}">{{ name }}</option>
+                            {% endfor %}
+                        </select><img class="country-select-flag" id="flag_id_location" style="margin: 6px 4px 0"
+                                      src="/static/flags/__.gif">
+                    </div>
+                </div>
+
+
+                <div id="div_id_image" class="form-group col-sm-6 ">
+                    <label for="id_image" class="control-label">
+                        {% if user.image %}Update Profile Image{% else %}Add Profile Image{% endif %}
+                    </label>
+                    <div class="">
+                        <input class=" form-control" id="id_image" name="image" type="file"/>
+                    </div>
+                </div>
+
+
+                <div class="form-group col-sm-12">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
         </div>
-    </form>
-    </div>
     </div>
 {% endblock %}
