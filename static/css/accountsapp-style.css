@@ -1,0 +1,115 @@
+/* ACCOUNTS STYLE */
+
+.container-2 {
+    padding:0 35px;
+}
+
+.profile-page-welcome {
+    display:flex;
+    flex-flow:row;
+    justify-content: center;
+    align-items: center;
+    text-align:right;
+    margin-bottom:10px;
+}
+
+.profile-page-welcome-info {
+    margin-right:50px;
+}
+
+.profile-welcome-pic {
+    height:150px;
+    width:150px;
+}
+
+.profile-page-info, .profile-saved-orders-details {
+    display:flex;
+    flex-flow:row wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.profile-page-info a, .profile-page-info a:hover, .profile-page-info a:visited {
+    color:inherit;
+    text-decoration: none;
+}
+
+.profile-saved-orders, .profile-tracker, .profile-forum {
+    display:flex;
+    flex-flow:column nowrap;
+    align-content: center;
+    justify-content: center;
+    background-color:#71c3ca;
+    border-radius:20px;
+    text-align:center;
+    padding:0 10px 10px 20px;
+    margin-bottom:20px;
+}
+
+.profile-saved-orders-header, .profile-tracker-header, .profile-forum-header {
+    display:flex;
+    flex-flow:row nowrap;
+    justify-content:space-around;
+    align-items: center;
+}
+
+.profile-saved-orders-icon {
+    background: url('/static/icons/checked.png') center;
+    background-size: cover;
+    height:80px;
+    width:80px;
+}
+
+.profile-saved-orders-details {
+    margin-top:25px;
+}
+
+.profile-saved-orders-detail {
+    flex:1;
+    background-color:white;
+    border-radius:10px;
+    padding:10px;
+    min-height:250px;
+    display:flex;
+    flex-flow:column nowrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.profile-saved-orders-detail:first-child {
+    margin-right:10px;
+}
+
+.profile-tracker {
+    background-color:#39b287;
+}
+
+.profile-tracker-icon {
+    background:url('/static/icons/stopwatch-colour.png') center;
+    background-size:cover;
+    height:70px;
+    width:70px;
+}
+
+.profile-forum-icon {
+    background:url('/static/icons/chat-colour.png') center;
+    background-size:cover;
+    height:80px;
+    width:80px;
+}
+
+.profile-forum-info {
+    margin-top:25px;
+    display:flex;
+    flex-flow:column nowrap;
+    justify-content: space-around;
+    text-align:left;
+}
+
+.profile-forum-info-box {
+    background-color:white;
+    border-radius:10px;
+    margin-bottom:10px;
+    padding:5px;
+}
+

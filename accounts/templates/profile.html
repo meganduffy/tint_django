@@ -1,17 +1,102 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 {% block content %}
     <div class="page-div">
-        <div class="container">
-            <h2>Success!</h2>
-            <p>Welcome back {{ user.email }} </p>
-            <p>Your last login was: {{ user.previous_login }}</p>
-            <p>You joined: {{ user.date_joined }}</p>
-            {% if user.image %}
-                <p>Profile Picture:</p>
-                <img src="/media/{{ user.image }}" class="profo-pic"/>
-            {% endif %}
-            <br><br>
-            <button class="btn btn-success" onclick="location.href='editprofile'">Edit Profile</button>
+        <div class="container-2">
+            <div class="profile-page-welcome">
+                <div class="profile-page-welcome-info">
+                    <h1>Welcome back,
+                        {% if user.first_name %}{{ user.first_name }}{% else %}{{ user.email }}{% endif %}!
+                    </h1>
+                    <p><small><strong>Last Login:</strong> {{ user.last_login }}</small></p>
+                    {% if user.first_name %}<p><small><strong>Email Address:</strong> {{ user.email }}</small></p>{% endif %}
+                    {% if user.first_name and user.last_name %}
+                        <p>{{ user.first_name }} {{ user.last_name }}</p>
+                    {% endif %}
+                    <p>{% if user.company %}{{ user.company }}{% endif %}{% if user.location %},
+                        {{ user.location }}{% endif %}</p>
+                    <a class="btn btn-success" href="{% url 'editprofile' %}">Update Account Information</a>
+                </div>
+                {% if user.image %}
+                    <img src="/media/{{ user.image }}" class="profile-welcome-pic"/>
+                {% else %}
+                    <img src="{% static "icons/happy-face.png" %}" class="profile-welcome-pic"/>
+                {% endif %}
+            </div>
+
+            <div class="profile-page-info">
+
+                <div class="profile-saved-orders">
+                    <div class="profile-saved-orders-header">
+                        <div class="profile-saved-orders-icon"></div>
+                        <div class="profile-saved-orders-top">
+                            <a href="{% url 'saved_for_later' %}"><h2>Saved For Later</h2></a>
+                            <h4>You have {% if saved %}{{ saved.count }}{% else %}no{% endif %} {% if saved.count > 1 %}
+                                Saved
+                                Orders{% else %}Saved Order{% endif %}</h4>
+                            <a class="btn btn-default" href="{% url 'saved_for_later' %}">See All Saved Orders</a>
+                        </div>
+                    </div>
+                    <div class="profile-saved-orders-details">
+                        {% for save in saved|slice:":2" %}
+                            <div class="profile-saved-orders-detail">
+                                <h6>Order Number: {{ save.id }}</h6>
+                                <p><strong>Turn Around Time:</strong> {{ save.tat }}</p>
+
+                                <p><strong>For Files:</strong><br>
+                                    {% for file in save.uploaded_files.all %}
+                                        {{ file.file_name }}<br>
+                                    {% endfor %}
+                                </p>
+                                <p><strong>Total:</strong> €{{ save.total_price }}</p>
+                                {{ save.paypal_form.sandbox }}
+                            </div>
+
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="profile-tracker">
+                    <div class="profile-tracker-header">
+                        <div class="profile-tracker-icon"></div>
+                        <div class="profile-tracker-header-top">
+                            <a href="#"><h2>Transcript Tracker</h2></a>
+                            <a class="btn btn-default" href="#">See Full Details</a>
+                        </div>
+                        <div class="profile-tracker-info">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-forum">
+                    <div class="profile-forum-header">
+                        <div class="profile-forum-icon"></div>
+                        <div class="profile-forum-header-top">
+                            <a href="{% url 'forum' %}"><h2>Forum Activity</h2></a>
+                            <h4>{% if user.posts %}Recent Activity{% else %}Join Our Community!{% endif %}</h4>
+                            <a class="btn btn-default" href="{% url 'forum' %}">Go To Forum</a>
+                        </div>
+                    </div>
+                    <div class="profile-forum-info">
+
+                            {% for post in user.posts.all|slice:":2" %}
+                                <div class="profile-forum-info-box">
+                                {% autoescape off %}
+
+                                    <p><strong>{{ post.thread.subject.name }}</strong></p>
+                                    <div>
+                                        <p>{{ post.comment| truncatewords:10 }}</p>
+                                        <p><small>{{ post.created_at }}</small></p>
+                                    </div>
+
+                                {% endautoescape %}
+                                </div>
+                            {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 {% endblock %}

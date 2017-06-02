@@ -53,7 +53,8 @@ urlpatterns = [
     url(r'^removefile/(?P<upload_id>\d+)/$', upload_views.remove_file, name='removefile'),
     url(r'^orderreview', upload_views.get_order_review, name='orderreview'),
     url(r'^save-order-for-later/(?P<detail_id>\d+)/$', upload_views.save_order_for_later, name='save_order_for_later'),
-    url(r'^saved-for-later/$', upload_views.get_saved_for_later, name='save_for_later'),
+    url(r'^saved-for-later/$', upload_views.get_saved_for_later, name='saved_for_later'),
+    url(r'^transcript-tracker/$', upload_views.get_transcript_tracker, name='transcript_tracker'),
 
     # Paypal Store
     url(r'^a-very-hard-to-guess-url/', include(paypal_urls)),

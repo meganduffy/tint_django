@@ -6,6 +6,7 @@ from django.shortcuts import render, redirect
 from django.template.context_processors import csrf
 from django.contrib.auth.decorators import login_required
 from accounts.forms import UserRegistrationForm, UserLoginForm, UserProfileForm
+from upload.models import TranscriptDetails
 
 
 def register(request):
@@ -35,7 +36,9 @@ def register(request):
 
 @login_required(login_url='/login/')
 def profile(request):
-    return render(request, 'profile.html')
+    saved = TranscriptDetails.objects.filter(user=request.user, saved=True)
+    args = {'saved': saved}
+    return render(request, 'profile.html', args)
 
 
 @login_required(login_url='/login/')
@@ -44,10 +47,24 @@ def edit_profile(request):
     if request.method == "POST":
         form = UserProfileForm(request.POST, request.FILES, instance=request.user)
         if form.is_valid():
+            user = request.user
+            if request.POST.get('first_name', False):
+                user.first_name = request.get('first_name', False)
+            if request.POST.get('last_name', False):
+                user.last_name = request.POST.get('last_name', False)
+            if request.POST.get('company', False):
+                user.company = request.POST.get('company', False)
+            if request.POST.get('phone_number', False):
+                user.phone_number = request.POST.get('phone_number', False)
+            if request.POST.get('location', False):
+                user.location = request.POST.get('location', False)
+            user.save()
+
             form.save()
+
             return redirect(profile)
     else:
-        form = UserProfileForm()
+        form = UserProfileForm(instance=request.user)
     return render(request, 'edit-profile.html', {'form': form})
 
 

@@ -43,7 +43,7 @@ class TranscriptDetails(models.Model):
             "notify_url": settings.PAYPAL_NOTIFY_URL,
             "return_url": "%s/paypal-return" % settings.SITE_URL,
             "cancel_return": "%s/paypal-cancel" % settings.SITE_URL,
-            "custom": "%s-%s" % (self.pk, self.status)
+            "custom": self.pk
         }
         return PayPalPaymentsForm(initial=paypal_dict)
 

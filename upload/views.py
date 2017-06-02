@@ -7,6 +7,7 @@ from django.db.models import Sum
 from .models import UploadFiles, TranscriptDetails
 from .forms import UploadFilesForm, TranscriptDetailsForm
 from mutagen import File
+import arrow
 
 
 def get_audio_length(f):
@@ -136,6 +137,7 @@ def save_order_for_later(request, detail_id):
     return redirect('/saved-for-later')
 
 
+@login_required(login_url='/login/')
 def get_saved_for_later(request):
     transcript_details = TranscriptDetails.objects.filter(user=request.user, status='Processing', saved=True).order_by(
         '-id')
@@ -144,3 +146,24 @@ def get_saved_for_later(request):
     args = {'transcript_details': transcript_details, 'total_time': total_time}
 
     return render(request, "saved-for-later.html", args)
+
+
+@login_required(login_url='/login/')
+def get_transcript_tracker(request):
+    tracked = TranscriptDetails.objects.filter(status='InProgress')
+    time_until_completion = arrow.utcnow()
+    tat = TranscriptDetails.objects.filter(status='InProgress').values('tat')
+    purchased_at = TranscriptDetails.objects.filter(status='InProgress').values('purchased_at')
+    for date in purchased_at:
+        print 'DATE: %s' % date['purchased_at'].date()
+        purchased_at = date['purchased_at'].date()
+    for i in tat:
+        if i['tat'] == '24':
+            time_until_completion = arrow.get(purchased_at).replace(hours=24)
+        if i['tat'] == '48':
+            time_until_completion = arrow.get(purchased_at).replace(hours=48)
+        if i['tat'] == 'Standard':
+            time_until_completion = arrow.get(purchased_at).replace(hours=96)
+
+    args = {'tracked': tracked, 'time': time_until_completion}
+    return render(request, "transcript-tracker.html", args)

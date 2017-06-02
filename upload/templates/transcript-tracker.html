@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+    <div class="page-div">
+        {% for track in tracked %}
+            {{ track.tat }}
+            {{ time|timeuntil }}
+            <br>
+        {% endfor %}
+
+    </div>
+{% endblock %}

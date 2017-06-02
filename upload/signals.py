@@ -9,12 +9,12 @@ def payment_accepted(sender, **kwargs):
     if ipn_obj.payment_status == ST_PP_COMPLETED:
         print "Payment status is: %s" % ipn_obj.payment_status
         print ipn_obj
-        transcript_id = ipn_obj.custom.split('-')[0]
+        transcript_id = ipn_obj.custom
         transcript_details = TranscriptDetails.objects.filter(id=transcript_id)
         if ipn_obj.reciever_email != settings.PAYPAL_RECEIVER_EMAIL:
             return
         else:
-            transcript_details.update(status="In Progress", purchased_at=timezone.now())
+            transcript_details.update(status="In Progress", purchased_at=timezone.now(), saved=False)
     else:
         print "Payment didn't go through"
 
