@@ -7,7 +7,7 @@ from django.db.models import Sum
 from .models import UploadFiles, TranscriptDetails
 from .forms import UploadFilesForm, TranscriptDetailsForm
 from mutagen import File
-import arrow
+import datetime
 
 
 def get_audio_length(f):
@@ -150,20 +150,27 @@ def get_saved_for_later(request):
 
 @login_required(login_url='/login/')
 def get_transcript_tracker(request):
-    tracked = TranscriptDetails.objects.filter(status='InProgress')
-    time_until_completion = arrow.utcnow()
-    tat = TranscriptDetails.objects.filter(status='InProgress').values('tat')
-    purchased_at = TranscriptDetails.objects.filter(status='InProgress').values('purchased_at')
-    for date in purchased_at:
-        print 'DATE: %s' % date['purchased_at'].date()
-        purchased_at = date['purchased_at'].date()
-    for i in tat:
-        if i['tat'] == '24':
-            time_until_completion = arrow.get(purchased_at).replace(hours=24)
-        if i['tat'] == '48':
-            time_until_completion = arrow.get(purchased_at).replace(hours=48)
-        if i['tat'] == 'Standard':
-            time_until_completion = arrow.get(purchased_at).replace(hours=96)
+    purchased_items = TranscriptDetails.objects.filter(user=request.user, status='InProgress').values('id',
+                                                                                                      'purchased_at',
+                                                                                                      'tat', 'deadline')
 
-    args = {'tracked': tracked, 'time': time_until_completion}
+    for purchase_info in purchased_items:
+
+        if purchase_info['deadline'] is None:
+            purchase_id = purchase_info['id']
+            purchased_at = purchase_info['purchased_at']
+            purchase_tat = purchase_info['tat']
+
+            if purchase_tat == "24":
+                deadline = purchased_at + datetime.timedelta(days=1)
+            if purchase_tat == "48":
+                deadline = purchased_at + datetime.timedelta(days=2)
+            if purchase_tat == "Standard":
+                deadline = purchased_at + datetime.timedelta(days=4)
+
+            TranscriptDetails.objects.filter(id=purchase_id).update(deadline=deadline)
+
+    current_date = datetime.datetime.now()
+    transcript_details = TranscriptDetails.objects.filter(user=request.user, status='InProgress')
+    args = {'transcript_details': transcript_details, 'current_date': current_date}
     return render(request, "transcript-tracker.html", args)

@@ -1,10 +1,13 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 import uuid
+import datetime
 from django.db import models
 from django.conf import settings
+from django.utils import timezone
 from paypal.standard.forms import PayPalPaymentsForm
 from paypal.standard.ipn.signals import valid_ipn_received, invalid_ipn_received
+from tinymce.models import HTMLField
 from .choices import *
 from .validators import validate_file_extension
 
@@ -12,7 +15,8 @@ from .validators import validate_file_extension
 class UploadFiles(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='uploads')
     transcript_details = models.ForeignKey('TranscriptDetails', related_name='uploaded_files', blank=True, null=True)
-    file = models.FileField(upload_to='client_files/%Y/%m/%d', validators=[validate_file_extension], blank=True, null=True)
+    file = models.FileField(upload_to='client_files/%Y/%m/%d', validators=[validate_file_extension], blank=True,
+                            null=True)
     uploaded_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     file_name = models.CharField(max_length=500, default='')
     file_length_mins = models.CharField(max_length=255, default='', blank=True, null=True)
@@ -31,6 +35,7 @@ class TranscriptDetails(models.Model):
     status = models.CharField(max_length=5, default='Processing', choices=STATUS_CHOICES)
     saved = models.BooleanField(default=False)
     purchased_at = models.DateTimeField(blank=True, null=True)
+    deadline = models.DateTimeField(blank=True, null=True)
 
     @property
     def paypal_form(self):
@@ -46,6 +51,33 @@ class TranscriptDetails(models.Model):
             "custom": self.pk
         }
         return PayPalPaymentsForm(initial=paypal_dict)
+
+    @property
+    def is_past_due(self):
+        return datetime.datetime.now() > self.deadline
+
+    # I would like to move the deadline creation logic out of views and into the model
+    def create_deadline(self, purchased_at, tat, deadline):
+        if purchased_at is not None and deadline is None:
+            if tat == '24':
+                new_deadline = purchased_at + datetime.timedelta(days=1)
+                self.update(deadline=new_deadline)
+            if tat == "48":
+                new_deadline = purchased_at + datetime.timedelta(days=2)
+                self.update(deadline=new_deadline)
+            if tat == "Standard":
+                new_deadline = purchased_at + datetime.timedelta(days=4)
+                self.update(deadline=new_deadline)
+        else:
+            pass
+
+
+class Review(models.Model):
+    transcript_detail = models.ForeignKey(TranscriptDetails, related_name='reviews')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='reviews')
+    comment = HTMLField(blank=True)
+    created_at = models.DateTimeField(default=timezone.now)
+
 
 from .signals import payment_accepted, invalid_handler
 

@@ -2,9 +2,18 @@
 {% load staticfiles %}
 {% block content %}
     <div class="page-div">
-        {% for track in tracked %}
-            {{ track.tat }}
-            {{ time|timeuntil }}
+
+        {% for detail in transcript_details %}
+            <p><strong>Order ID: </strong>{{ detail.id }}</p>
+            <p><strong>TAT: </strong>{{ detail.tat }}</p>
+            <p><strong>Purchased At: </strong>{{ detail.purchased_at }}</p>
+            <p><strong>Deadline: </strong>
+                {% if detail.deadline.is_past_due %}NONONO{% else %}{{ detail.deadline|timeuntil }}{% endif %}</p>
+            <p><strong>Receiving Email: </strong>{{ user.email }}</p>
+            <p><strong>Transcriptionist: </strong>lindheim71</p>
+
+            <br>
+            <hr>
             <br>
         {% endfor %}
 
