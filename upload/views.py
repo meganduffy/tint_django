@@ -49,58 +49,42 @@ def get_transcript_detail_form(request):
     if request.method == 'POST':
         form = TranscriptDetailsForm(request.POST)
 
-        def find_total():
+        def get_total_price():
             multiplier = 0
-            user_category_choice = request.POST.getlist('category', None)
-            ucc = user_category_choice[0]
-            print "CATEGORY CHOICE: %s" % ucc
-            if ucc == "General" or ucc == "Personal":
-                multiplier += 1.15
-            elif ucc == "Legal" or ucc == "Medical":
-                multiplier += 1.25
-            else:
-                multiplier += 0.99
-            user_text_format_choice = request.POST.getlist('text_format', None)
-            utfc = user_text_format_choice[0]
-            print "TEXT_FORMAT: %s" % utfc
-            if utfc == 'Verbatim':
-                multiplier += 0.15
-            user_num_speakers_choice = request.POST.getlist('num_speakers', None)
-            unsc = user_num_speakers_choice[0]
-            print "NUM_SPEAKERS: %s" % unsc
-            if unsc == "3":
-                multiplier += 0.05
-            elif unsc == "4":
-                multiplier += 0.1
-            elif unsc == "10":
-                multiplier += 0.15
-            user_timestamps_choice = request.POST.getlist('timestamps', None)
-            utsc = user_timestamps_choice[0]
-            print "TIMESTAMPS: %s" % utsc
-            if utsc == 'SpeakerChange' or utsc == '2Minutes':
-                multiplier += 0.15
-            user_tat_choice = request.POST.getlist('tat', None)
-            utc = user_tat_choice[0]
-            print "TAT: %s" % utc
-            if utc == "24":
-                multiplier += 0.35
-            elif utc == "48":
-                multiplier += 0.15
-            user_audio_qual_choice = request.POST.getlist('audio_quality', None)
-            uaqc = user_audio_qual_choice[0]
-            print "AUDIO_QUAL: %s" % uaqc
-            if uaqc == "Bad":
-                multiplier += 0.1
-            elif uaqc == "Fair":
-                multiplier += 0.05
-            total_time_num = total_time['file_length_mins__sum']
-            return multiplier * total_time_num
+
+            category_choice = request.POST.getlist('category', None)[0]
+            category_price = {'General': 1.15, 'Personal': 1.15, 'Legal': 1.25, 'Medical': 1.25, 'Academic': 0.99}.get(
+                category_choice)
+            multiplier += category_price
+
+            text_format_choice = request.POST.getlist('text_format', None)[0]
+            text_format_price = {'Verbatim': 0.15, 'IntelligentVerbatim': 0}.get(text_format_choice)
+            multiplier += text_format_price
+
+            num_speakers_choice = request.POST.getlist('num_speakers', None)[0]
+            num_speakers_price = {'1': 0, '2': 0, '3': 0.5, '4': 0.1, '10': 0.15}.get(num_speakers_choice)
+            multiplier += num_speakers_price
+
+            timestamps_choice = request.POST.getlist('timestamps', None)[0]
+            timestamps_price = {'None': 0, 'SpeakerChange': 0.15, '2Minutes': 0.15}.get(timestamps_choice)
+            multiplier += timestamps_price
+
+            tat_choice = request.POST.getlist('tat', None)[0]
+            tat_price = {'24': 0.35, '48': 0.15, 'Standard': 0}.get(tat_choice)
+            multiplier += tat_price
+
+            audio_qual_choice = request.POST.getlist('audio_quality', None)[0]
+            audio_qual_price = {'Good': 0, 'Fair': 0.05, 'Bad': 0.1}.get(audio_qual_choice)
+            multiplier += audio_qual_price
+
+            total_time_multiplier = total_time['file_length_mins__sum']
+            return multiplier * total_time_multiplier
 
         if form.is_valid():
             print
             transcript_details = form.save(commit=False)
             transcript_details.user = request.user
-            transcript_details.total_price = find_total()
+            transcript_details.total_price = get_total_price()
             transcript_details.save()
             UploadFiles.objects.filter(user=request.user, status='Processing').update(
                 transcript_details=transcript_details.id, status='In Progress')

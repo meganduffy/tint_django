@@ -54,22 +54,16 @@ class TranscriptDetails(models.Model):
 
     @property
     def is_past_due(self):
-        return datetime.datetime.now() > self.deadline
+        print 'NOW: %s' % datetime.datetime.now()
+        print 'DEADLINE: %s' % self.deadline
+        print 'COMPARISON: %s' % datetime.datetime.now() > self.deadline
+        return True
 
-    # I would like to move the deadline creation logic out of views and into the model
     def create_deadline(self, purchased_at, tat, deadline):
         if purchased_at is not None and deadline is None:
-            if tat == '24':
-                new_deadline = purchased_at + datetime.timedelta(days=1)
-                self.update(deadline=new_deadline)
-            if tat == "48":
-                new_deadline = purchased_at + datetime.timedelta(days=2)
-                self.update(deadline=new_deadline)
-            if tat == "Standard":
-                new_deadline = purchased_at + datetime.timedelta(days=4)
-                self.update(deadline=new_deadline)
-        else:
-            pass
+            days = {'24': 1, '48': 2, 'Standard': 4}.get(tat)
+            new_deadline = purchased_at + datetime.timedelta(days=days)
+            self.update(deadline=new_deadline)
 
 
 class Review(models.Model):

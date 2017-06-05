@@ -4,6 +4,7 @@
 {% block content %}
     <div class="page-div">
         <div class="container">
+            <a class="btn btn-primary" href="{% url 'threads' thread.subject.id %}">Back to <strong>{{ thread.subject.name }}</strong></a>
             <h2>{{ thread.name }}</h2>
             <!-- THREAD EXTRAS TABLE -->
             <div class="col-sm-12">
