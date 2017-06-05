@@ -12,6 +12,13 @@
             <p><strong>Receiving Email: </strong>{{ user.email }}</p>
             <p><strong>Transcriptionist: </strong>lindheim71</p>
 
+            {% for review in detail.reviews.all %}
+                {% include "review.html" %}
+            {% endfor %}
+            <p>
+                <a href="{% url 'new_review' detail.id %}" class="btn btn-primary comment-btn">Leave A Review</a>
+            </p>
+
             <br>
             <hr>
             <br>

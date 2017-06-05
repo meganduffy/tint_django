@@ -1,29 +1,5 @@
 {% load staticfiles %}
 {% load emoticons_tags %}
-{#<section class="row comment col-sm-12">#}
-{#    <div class="col-md-3 comment-profile">#}
-{#        {% if post.user.image %}#}
-{#            <p><img src="/media/{{ post.user.image }}" class="profo-pic"/></p>#}
-{#        {% else %}#}
-{#            <p><img src="{% static "icons/happy-face.png" %}" class="profo-pic"/></p>#}
-{#        {% endif %}#}
-{#        {% if post.user.first_name %}#}
-{#            <p>{{ post.user.first_name }}</p>#}
-{#        {% else %}#}
-{#            <p>{{ post.user.username }}</p>#}
-{#        {% endif %}#}
-{#        <p>{{ post.user.posts.count }} POSTS</p>#}
-{#    </div>#}
-{#    <div class="col-md-9 ">#}
-{#        <div class="comment-content">#}
-{#            {% autoescape off %}#}
-{#                {{ post.comment|emoticons }}#}
-{#            {% endautoescape %}#}
-{#        </div>#}
-{#        {% include "comment_details.html" %}#}
-{#    </div>#}
-{##}
-{#</section>#}
 <div class="comment-wrapper">
     <div class="row comment col-sm-12">
         <div class="comment-profile">

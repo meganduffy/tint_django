@@ -1,11 +1,13 @@
 from __future__ import unicode_literals
 from math import ceil
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
+from django.core.urlresolvers import reverse
+from django.template.context_processors import csrf
 from django.contrib.auth.decorators import login_required
 from django.db.models import Sum
-from .models import UploadFiles, TranscriptDetails
-from .forms import UploadFilesForm, TranscriptDetailsForm
+from .models import UploadFiles, TranscriptDetails, Review
+from .forms import UploadFilesForm, TranscriptDetailsForm, ReviewForm
 from mutagen import File
 import datetime
 
@@ -174,3 +176,48 @@ def get_transcript_tracker(request):
     transcript_details = TranscriptDetails.objects.filter(user=request.user, status='InProgress')
     args = {'transcript_details': transcript_details, 'current_date': current_date}
     return render(request, "transcript-tracker.html", args)
+
+
+def new_review(request, detail_id):
+    transcript_detail = get_object_or_404(TranscriptDetails, pk=detail_id)
+    if request.method == "POST":
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(False)
+            review.transcript_detail = transcript_detail
+            review.user = request.user
+            review.save()
+
+            messages.success(request, "Thank you for your review!")
+            return redirect(reverse('transcript_tracker'))
+    else:
+        form = ReviewForm()
+
+    args = {
+        'form': form,
+        'form_action': reverse('new_review', args={detail_id}),
+        'button_text': 'Leave a Review'
+    }
+    args.update(csrf(request))
+    return render(request, 'review_form.html', args)
+
+
+def edit_review(request, detail_id, review_id):
+    transcript_detail = get_object_or_404(TranscriptDetails, pk=detail_id)
+    review = get_object_or_404(Review, pk=review_id)
+    if request.method == "POST":
+        form = ReviewForm(request.POST, instance=review)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "You have successfully edited your review!")
+            return redirect(reverse('transcript_tracker'))
+    else:
+        form = ReviewForm(instance=review)
+
+    args = {
+        'form': form,
+        'form_action': reverse('edit_review', kwargs={"detail_id": transcript_detail.id, "review_id": review.id}),
+        'button_text': 'Edit Review'
+    }
+    args.update(csrf(request))
+    return render(request, 'review_form.html', args)

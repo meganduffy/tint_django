@@ -1,5 +1,5 @@
 from django import forms
-from .models import UploadFiles, TranscriptDetails
+from .models import UploadFiles, TranscriptDetails, Review
 from .choices import *
 
 
@@ -33,3 +33,10 @@ class TranscriptDetailsForm(forms.ModelForm):
         model = TranscriptDetails
         fields = ['category', 'text_format', 'num_speakers', 'timestamps',
                   'tat', 'audio_quality']
+
+
+class ReviewForm(forms.ModelForm):
+
+    class Meta:
+        model = Review
+        fields = ['comment']
