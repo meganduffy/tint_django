@@ -63,31 +63,22 @@ class UserLoginForm(forms.Form):
 
 class UserProfileForm(forms.ModelForm):
     first_name = forms.CharField(
-        label='Add First Name',
         required=False
     )
 
     last_name = forms.CharField(
-        label='Add Second Name',
         required=False
     )
 
-    location = CountryField(
-        blank_label='Select Country'
-    )
-
     company = forms.CharField(
-        label='Add/Update Company Name',
         required=False
     )
 
     phone_number = forms.CharField(
-        label='Add/Update Phone Number',
         required=False
     )
 
     image = forms.ImageField(
-        label='Add/Update Profile Image',
         required=False
     )
 

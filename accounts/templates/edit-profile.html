@@ -78,20 +78,20 @@
                             {{ form.location.errors }}
                         </div>
 
-                    <div class="profile-update-field">
-                        <div id="div_id_image" class="form-group ">
+                        <div class="profile-update-field">
+                            <div id="div_id_image" class="form-group ">
 
-                            <label for="id_image" class="control-label  ">
-                                Add/Update Profile Image
-                            </label>
-                            <br>
-                            {{ form.image }}
-                            {{ form.image.errors }}
+                                <label for="id_image" class="control-label  ">
+                                    Add/Update Profile Image
+                                </label>
+                                <br>
+                                {{ form.image }}
+                                {{ form.image.errors }}
+                            </div>
+                            <div class="profile-update-image">
+                                <img src="/media/{{ user.image }}" class="profile-welcome-pic"/>
+                            </div>
                         </div>
-                        <div class="profile-update-image">
-                            <img src="/media/{{ user.image }}" class="profile-welcome-pic"/>
-                        </div>
-                    </div>
 
                         <div class="form-group col-sm-12 submit-btn">
                             <button type="submit" class="btn btn-primary">Save Changes</button>

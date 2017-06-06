@@ -6,8 +6,9 @@
             <form role="form" method="post">
                 <legend>Contact Form</legend>
                 {% csrf_token %}
-                {#                {{ form| as_bootstrap }}#}
+
                 <div class="skinny-form">
+
                     <div id="div_id_first_name" class="form-group ">
                         <label for="id_first_name" class="control-label required-field ">
                             First Name *
@@ -15,6 +16,7 @@
                         <div class="">
                             <input class=" form-control" id="id_first_name" name="first_name" type="text" required/>
                         </div>
+                        {{ form.first_name.errors }}
                     </div>
 
                     <div id="div_id_last_name" class="form-group">
@@ -24,6 +26,7 @@
                         <div class="">
                             <input class=" form-control" id="id_last_name" name="last_name" type="text" required/>
                         </div>
+                        {{ form.last_name.errors }}
                     </div>
 
                     <div id="div_id_email" class="form-group  ">
@@ -33,6 +36,7 @@
                         <div class="">
                             <input class=" form-control" id="id_email" name="email" type="email" required/>
                         </div>
+                        {{ form.email.errors }}
                     </div>
 
 
@@ -50,6 +54,7 @@
                             </select><img class="country-select-flag" id="flag_id_location" style="margin: 6px 4px 0"
                                           src="/static/flags/__.gif">
                         </div>
+                        {{ form.location.errors }}
                     </div>
 
                     <div id="div_id_company" class="form-group ">
@@ -59,6 +64,7 @@
                         <div class="">
                             <input class=" form-control" id="id_company" maxlength="255" name="company" type="text"/>
                         </div>
+                        {{ form.company.errors }}
                     </div>
 
                     <div id="div_id_phone_number" class="form-group  ">
@@ -69,6 +75,7 @@
                             <input class=" form-control" id="id_phone_number" maxlength="15" name="phone_number"
                                    type="text"/>
                         </div>
+                        {{ form.phone_number.errors }}
                     </div>
 
                     <div id="div_id_message" class="form-group ">
@@ -79,8 +86,11 @@
                             <textarea class=" form-control" cols="40" id="id_message" name="message" rows="10"
                                       required></textarea>
                         </div>
+                        {{ form.message.errors }}
                     </div>
+
                 </div>
+
                 <div class="form-group col-sm-12 submit-btn">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
