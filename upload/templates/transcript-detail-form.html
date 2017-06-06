@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 {% load bootstrap_tags %}
+{% load staticfiles %}
+{% block head_resources %}
+    <script src="{% static "js/script-transcript-deatils.js" %}"></script>
+{% endblock %}
 {% block content %}
     <div class="page-div">
         <div class="container">

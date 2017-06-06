@@ -21,9 +21,9 @@
     <script src="{% static "js/jquery.min.js" %}"></script>
     <script src="{% static "js/bootstrap.min.js" %}"></script>
     <script src="{% static "js/dropzone.min.js" %}"></script>
-    <script src="{% static "js/script-quote.js" %}"></script>
 
-
+    {% block landing_resources %}{% endblock landing_resources %}
+    {% block upload_resources %}{% endblock upload_resources %}
     {% block head_js %}{% endblock head_js %}
 </head>
 <body>

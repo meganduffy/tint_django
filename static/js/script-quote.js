@@ -41,7 +41,7 @@ var timeStamps = new Array();
 timeStamps["y-stamps"] = 0.15;
 timeStamps["n-stamps"] = 0;
 
-function getCategoryPrice() {
+function getCategoryPriceIQ() {
     var default_price = 0;
     //this function finds the category price based on the dropdown selection
     //get a reference to the form id="IQForm"
@@ -54,7 +54,7 @@ function getCategoryPrice() {
     return categoryPrice;
 }
 
-function getSpeakersPrice() {
+function getSpeakersPriceIQ() {
     var default_price = 0;
     var theForm = document.forms["IQForm"];
     var selectedSpeakers = theForm.elements["speakers"];
@@ -62,7 +62,7 @@ function getSpeakersPrice() {
     return speakersPrice;
 }
 
-function getAudioQualityPrice() {
+function getAudioQualityPriceIQ() {
     var default_price = 0;
     var theForm = document.forms["IQForm"];
     var selectedAudioQuality = theForm.elements["audio-quality"];
@@ -70,7 +70,7 @@ function getAudioQualityPrice() {
     return audioQualityPrice;
 }
 
-function getTATPrice() {
+function getTATPriceIQ() {
     var default_price = 0;
     var theForm = document.forms["IQForm"];
     var selectedTAT = theForm.elements["tat"];
@@ -78,7 +78,7 @@ function getTATPrice() {
     return TATPrice;
 }
 
-function getStylePrice() {
+function getStylePriceIQ() {
     var default_price = 0;
     var theForm = document.forms["IQForm"];
     var selectedStyle = theForm.elements["style"];
@@ -86,7 +86,7 @@ function getStylePrice() {
     return stylePrice;
 }
 
-function getTimeStampPrice() {
+function getTimeStampPriceIQ() {
     var theForm = document.forms["IQForm"];
     //get reference to time stamp radios with name="stamps"
     var selectedTimeStamp = theForm.elements["stamps"];
@@ -103,7 +103,7 @@ function getTimeStampPrice() {
     return timeStampPrice;
 }
 
-function getMinutes() {
+function getMinutesIQ() {
     var theForm = document.forms["IQForm"];
     var minutes = theForm.elements["audio-minutes"];
     var howmany = 1;
@@ -114,7 +114,7 @@ function getMinutes() {
     return howmany;
 }
 
-function isMinutesValid() {
+function isMinutesValidIQ() {
     var valid = true;
     var theForm = document.forms["IQForm"];
     var minutes = theForm.elements["audio-minutes"];
@@ -125,19 +125,19 @@ function isMinutesValid() {
     return valid;
 }
 
-function calculateTotal() {
-    console.log("Category:" + getCategoryPrice());
-    console.log("Speakers:" + getSpeakersPrice());
-    console.log("AudioQual:" + getAudioQualityPrice());
-    console.log("TAT:" + getTATPrice());
-    console.log("Style:" + getStylePrice());
-    console.log("TimeSt:" + getTimeStampPrice());
-    console.log("Minutes:" + getMinutes() + " and type:" + typeof getMinutes());
+function calculateTotalIQ() {
+    console.log("Category:" + getCategoryPriceIQ());
+    console.log("Speakers:" + getSpeakersPriceIQ());
+    console.log("AudioQual:" + getAudioQualityPriceIQ());
+    console.log("TAT:" + getTATPriceIQ());
+    console.log("Style:" + getStylePriceIQ());
+    console.log("TimeSt:" + getTimeStampPriceIQ());
+    console.log("Minutes:" + getMinutesIQ() + " and type:" + typeof getMinutesIQ());
 
-    var multiplier = parseFloat(getCategoryPrice()) + parseFloat(getSpeakersPrice()) + parseFloat(getAudioQualityPrice()) + parseFloat(getTATPrice()) + parseFloat(getStylePrice()) + parseFloat(getTimeStampPrice());
+    var multiplier = parseFloat(getCategoryPriceIQ()) + parseFloat(getSpeakersPriceIQ()) + parseFloat(getAudioQualityPriceIQ()) + parseFloat(getTATPriceIQ()) + parseFloat(getStylePriceIQ()) + parseFloat(getTimeStampPriceIQ());
     console.log("Multiplier: " + multiplier.toFixed(2));
 
-    var total = parseFloat(getMinutes()) * parseFloat(multiplier);
+    var total = parseFloat(getMinutesIQ()) * parseFloat(multiplier);
     console.log("Total:" + total.toFixed(2));
 
     console.log("**********************************************");
@@ -146,14 +146,14 @@ function calculateTotal() {
     document.getElementById('minuteCost').innerHTML =
         String(multiplier.toFixed(2));
 
-    if (isMinutesValid()) {
+    if (isMinutesValidIQ()) {
         //display total cost (eg. total)
-        document.getElementById('total-cost').style.display='block';
+        document.getElementById('total-cost').style.display = 'block';
         document.getElementById('totalCost').innerHTML =
             String(total.toFixed(2));
     }
     else {
-        document.getElementById('total-cost').style.display='none';
+        document.getElementById('total-cost').style.display = 'none';
     }
 
 

@@ -1,4 +1,8 @@
 {% extends "base.html" %}
+{% load staticfiles %}
+{% block landing_resources %}
+    <script src="{% static "js/script-quote.js" %}"></script>
+{% endblock %}
 {% block content %}
 
     <div class="instantquote">
@@ -11,11 +15,9 @@
                             <legend>Instant Quote</legend>
                             <div class="row">
 
-
-
                                 <div class="col-sm-6 form-group">
                                     <label for="category">Category</label>
-                                    <select class="form-control" id="category" name="category" onchange="calculateTotal()">
+                                    <select class="form-control" id="category" name="category" onchange="calculateTotalIQ()">
                                         <option value="none">Select Category</option>
                                         <option value="general">General</option>
                                         <option value="legal">Legal</option>
@@ -28,7 +30,7 @@
 
                                 <div class="col-sm-6 form-group">
                                     <label for="speakers">Number of Speakers</label>
-                                    <select class="form-control" id="speakers" name="speakers" onchange="calculateTotal()">
+                                    <select class="form-control" id="speakers" name="speakers" onchange="calculateTotalIQ()">
                                         <option value="none">Select Number of Speakers</option>
                                         <option value="1">1 Speaker</option>
                                         <option value="2">2 Speakers</option>
@@ -40,7 +42,7 @@
 
                                 <div class="col-sm-6 form-group">
                                     <label for="audio-quality">Audio Quality</label>
-                                    <select class="form-control" id="audio-quality" name="audio-quality" onchange="calculateTotal()">
+                                    <select class="form-control" id="audio-quality" name="audio-quality" onchange="calculateTotalIQ()">
                                         <option value="none">Select Audio Quality</option>
                                         <option value="bad">Bad</option>
                                         <option value="fair">Fair</option>
@@ -50,7 +52,7 @@
 
                                 <div class="col-sm-6 form-group">
                                     <label for="tat">Turn Around Time</label>
-                                    <select class="form-control" id="tat" name="tat" onchange="calculateTotal()">
+                                    <select class="form-control" id="tat" name="tat" onchange="calculateTotalIQ()">
                                         <option value="none">Select Turn Around Time</option>
                                         <option value="24hr">24hr</option>
                                         <option value="48hr">48hr</option>
@@ -60,7 +62,7 @@
 
                                 <div class="col-sm-6 form-group">
                                     <label for="style">Transcription Style</label>
-                                    <select class="form-control" id="style" name="style" onchange="calculateTotal()">
+                                    <select class="form-control" id="style" name="style" onchange="calculateTotalIQ()">
                                         <option value="none">Select Transcription Style</option>
                                         <option value="verbatim">Verbatim</option>
                                         <option value="intelligent-verbatim">Intelligent Verbatim</option>
@@ -69,9 +71,9 @@
 
                                 <div class="col-sm-6 form-group">
                                     <label for="stamps">Time Stamps</label>
-                                    <input type="radio" name="stamps" value="y-stamps" onclick="calculateTotal()" />
+                                    <input type="radio" name="stamps" value="y-stamps" onclick="calculateTotalIQ()" />
                                     Yes
-                                    <input type="radio" name="stamps" value="n-stamps" onclick="calculateTotal()" />
+                                    <input type="radio" name="stamps" value="n-stamps" onclick="calculateTotalIQ()" />
                                     No
                                 </div>
                             </div>
@@ -80,7 +82,7 @@
 
                                 <div class="col-sm-6 form-group">
                                     <label for="audio-minutes">Time In Audio Minutes</label><br>
-                                    <input type="text" name="audio-minutes" id ="audio-minutes" oninput="calculateTotal()" value="" />
+                                    <input type="text" name="audio-minutes" id ="audio-minutes" oninput="calculateTotalIQ()" value="" />
                                 </div>
 
                                 <div class="col-sm-6 form-group">

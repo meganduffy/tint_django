@@ -4,6 +4,7 @@ from django.contrib import messages, auth
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect
 from django.template.context_processors import csrf
+from django.contrib.auth import login as register_login
 from django.contrib.auth.decorators import login_required
 from accounts.forms import UserRegistrationForm, UserLoginForm, UserProfileForm
 from upload.models import TranscriptDetails
@@ -17,7 +18,7 @@ def register(request):
 
             user = auth.authenticate(email=request.POST.get('email'),
                                      password=request.POST.get('password1'))
-
+            register_login(request, user)
             if user:
                 messages.success(request, "You have successfully registered")
                 return redirect(reverse('profile'))
