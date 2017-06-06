@@ -2,13 +2,10 @@
 {% block content %}
     <div class="page-div">
         <div class="container">
-            <h1>You have cancelled your transcript order!</h1>
-
-            <h2>POST</h2>
-            {{ post }}
-
-            <h2>GET</h2>
-            {{ get }}
+            <h1>You have cancelled your Transcript Order!</h1>
+            <h3>Where did we go wrong, {% if user.first_name %}{{ user.first_name }}{% else %}{{ user.email }}{% endif %}?</h3>
+            <p>Why not head over to our Customer Form and let us know what happened.</p>
+            <a class="btn btn-primary" href="{% url 'forum' %}">Customer Forum</a>
         </div>
     </div>
 {% endblock %}

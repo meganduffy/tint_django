@@ -2,13 +2,11 @@
 {% block content %}
     <div class="page-div">
         <div class="container">
-            <h1>Thank you for your transcript order!</h1>
-
-            <h2>POST</h2>
-            {{ post }}
-
-            <h2>GET</h2>
-            {{ get }}
+            <h1>Your transcript is on it's way!</h1>
+            <h3>Congratulations, {% if user.first_name %}{{ user.first_name }}{% else %}{{ user.email }}{% endif %}!</h3>
+            <p>You can track the progress of your order and leave reviews on the Transcript Tracker</p>
+            <p>Please note it may take a few moments for the Transcript Tracker to register your purchase</p>
+            <a class="btn btn-primary" href="{% url 'transcript_tracker' %}">Transcript Tracker</a>
         </div>
     </div>
 {% endblock %}
