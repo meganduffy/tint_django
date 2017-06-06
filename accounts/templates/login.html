@@ -2,14 +2,46 @@
 {% load bootstrap_tags %}
 {% block content %}
     <div class="page-div">
-        <div class="container">
+        <div class="container default-form">
             <form role="form" method="post" action="{% url 'login' %}">
                 <legend>Login</legend>
                 {% csrf_token %}
-                {{ form| as_bootstrap }}
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Login</button>
+
+                <h4>Please Log In or Register</h4>
+
+                <div class="login-flex">
+                    <div class="login">
+
+                        <div id="div_id_email" class="form-group ">
+                            <label for="id_email" class="control-label required-field ">
+                                Email
+                            </label>
+                            <div class="">
+                                <input class=" form-control" id="id_email" name="email" type="email" required/>
+                            </div>
+                        </div>
+
+                        <div id="div_id_password" class="form-group  ">
+                            <label for="id_password" class="control-label required-field ">
+                                Password
+                            </label>
+                            <div class="">
+                                <input class=" form-control" id="id_password" name="password" type="password" required/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </div>
+                    </div>
+
+                    <div class="register">
+                        <h3>Not a member?</h3>
+                        <h4>Sign up today!</h4>
+                        <a class="btn btn-primary" href="{% url 'register' %}">Register</a>
+                    </div>
+
                 </div>
+
             </form>
         </div>
     </div>

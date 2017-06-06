@@ -156,9 +156,8 @@ def get_transcript_tracker(request):
 
             TranscriptDetails.objects.filter(id=purchase_id).update(deadline=deadline)
 
-    current_date = datetime.datetime.now()
     transcript_details = TranscriptDetails.objects.filter(user=request.user, status='InProgress')
-    args = {'transcript_details': transcript_details, 'current_date': current_date}
+    args = {'transcript_details': transcript_details}
     return render(request, "transcript-tracker.html", args)
 
 

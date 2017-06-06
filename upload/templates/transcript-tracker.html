@@ -8,11 +8,8 @@
             <p><strong>TAT: </strong>{{ detail.tat }}</p>
             <p><strong>Purchased At: </strong>{{ detail.purchased_at }}</p>
             <p><strong>Deadline: </strong>
-                {% if detail.is_past_due %}Please Check Your Email{% else %}{{ detail.deadline|timeuntil }}{% endif %}</p>
-            <p><strong>DEADLINE: </strong>{% if detail.deadline.date < current_date.date and detail.deadline.time < current_date.time %}YES{% else %}NO{% endif %}</p>
-
-            <p><strong>Deadline date: </strong>{{ detail.deadline.date }}</p>
-            <p><strong>Current date: </strong>{{ current_date.date }}</p>
+                {% if detail.is_past_due %}Please Check Your Email{% else %}{{ detail.deadline|timeuntil }}{% endif %}
+            </p>
             <p><strong>Receiving Email: </strong>{{ user.email }}</p>
             <p><strong>Transcriptionist: </strong>lindheim71</p>
 
@@ -21,9 +18,14 @@
             {% endfor %}
 
             {% if detail.reviews.count < 1 %}
-            <p>
-                <a href="{% url 'new_review' detail.id %}" class="btn btn-primary comment-btn">Leave A Review</a>
-            </p>
+                {% if detail.is_past_due %}
+                    <p>
+                        <a href="{% url 'new_review' detail.id %}" class="btn btn-primary comment-btn">Leave A
+                            Review</a>
+                    </p>
+                {% else %}
+                    <p>You can leave a review after the deadline</p>
+                {% endif %}
             {% endif %}
 
             <br>

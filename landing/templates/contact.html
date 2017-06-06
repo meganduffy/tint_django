@@ -2,12 +2,86 @@
 {% load bootstrap_tags %}
 {% block content %}
     <div class="page-div">
-        <div class="container">
+        <div class="container default-form">
             <form role="form" method="post">
                 <legend>Contact Form</legend>
                 {% csrf_token %}
-                {{ form| as_bootstrap }}
-                <div class="form-group">
+                {#                {{ form| as_bootstrap }}#}
+                <div class="skinny-form">
+                    <div id="div_id_first_name" class="form-group ">
+                        <label for="id_first_name" class="control-label required-field ">
+                            First Name *
+                        </label>
+                        <div class="">
+                            <input class=" form-control" id="id_first_name" name="first_name" type="text" required/>
+                        </div>
+                    </div>
+
+                    <div id="div_id_last_name" class="form-group">
+                        <label for="id_last_name" class="control-label required-field ">
+                            Second Name *
+                        </label>
+                        <div class="">
+                            <input class=" form-control" id="id_last_name" name="last_name" type="text" required/>
+                        </div>
+                    </div>
+
+                    <div id="div_id_email" class="form-group  ">
+                        <label for="id_email" class="control-label required-field ">
+                            Email Address *
+                        </label>
+                        <div class="">
+                            <input class=" form-control" id="id_email" name="email" type="email" required/>
+                        </div>
+                    </div>
+
+
+                    <div id="div_id_location" class="form-group ">
+                        <label for="id_location" class="control-label  ">
+                            Location
+                        </label>
+                        <div class="">
+                            <select class=" form-control" id="id_location" name="location"
+                                    onchange="var e=document.getElementById(&#39;flag_&#39; + this.id); if (e) e.src = &#39;/static/flags/{code}.gif&#39;.replace(&#39;{code}&#39;, this.value.toLowerCase() || &#39;__&#39;).replace(&#39;{code_upper}&#39;, this.value.toUpperCase() || &#39;__&#39;);">
+                                <option value="" selected="selected">Select Location</option>
+                                {% for id, name in form.location.field.choices %}
+                                    <option value="{{ id }}">{{ name }}</option>
+                                {% endfor %}
+                            </select><img class="country-select-flag" id="flag_id_location" style="margin: 6px 4px 0"
+                                          src="/static/flags/__.gif">
+                        </div>
+                    </div>
+
+                    <div id="div_id_company" class="form-group ">
+                        <label for="id_company" class="control-label  ">
+                            Company
+                        </label>
+                        <div class="">
+                            <input class=" form-control" id="id_company" maxlength="255" name="company" type="text"/>
+                        </div>
+                    </div>
+
+                    <div id="div_id_phone_number" class="form-group  ">
+                        <label for="id_phone_number" class="control-label  ">
+                            Phone number
+                        </label>
+                        <div class="">
+                            <input class=" form-control" id="id_phone_number" maxlength="15" name="phone_number"
+                                   type="text"/>
+                        </div>
+                    </div>
+
+                    <div id="div_id_message" class="form-group ">
+                        <label for="id_message" class="control-label required-field ">
+                            Message *
+                        </label>
+                        <div class="">
+                            <textarea class=" form-control" cols="40" id="id_message" name="message" rows="10"
+                                      required></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-sm-12 submit-btn">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </form>

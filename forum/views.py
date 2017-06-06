@@ -155,6 +155,6 @@ def edit_post(request, thread_id, post_id):
 def delete_post(request, thread_id, post_id):
     thread = get_object_or_404(Thread, pk=thread_id)
     post = get_object_or_404(Post, pk=post_id)
-    print post.id
+    post.delete()
     messages.success(request, "Your post was deleted!")
     return redirect(reverse('thread', args={thread_id}))

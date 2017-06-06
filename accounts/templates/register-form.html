@@ -2,15 +2,18 @@
 {% load bootstrap_tags %}
 {% block content %}
     <div class="page-div">
-    <div class="container">
-    <form role="form" method="post" action="{% url 'register' %}" enctype="multipart/form-data">
-        <legend>Create a new account</legend>
-        {% csrf_token %}
-        {{ form| as_bootstrap }}
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary">Create account</button>
+        <div class="container default-form">
+            <form role="form" method="post" action="{% url 'register' %}" enctype="multipart/form-data">
+                <legend>Create a new account</legend>
+                {% csrf_token %}
+                <h4>Register with Type It Now!<br><br>Make Transcription Orders and be a part of the community!</h4>
+                <div class="skinny-form">
+                    {{ form|as_bootstrap }}
+                </div>
+                <div class="form-group submit-btn">
+                    <button type="submit" class="btn btn-primary">Create account</button>
+                </div>
+            </form>
         </div>
-    </form>
-    </div>
     </div>
 {% endblock %}

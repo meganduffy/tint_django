@@ -47,9 +47,10 @@ def edit_profile(request):
     if request.method == "POST":
         form = UserProfileForm(request.POST, request.FILES, instance=request.user)
         if form.is_valid():
+            print "FORM IS VALID"
             user = request.user
             if request.POST.get('first_name', False):
-                user.first_name = request.get('first_name', False)
+                user.first_name = request.POST.get('first_name', False)
             if request.POST.get('last_name', False):
                 user.last_name = request.POST.get('last_name', False)
             if request.POST.get('company', False):

@@ -113,3 +113,47 @@
     padding:5px;
 }
 
+/*LOGIN*/
+.login-flex {
+    display:flex;
+    flex-flow:row wrap;
+    justify-content: space-around;
+    align-items: stretch;
+    width:100%;
+}
+
+.login, .register {
+    flex:1;
+    display:flex;
+    flex-flow:column nowrap;
+    justify-content: space-around;
+    align-items: stretch;
+    min-width:200px;
+}
+
+.login {
+    margin: 0 100px;
+}
+
+.register {
+    margin-left: 20px;
+    text-align:center;
+}
+
+.register a {
+    width: 50%;
+    margin: 0 auto;
+}
+
+/*EDIT PROFILE*/
+.profile-update-field {
+    display:flex;
+    flex-flow:row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile-update-image img {
+    height:100px;
+    width:100px;
+}

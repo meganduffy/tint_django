@@ -42,7 +42,7 @@ class TranscriptDetails(models.Model):
         paypal_dict = {
             "business": settings.PAYPAL_RECEIVER_EMAIL,
             "amount": self.total_price,
-            "currency": "EUR",
+            "currency_code": "EUR",
             "item_name": "%s-%s Transcript" % (self.category, self.text_format),
             "invoice": "%s-%s" % (self.pk, uuid.uuid4()),
             "notify_url": settings.PAYPAL_NOTIFY_URL,
@@ -54,10 +54,7 @@ class TranscriptDetails(models.Model):
 
     @property
     def is_past_due(self):
-        print 'NOW: %s' % datetime.datetime.now()
-        print 'DEADLINE: %s' % self.deadline
-        print 'COMPARISON: %s' % datetime.datetime.now() > self.deadline
-        return True
+        return timezone.now() > self.deadline
 
     def create_deadline(self, purchased_at, tat, deadline):
         if purchased_at is not None and deadline is None:

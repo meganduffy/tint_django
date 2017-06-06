@@ -18,7 +18,8 @@ class UserRegistrationForm(UserCreationForm):
     )
 
     image = forms.ImageField(
-        label='Profile Image (Optional)'
+        label='Profile Image (Optional)',
+        required=False
     )
 
     class Meta:
@@ -66,7 +67,7 @@ class UserProfileForm(forms.ModelForm):
         required=False
     )
 
-    second_name = forms.CharField(
+    last_name = forms.CharField(
         label='Add Second Name',
         required=False
     )
@@ -92,5 +93,5 @@ class UserProfileForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['first_name', 'second_name', 'location', 'company', 'phone_number', 'image']
+        fields = ['first_name', 'last_name', 'location', 'company', 'phone_number', 'image']
         widgets = {'location': CountrySelectWidget()}

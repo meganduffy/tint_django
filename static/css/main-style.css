@@ -658,3 +658,38 @@ div.alert.alert-success {
 .icon-bar {
     border: 1px solid black;
 }
+
+/**FORMS**/
+.default-form {
+    background-color: #edf6f8;
+    border-radius: 20px;
+    padding:25px;
+}
+
+.default-form h4 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+legend {
+    font-size:40px;
+    border-color: grey;
+    text-align: center;
+}
+
+.submit-btn {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.skinny-form {
+    margin: 0 20%;
+}
+
+/*INSTANT QUOTE*/
+.instant-quote {
+    display:flex;
+    flex-flow:row nowrap;
+    justify-content: space-around;
+    align-items: center;
+}
