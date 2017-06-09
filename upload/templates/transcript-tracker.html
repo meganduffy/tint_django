@@ -3,35 +3,84 @@
 {% block content %}
     <div class="page-div">
 
+    {% if transcript_details %}
+
         {% for detail in transcript_details %}
-            <p><strong>Order ID: </strong>{{ detail.id }}</p>
-            <p><strong>TAT: </strong>{{ detail.tat }}</p>
-            <p><strong>Purchased At: </strong>{{ detail.purchased_at }}</p>
-            <p><strong>Deadline: </strong>
-                {% if detail.is_past_due %}Please Check Your Email{% else %}{{ detail.deadline|timeuntil }}{% endif %}
-            </p>
-            <p><strong>Receiving Email: </strong>{{ user.email }}</p>
-            <p><strong>Transcriptionist: </strong>lindheim71</p>
+            <div class="transcript-tracker-ticket">
+                <div class="transcript-tracker-ticket-top">
 
-            {% for review in detail.reviews.all %}
-                {% include "review.html" %}
-            {% endfor %}
+                    <div class="tat-indicator">
 
-            {% if detail.reviews.count < 1 %}
-                {% if detail.is_past_due %}
-                    <p>
-                        <a href="{% url 'new_review' detail.id %}" class="btn btn-primary comment-btn">Leave A
-                            Review</a>
-                    </p>
-                {% else %}
-                    <p>You can leave a review after the deadline</p>
-                {% endif %}
-            {% endif %}
+                        <div class="standard-indicator-circ">
+                            <div class="standard-indicator-icon"></div>
+                        </div>
 
-            <br>
-            <hr>
-            <br>
+                    </div>
+
+                    <div class="tracker-ticket-left">
+
+                        <p><span>Order ID: </span>{{ detail.id }}</p>
+                        <p><span>Due </span></p>
+                        <p>
+                            {% if detail.is_past_due %}Please Check Your Email{% else %}
+                                {{ detail.deadline|timeuntil }}{% endif %}
+                        </p>
+                        <p><span>Receiver Email </span></p>
+                        <p>{{ user.email }}</p>
+
+                    </div>
+
+                    <div class="tracker-ticket-center-files">
+                        {% for file in detail.uploaded_files.all %}
+                            <div class="tracker-ticket-files">
+                                <p><span>File Name: </span>{{ file.file_name }}</p>
+                                <p><span>Length: </span>{{ file.file_length_mins }} min</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="tracker-ticket-center-details" id="full-details">
+                        <h4>Full Details</h4>
+                        <div class="tracker-ticket-details">
+                            <p><span>Purchased At: </span>{{ detail.purchased_at }}</p>
+                            <p><span>Category: </span>{{ detail.category }}</p>
+                            <p><span>Number of Speakers: </span>{{ detail.num_speakers }}</p>
+                            <p><span>TimeStamps: </span>{{ detail.timestamps }}</p>
+                            <p><span>Turn Around Time: </span>{{ detail.tat }}</p>
+                            <p><span>Audio Quality: </span>{{ detail.audio_quality }}</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="transcript-tracker-ticket-bottom">
+                    {% for review in detail.reviews.all %}
+                        {% include "review.html" %}
+                    {% endfor %}
+
+                    {% if detail.reviews.count < 1 %}
+                        {% if detail.is_past_due %}
+                            <p>
+                                <a href="{% url 'new_review' detail.id %}" class="btn btn-primary comment-btn">Leave A
+                                    Review</a>
+                            </p>
+                        {% else %}
+                            <p>You can leave a review after the deadline</p>
+                        {% endif %}
+                    {% endif %}
+
+                </div>
+            </div>
         {% endfor %}
+
+    {% else %}
+        <div class="container">
+            <h1>It looks like you have no purchased transcripts!</h1>
+            <a class="btn btn-primary" href="{% url 'uploadfiles' %}">Upload Files</a>
+        </div>
+
+
+
+    {% endif %}
 
     </div>
 {% endblock %}

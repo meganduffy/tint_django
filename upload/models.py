@@ -42,25 +42,19 @@ class TranscriptDetails(models.Model):
         paypal_dict = {
             "business": settings.PAYPAL_RECEIVER_EMAIL,
             "amount": self.total_price,
-            "currency_code": "EUR",
+            "currency": "EUR",
             "item_name": "%s-%s Transcript" % (self.category, self.text_format),
             "invoice": "%s-%s" % (self.pk, uuid.uuid4()),
             "notify_url": settings.PAYPAL_NOTIFY_URL,
             "return_url": "%s/paypal-return" % settings.SITE_URL,
             "cancel_return": "%s/paypal-cancel" % settings.SITE_URL,
-            "custom": self.pk
+            "custom": "%s-%s" % (self.pk, self.tat)
         }
         return PayPalPaymentsForm(initial=paypal_dict)
 
     @property
     def is_past_due(self):
         return timezone.now() > self.deadline
-
-    def create_deadline(self, purchased_at, tat, deadline):
-        if purchased_at is not None and deadline is None:
-            days = {'24': 1, '48': 2, 'Standard': 4}.get(tat)
-            new_deadline = purchased_at + datetime.timedelta(days=days)
-            self.update(deadline=new_deadline)
 
 
 class Review(models.Model):

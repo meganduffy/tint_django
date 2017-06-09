@@ -136,26 +136,6 @@ def get_saved_for_later(request):
 
 @login_required(login_url='/login/')
 def get_transcript_tracker(request):
-    purchased_items = TranscriptDetails.objects.filter(user=request.user, status='InProgress').values('id',
-                                                                                                      'purchased_at',
-                                                                                                      'tat', 'deadline')
-
-    for purchase_info in purchased_items:
-
-        if purchase_info['deadline'] is None:
-            purchase_id = purchase_info['id']
-            purchased_at = purchase_info['purchased_at']
-            purchase_tat = purchase_info['tat']
-
-            if purchase_tat == "24":
-                deadline = purchased_at + datetime.timedelta(days=1)
-            if purchase_tat == "48":
-                deadline = purchased_at + datetime.timedelta(days=2)
-            if purchase_tat == "Standard":
-                deadline = purchased_at + datetime.timedelta(days=4)
-
-            TranscriptDetails.objects.filter(id=purchase_id).update(deadline=deadline)
-
     transcript_details = TranscriptDetails.objects.filter(user=request.user, status='InProgress')
     args = {'transcript_details': transcript_details}
     return render(request, "transcript-tracker.html", args)
