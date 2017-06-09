@@ -2,9 +2,10 @@
 {% load bootstrap_tags %}
 {% block content %}
     <div class="page-div">
+        <div class="legend-div"><legend>Contact Form</legend></div>
         <div class="container default-form">
             <form role="form" method="post">
-                <legend>Contact Form</legend>
+
                 {% csrf_token %}
 
                 <div class="skinny-form">

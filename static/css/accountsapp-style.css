@@ -136,13 +136,24 @@
 }
 
 .register {
-    margin-left: 20px;
     text-align:center;
+    background-color: white;
+    border: 4px solid lightblue;
+    border-radius: 10px;
+    margin: 0 60px;
 }
 
 .register a {
     width: 50%;
-    margin: 0 auto;
+    margin: 10px auto;
+}
+
+#register-icon {
+    height:40px;
+    width: 40px;
+    background: url("../icons/typewriter.png") center;
+    background-size:contain;
+    margin:auto;
 }
 
 /*EDIT PROFILE*/

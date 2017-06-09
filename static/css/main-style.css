@@ -662,7 +662,8 @@ div.alert.alert-success {
 /**FORMS**/
 .default-form {
     background-color: #edf6f8;
-    border-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
     padding:25px;
 }
 
@@ -671,10 +672,23 @@ div.alert.alert-success {
     margin-bottom: 20px;
 }
 
+.legend-div {
+    background-color: lightblue;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    margin: 0 90px;
+}
+
+#legend-login {
+    margin:0 97px;
+}
+
 legend {
     font-size:40px;
     border-color: grey;
     text-align: center;
+    margin:0;
+    padding: 12px;
 }
 
 .submit-btn {

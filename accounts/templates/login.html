@@ -2,9 +2,12 @@
 {% load bootstrap_tags %}
 {% block content %}
     <div class="page-div">
+        <div class="legend-div" id="legend-login"><legend>Login</legend></div>
         <div class="container default-form">
+
             <form role="form" method="post" action="{% url 'login' %}">
-                <legend>Login</legend>
+
+
                 {% csrf_token %}
 
                 <h4>Please Log In or Register</h4>
@@ -37,6 +40,7 @@
                     <div class="register">
                         <h3>Not a member?</h3>
                         <h4>Sign up today!</h4>
+                        <div id="register-icon"></div>
                         <a class="btn btn-primary" href="{% url 'register' %}">Register</a>
                     </div>
 

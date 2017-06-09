@@ -3,10 +3,11 @@
 {% block content %}
     <div class="page-div">
         <div>
+        <div class="legend-div"><legend>Edit Profile</legend></div>
             <div class="container default-form">
 
                 <form role="form" method="post" action="{% url 'editprofile' %}" enctype="multipart/form-data">
-                    <legend>Edit Profile</legend>
+
                     {% csrf_token %}
 
                     <h4>Customize your profile, add or update information - let us know who you are!</h4>
