@@ -1,102 +1,207 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% block content %}
-    <div class="page-div">
-        <div class="container-2">
-            <div class="profile-page-welcome">
-                <div class="profile-page-welcome-info">
-                    <h1>Welcome back,
-                        {% if user.first_name %}{{ user.first_name }}{% else %}{{ user.email }}{% endif %}!
-                    </h1>
-                    <p><small><strong>Last Login:</strong> {{ user.last_login }}</small></p>
-                    {% if user.first_name %}<p><small><strong>Email Address:</strong> {{ user.email }}</small></p>{% endif %}
-                    {% if user.first_name and user.last_name %}
-                        <p>{{ user.first_name }} {{ user.last_name }}</p>
-                    {% endif %}
-                    <p>{% if user.company %}{{ user.company }}{% endif %}{% if user.location %},
-                        {{ user.location }}{% endif %}</p>
-                    <a class="btn btn-success" href="{% url 'editprofile' %}">Update Account Information</a>
-                </div>
-                {% if user.image %}
-                    <img src="/media/{{ user.image }}" class="profile-welcome-pic"/>
-                {% else %}
-                    <img src="{% static "icons/happy-face.png" %}" class="profile-welcome-pic"/>
-                {% endif %}
-            </div>
 
-            <div class="profile-page-info">
+    <div class="profile-page-welcome">
+        <div class="profile-page-welcome-info">
+            <h1>Welcome back,
+                {% if user.first_name %}{{ user.first_name }}{% else %}{{ user.email }}{% endif %}!
+            </h1>
+            <p>
+                <small><strong>Last Login:</strong> {{ user.last_login }}</small>
+            </p>
+            {% if user.first_name %}
+                <p>
+                    <small><strong>Email Address:</strong> {{ user.email }}</small>
+                </p>{% endif %}
+            {% if user.first_name and user.last_name %}
+                <p>{{ user.first_name }} {{ user.last_name }}</p>
+            {% endif %}
+            <p>{% if user.company %}{{ user.company }}{% endif %}{% if user.location %},
+                {{ user.location }}{% endif %}</p>
+            <a class="btn btn-primary" href="{% url 'editprofile' %}">Update Account Information</a>
+        </div>
 
-                <div class="profile-saved-orders">
-                    <div class="profile-saved-orders-header">
-                        <div class="profile-saved-orders-icon"></div>
-                        <div class="profile-saved-orders-top">
-                            <a href="{% url 'saved_for_later' %}"><h2>Saved For Later</h2></a>
-                            <h4>You have {% if saved %}{{ saved.count }}{% else %}no{% endif %} {% if saved.count > 1 %}
-                                Saved
-                                Orders{% else %}Saved Order{% endif %}</h4>
-                            <a class="btn btn-default" href="{% url 'saved_for_later' %}">See All Saved Orders</a>
-                        </div>
+        {% if user.image %}
+            <img src="/media/{{ user.image }}" class="profile-welcome-pic" id="user-pic"/>
+        {% else %}
+            <img src="{% static "icons/typewriter-small.png" %}" class="profile-welcome-pic"/>
+        {% endif %}
+
+        <div class="profile-page-welcome-help">
+
+            <h3>Quick Introduction</h3>
+
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#profile-order">How To Order
+                                Transcripts</a>
+                        </h4>
                     </div>
+                    <div id="profile-order" class="panel-collapse collapse">
+                        <ul>
+                            <li>Go to <a href="{% url 'uploadfiles' %}">Uploads</a></li>
+                            <li>Select the files you want to transcribe</li>
+                            <li>Choose transcription options</li>
+                            <li>Pay via paypal</li>
+                        </ul>
+                        <p>Transcripts will be delivered to your email upon completion</p>
+                    </div>
+                </div>
+
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#profile-track">How to Track Your
+                                Transcripts</a>
+                        </h4>
+                    </div>
+                    <div id="profile-track" class="panel-collapse collapse">
+                        <ul>
+                            <li>Take note of the Order Number on your Invoice</li>
+                            <li>Go to <a href="{% url 'transcript_tracker' %}">Transcript Tracker</a></li>
+                            <li>View the countdown to your Transcript Delivery and review transcription
+                                options
+                            </li>
+                        </ul>
+                        <p>Once your transcript has been delivered you can leave a review!</p>
+                    </div>
+                </div>
+
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#profile-save">How to Save Your
+                                Transcript
+                                Orders</a>
+                        </h4>
+                    </div>
+                    <div id="profile-save" class="panel-collapse collapse">
+                        <ul>
+                            <li>Go to <a href="{% url 'uploadfiles' %}">Uploads</a></li>
+                            <li>Select the files you want to transcribe</li>
+                            <li>Choose transcription options</li>
+                            <li>Proceed to Order Review</li>
+                            <li>Click on Save</li>
+                        </ul>
+                        <p>You can view your saved transcripts at <a href="{% url 'saved_for_later' %}">Saved
+                            Transcripts</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="profile-page-info">
+        <div class="profile-saved-orders col-sm-4">
+            <div class="prof-header">
+                <a href="{% url 'saved_for_later' %}"><h2>Saved Orders</h2></a>
+            </div>
+            <div class="prof-body">
+                {% if saved %}
                     <div class="profile-saved-orders-details">
                         {% for save in saved|slice:":2" %}
                             <div class="profile-saved-orders-detail">
-                                <h6>Order Number: {{ save.id }}</h6>
-                                <p><strong>Turn Around Time:</strong> {{ save.tat }}</p>
+                                <div class="order-number"><h5>Order Number {{ save.id }}</h5></div>
 
-                                <p><strong>For Files:</strong><br>
+
+                                <p><strong>Files</strong><br>
                                     {% for file in save.uploaded_files.all %}
                                         {{ file.file_name }}<br>
                                     {% endfor %}
                                 </p>
                                 <p><strong>Total:</strong> €{{ save.total_price }}</p>
+                                <a href="{% url 'saved_for_later' %}" class="btn btn-default">Full Details</a>
                                 {{ save.paypal_form.sandbox }}
-                            </div>
 
+                            </div>
                         {% endfor %}
                     </div>
-                </div>
+                {% else %}
+                    <h4>You have no Saved Orders at this time!</h4>
+                    <h5>Go to Uploads to create a Transcript Order</h5>
+                    <a href="{% url 'uploadfiles' %}" class="btn btn-primary">Upload Files</a>
+                    <div class="prof-icon"></div>
+                {% endif %}
+            </div>
+        </div>
 
-                <div class="profile-tracker">
-                    <div class="profile-tracker-header">
-                        <div class="profile-tracker-icon"></div>
-                        <div class="profile-tracker-header-top">
-                            <a href="#"><h2>Transcript Tracker</h2></a>
-                            <a class="btn btn-default" href="#">See Full Details</a>
-                        </div>
-                        <div class="profile-tracker-info">
-                        </div>
-                    </div>
-                </div>
+        <div class="profile-tracker col-sm-4">
+            <div class="prof-header">
+                <a href="{% url 'transcript_tracker' %}"><h2>Transcript Tracker</h2>
+                </a>
+            </div>
+            <div class="prof-body">
+                {% if tracked %}
+                    <div class="profile-saved-orders-details">
+                        {% for track in tracked|slice:":2" %}
+                            <div class="profile-saved-orders-detail">
+                                <h5>Order Number: {{ track.id }}</h5>
 
-                <div class="profile-forum">
-                    <div class="profile-forum-header">
-                        <div class="profile-forum-icon"></div>
-                        <div class="profile-forum-header-top">
-                            <a href="{% url 'forum' %}"><h2>Forum Activity</h2></a>
-                            <h4>{% if user.posts %}Recent Activity{% else %}Join Our Community!{% endif %}</h4>
-                            <a class="btn btn-default" href="{% url 'forum' %}">Go To Forum</a>
-                        </div>
+                                <p><strong>Files</strong><br>
+                                    {% for file in track.uploaded_files.all %}
+                                        {{ file.file_name }}<br>
+                                    {% endfor %}
+                                </p>
+                                <p><strong>
+                                    {% if track.is_past_due %}Please Check Your Email{% else %}
+                                        {{ track.deadline|timeuntil }}{% endif %}
+                                </strong></p>
+                                {% if track.is_past_due and track.reviews.count < 1 %}
+                                    <a class="btn btn-primary" href="{% url 'new_review' track.id %}">Leave a review</a>
+                                {% else %}
+                                    <a class="btn btn-primary" href="{% url 'transcript_tracker' %}">View Details</a>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
                     </div>
+                {% else %}
+                    <h4>You have no Transcript Orders In Progress!</h4>
+                    <h5>Go to Uploads to create a Transcript Order</h5>
+                    <a href="{% url 'uploadfiles' %}" class="btn btn-primary">Upload Files</a>
+                    <div class="prof-icon"></div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="profile-forum col-sm-4">
+            <div class="prof-header">
+                <a href="{% url 'forum' %}"><h2>Forum Activity</h2></a>
+            </div>
+            <div class="prof-body">
+                {% if user.posts.all %}
                     <div class="profile-forum-info">
 
-                            {% for post in user.posts.all|slice:":2" %}
-                                <div class="profile-forum-info-box">
+                        {% for post in user.posts.all|slice:":2" %}
+                            <div class="profile-forum-info-box">
                                 {% autoescape off %}
 
-                                    <p><strong>{{ post.thread.subject.name }}</strong></p>
+                                    <a href="{% url 'thread' post.thread.id %}"><p><strong>{{ post.thread.subject.name }}</strong></p></a>
                                     <div>
-                                        <p>{{ post.comment| truncatewords:10 }}</p>
-                                        <p><small>{{ post.created_at }}</small></p>
+                                        <p>{{ post.comment| truncatewords:15 }}</p>
+                                        <p>
+                                            <small>{{ post.created_at }}</small>
+                                        </p>
                                     </div>
 
                                 {% endautoescape %}
-                                </div>
-                            {% endfor %}
-
+                            </div>
+                        {% endfor %}
                     </div>
-                </div>
+                {% else %}
+                    <h4>You have no recent Forum activity!</h4>
+                    <h5>Go to Forum and get involved</h5>
+                    <a href="{% url 'forum' %}" class="btn btn-primary">User Forum</a>
+                    <div class="prof-icon"></div>
+                {% endif %}
             </div>
-
         </div>
     </div>
+
+
 {% endblock %}

@@ -1,134 +1,195 @@
 /* ACCOUNTS STYLE */
 
 .container-2 {
-    padding:0 35px;
+    padding: 0 35px;
 }
 
 .profile-page-welcome {
-    display:flex;
-    flex-flow:row;
-    justify-content: center;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
     align-items: center;
-    text-align:right;
-    margin-bottom:10px;
+    padding: 120px 0 60px 0;
 }
 
 .profile-page-welcome-info {
-    margin-right:50px;
+    margin-right: 50px;
 }
 
 .profile-welcome-pic {
-    height:150px;
-    width:150px;
+    height: 170px;
+    width: 170px;
+}
+
+#user-pic {
+    border-radius: 100%;
+}
+
+.profile-page-welcome-help {
+    margin-left: 50px;
+    text-align: left;
+}
+
+.profile-page-welcome-help .panel-group {
+    margin: 0 0 5px 0;
+    width: 350px;
+}
+
+.profile-page-welcome-help .panel-group ul {
+    margin-top: 5px;
+}
+
+.profile-page-welcome-help .panel-group p {
+    margin-left: 5px;
+}
+
+.profile-page-welcome-help .panel-group a,
+.profile-page-welcome-help .panel-group a:hover,
+.profile-page-welcome-help .panel-group a:active {
+    text-decoration: none;
 }
 
 .profile-page-info, .profile-saved-orders-details {
-    display:flex;
-    flex-flow:row wrap;
-    justify-content: space-around;
-    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.profile-page-info {
+
+}
+
+.profile-page-info h2 {
+    border-bottom: 1px solid grey;
 }
 
 .profile-page-info a, .profile-page-info a:hover, .profile-page-info a:visited {
-    color:inherit;
+    color: inherit;
     text-decoration: none;
 }
 
 .profile-saved-orders, .profile-tracker, .profile-forum {
-    display:flex;
-    flex-flow:column nowrap;
+    display: flex;
+    flex-flow: column nowrap;
     align-content: center;
-    justify-content: center;
-    background-color:#71c3ca;
-    border-radius:20px;
-    text-align:center;
-    padding:0 10px 10px 20px;
-    margin-bottom:20px;
+    justify-content: space-around;
+    background-color: #71c3ca;
+    text-align: center;
+    padding: 0 10px 15px 20px;
+    min-height: 350px;
+    min-width: 350px;
+    flex: 1;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    margin-bottom:10px;
+}
+
+.prof-header {
+    flex: 1;
+}
+
+.prof-body {
+    flex: 2;
+}
+
+.prof-icon {
+    background: url("../icons/typewriter.png") center;
+    background-size: contain;
+    height: 50px;
+    width: 50px;
+    margin: 30px auto auto auto;
 }
 
 .profile-saved-orders-header, .profile-tracker-header, .profile-forum-header {
-    display:flex;
-    flex-flow:row nowrap;
-    justify-content:space-around;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
     align-items: center;
-}
-
-.profile-saved-orders-icon {
-    background: url('/static/icons/checked.png') center;
-    background-size: cover;
-    height:80px;
-    width:80px;
 }
 
 .profile-saved-orders-details {
-    margin-top:25px;
+    margin-top: 25px;
 }
 
 .profile-saved-orders-detail {
-    flex:1;
-    background-color:white;
-    border-radius:10px;
-    padding:10px;
-    min-height:250px;
-    display:flex;
-    flex-flow:column nowrap;
+    flex: 1;
+    background-color: white;
+    border-radius: 10px;
+    /*padding:10px;*/
+    min-height: 250px;
+    display: flex;
+    flex-flow: column nowrap;
     justify-content: space-around;
     align-items: center;
+    box-shadow: inset 0px 0px 10px 0px #ABABAB, -3px -3px 5px -3px #DDDDDD;
+    -webkit-box-shadow: inset 0px 0px 10px 0px #ABABAB, -3px -3px 5px -3px #DDDDDD;
+    -moz-box-shadow: inset 0px 0px 10px 0px #ABABAB, -3px -3px 5px -3px #DDDDDD;
+    -o-box-shadow: inset 0px 0px 10px 0px #ABABAB, -3px -3px 5px -3px #DDDDDD;
 }
 
 .profile-saved-orders-detail:first-child {
-    margin-right:10px;
+    margin-right: 10px;
 }
 
+/*.order-number {*/
+/*background-color:red;*/
+/*padding: 50px 20px 0 20px;*/
+/*margin:0;*/
+/*color:black;*/
+/*border-top-left-radius: 10px;*/
+/*border-bottom-right-radius: 10px;*/
+/*}*/
+
 .profile-tracker {
-    background-color:#39b287;
+    background-color: lightblue;
 }
 
 .profile-tracker-icon {
-    background:url('/static/icons/stopwatch-colour.png') center;
-    background-size:cover;
-    height:70px;
-    width:70px;
+    background: url('/static/icons/stopwatch-colour.png') center;
+    background-size: cover;
+    height: 70px;
+    width: 70px;
 }
 
 .profile-forum-icon {
-    background:url('/static/icons/chat-colour.png') center;
-    background-size:cover;
-    height:80px;
-    width:80px;
+    background: url('/static/icons/chat-colour.png') center;
+    background-size: cover;
+    height: 80px;
+    width: 80px;
 }
 
 .profile-forum-info {
-    margin-top:25px;
-    display:flex;
-    flex-flow:column nowrap;
+    margin-top: 25px;
+    display: flex;
+    flex-flow: column nowrap;
     justify-content: space-around;
-    text-align:left;
+    text-align: left;
 }
 
 .profile-forum-info-box {
-    background-color:white;
-    border-radius:10px;
-    margin-bottom:10px;
-    padding:5px;
+    /*background-color:white;*/
+    border-radius: 10px;
+    margin-bottom: 5px;
+    padding: 5px;
 }
 
 /*LOGIN*/
 .login-flex {
-    display:flex;
-    flex-flow:row wrap;
+    display: flex;
+    flex-flow: row wrap;
     justify-content: space-around;
     align-items: stretch;
-    width:100%;
+    width: 100%;
 }
 
 .login, .register {
-    flex:1;
-    display:flex;
-    flex-flow:column nowrap;
+    flex: 1;
+    display: flex;
+    flex-flow: column nowrap;
     justify-content: space-around;
     align-items: stretch;
-    min-width:200px;
+    min-width: 200px;
 }
 
 .login {
@@ -136,7 +197,7 @@
 }
 
 .register {
-    text-align:center;
+    text-align: center;
     background-color: white;
     border: 4px solid lightblue;
     border-radius: 10px;
@@ -149,22 +210,22 @@
 }
 
 #register-icon {
-    height:40px;
+    height: 40px;
     width: 40px;
     background: url("../icons/typewriter.png") center;
-    background-size:contain;
-    margin:auto;
+    background-size: contain;
+    margin: auto;
 }
 
 /*EDIT PROFILE*/
 .profile-update-field {
-    display:flex;
-    flex-flow:row;
+    display: flex;
+    flex-flow: row;
     justify-content: space-between;
     align-items: center;
 }
 
 .profile-update-image img {
-    height:100px;
-    width:100px;
+    height: 100px;
+    width: 100px;
 }
