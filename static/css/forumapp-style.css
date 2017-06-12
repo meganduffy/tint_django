@@ -1,5 +1,44 @@
 /* FORUM APP STYLE */
 
+
+/* FORUM SUBJECTS */
+
+.forum-subjects {
+    padding:100px 0 20px 0;
+    background: url("../img/blue-clouds-day-fluffy-53594.jpeg") center fixed;
+    background-size:cover;
+}
+
+.forum-subjects.grid {
+    display:flex;
+    flex-flow:column nowrap;
+    justify-content: center;
+    align-items: center;
+    text-align:center;
+    margin-bottom:20px;
+    background-color:white;
+}
+
+.form-subjects.subject {
+    border-width:2px 5px;
+    border-color:black;
+    border-style:solid;
+    width:80%;
+    background-color:white;
+}
+
+.form-subjects.subject h2 {
+
+}
+
+.form-subjects.subject:first-child {
+    border-top-width:5px;
+}
+
+.form-subjects.subject:last-child {
+    border-bottom-width:5px;
+}
+
 .styled-section {
     text-align:center;
     background-color:#d6ebf2;

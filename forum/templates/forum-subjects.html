@@ -3,14 +3,13 @@
 {% load staticfiles %}
 {% block content %}
     {% load bootstrap_tags %}
-    <div class="page-div">
-        <div class="container">
+    <div class="forum-subjects">
+        <div class="forum-subjects grid">
             {% for subject in subjects %}
-                <section class="styled-section">
-
+                <div class="form-subjects subject">
                     <h2><a href="{% url 'threads' subject.id %}">{{ subject.name }}</a></h2>
                     <p><a href="{% url 'threads' subject.id %}">
-                            {% autoescape off %}{{ subject.description }}{% endautoescape %}
+                        {% autoescape off %}{{ subject.description }}{% endautoescape %}
                     </a></p>
 
                     <table align="center" class="forum-subject-table">
@@ -23,7 +22,7 @@
                             <td>{{ subject|get_total_subject_posts }}</td>
                         </tr>
                     </table>
-                </section>
+                </div>
             {% endfor %}
         </div>
     </div>
