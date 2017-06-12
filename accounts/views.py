@@ -38,7 +38,8 @@ def register(request):
 @login_required(login_url='/login/')
 def profile(request):
     saved = TranscriptDetails.objects.filter(user=request.user, saved=True)
-    tracked = TranscriptDetails.objects.filter(user=request.user, status='InProgress')
+    tracked = TranscriptDetails.objects.filter(user=request.user, status='InProgress').order_by(
+        '-purchased_at')
     args = {'saved': saved, 'tracked': tracked}
     return render(request, 'profile.html', args)
 

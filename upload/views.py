@@ -136,7 +136,9 @@ def get_saved_for_later(request):
 
 @login_required(login_url='/login/')
 def get_transcript_tracker(request):
-    transcript_details = TranscriptDetails.objects.filter(user=request.user, status='InProgress')
+    transcript_details = TranscriptDetails.objects.filter(user=request.user, status='InProgress').order_by(
+        '-purchased_at')
+
     args = {'transcript_details': transcript_details}
     return render(request, "transcript-tracker.html", args)
 

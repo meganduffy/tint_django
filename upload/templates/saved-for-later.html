@@ -1,41 +1,48 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% load upload_extras %}
 {% block content %}
     <div class="page-div">
-        <div class="saved-for-later">
-            <div class="container">
+        <div class="container">
+            <h1>Saved For Later</h1>
+            <div class="saved-for-later">
 
-                <h1>Saved For Later</h1>
-
-                <div class="saved-for-later-main">
-                    {% for detail in transcript_details %}
-                        <p><strong>Order Number: </strong>{{ detail.id }}</p>
-                        <div class="order-item">
-
-                            <div class="col-sm-6 transcript-details-box">
-                                <p><strong>Category: </strong>{{ detail.category }}</p>
-                                <p><strong>Number of Speakers: </strong>{{ detail.num_speakers }}</p>
-                                <p><strong>TimeStamps: </strong>{{ detail.timestamps }}</p>
-                                <p><strong>Turn Around Time: </strong>{{ detail.tat }}</p>
-                                <p><strong>Audio Quality: </strong>{{ detail.audio_quality }}</p>
-                            </div>
-
-                            {% for upload in detail.uploaded_files.all %}
-                                <div class="col-sm-6 upload-details-box">
-                                    <p><strong>File Name: </strong>{{ upload.file_name }}</p>
-                                    <p><strong>File Length: </strong>{{ upload.file_length_mins }} mins</p>
-                                </div>
-                            {% endfor %}
-
-                            <div class="purchase-order-box">
-                                <h1><strong>Total Cost: </strong>{{ detail.total_price }}</h1>
-                                {{ detail.paypal_form.sandbox }}
-                            </div>
-
+                {% for detail in transcript_details %}
+                    <div class="saved-for-later-boxes">
+                        <div class="saved-for-later-id">
+                            <h3>Order ID {{ detail.id }}</h3>
                         </div>
-                    {% endfor %}
-                </div>
+                        <div class="saved-for-later-box">
 
+                            <div class="file-div">
+                                <p><span>Files</span></p>
+                                <div>
+                                    {% for file in detail.uploaded_files.all %}
+                                        <ul>
+                                            <li>{{ file.file_name }}</li>
+                                        </ul>
+
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            <div class="saved-for-later-details">
+
+                                <p><span>Category: </span>{{ detail.category }}</p>
+                                <p><span>Number of Speakers: </span>{{ detail.num_speakers }}</p>
+                                <p><span>Timestamps: </span>{{ detail.timestamps }}</p>
+                                <p><span>Turn Around Time: </span>{{ detail.tat }}</p>
+                                <p><span>Audio Quality: </span>{{ detail.audio_quality }}</p>
+
+                            </div>
+
+                            <h3 id="saved-for-later-total">Total Cost: €{{ detail.total_price }}</h3>
+                        </div>
+                        <div class="saved-for-later-buy-now">
+                            {{ detail.paypal_form.sandbox }}
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </div>
