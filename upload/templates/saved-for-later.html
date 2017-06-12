@@ -2,48 +2,74 @@
 {% load staticfiles %}
 {% load upload_extras %}
 {% block content %}
-    <div class="page-div">
-        <div class="container">
+
+    {% if transcript_details %}
+
+        <div class="saved-for-later opening center">
             <h1>Saved For Later</h1>
-            <div class="saved-for-later">
+            <h3>Weren't ready to order? Find all your saved orders here!</h3>
+            <div class="opening-icon"></div>
+            <h4>Quick Reference</h4>
+            {% for detail in transcript_details %}
+                <a href="#{{ detail.id }}" class="btn btn-primary">Order {{ detail.id }}</a>
+            {% endfor %}
+        </div>
 
-                {% for detail in transcript_details %}
-                    <div class="saved-for-later-boxes">
-                        <div class="saved-for-later-id">
-                            <h3>Order ID {{ detail.id }}</h3>
+        <div class="saved-for-later ticket">
+
+            {% for detail in transcript_details %}
+                <div class="saved-for-later box" id="{{ detail.id }}">
+                    <div class="saved-for-later id">
+                        <h3>Order {{ detail.id }}</h3>
+                    </div>
+                    <div class="saved-for-later main">
+                        <div class="saved-for-later left">
+                        <div class="saved-for-later left-details">
+                            <div>
+                                <h4>Receiver Email</h4>
+                                <p>{{ user.email }}</p>
+                            </div>
+                            <div>
+                                <a class="btn btn-success" href="{% url 'contact' %}">Contact Us</a>
+                            </div>
                         </div>
-                        <div class="saved-for-later-box">
-
+                            <h4 class="center">Files</h4>
                             <div class="file-div">
-                                <p><span>Files</span></p>
                                 <div>
                                     {% for file in detail.uploaded_files.all %}
-                                        <ul>
-                                            <li>{{ file.file_name }}</li>
-                                        </ul>
-
+                                        <p>{{ file.file_name }}</p>
                                     {% endfor %}
                                 </div>
                             </div>
-
-                            <div class="saved-for-later-details">
-
-                                <p><span>Category: </span>{{ detail.category }}</p>
-                                <p><span>Number of Speakers: </span>{{ detail.num_speakers }}</p>
-                                <p><span>Timestamps: </span>{{ detail.timestamps }}</p>
-                                <p><span>Turn Around Time: </span>{{ detail.tat }}</p>
-                                <p><span>Audio Quality: </span>{{ detail.audio_quality }}</p>
-
-                            </div>
-
-                            <h3 id="saved-for-later-total">Total Cost: €{{ detail.total_price }}</h3>
                         </div>
-                        <div class="saved-for-later-buy-now">
-                            {{ detail.paypal_form.sandbox }}
+
+                        <div class="saved-for-later right">
+                            <h3>Full Details</h3>
+
+                            <div class="saved-for-later right-details">
+                                <div class="space"></div>
+                                <div class="saved-for-later full-details">
+                                    <p><span>Category: </span>{{ detail.category }}</p>
+                                    <p><span>Number of Speakers: </span>{{ detail.num_speakers }}</p>
+                                    <p><span>Timestamps: </span>{{ detail.timestamps }}</p>
+                                    <p><span>Turn Around Time: </span>{{ detail.tat }}</p>
+                                    <p><span>Audio Quality: </span>{{ detail.audio_quality }}</p>
+
+                                </div>
+                            </div>
                         </div>
                     </div>
-                {% endfor %}
-            </div>
+                    <div class="saved-for-later paypal">
+                        <h4><span>Total Cost: </span>€{{ detail.total_price }}</h4>
+                        {{ detail.paypal_form.sandbox }}
+                    </div>
+                </div>
+            {% endfor %}
+
         </div>
-    </div>
+
+    {% else %}
+
+    {% endif %}
+
 {% endblock %}

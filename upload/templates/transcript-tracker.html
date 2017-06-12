@@ -5,7 +5,7 @@
 
 
     {% if transcript_details %}
-        <div class="transcript-tracker-opening center">
+        <div class="transcript-tracker opening center">
             <h1>Transcript Tracker</h1>
             <h3>Here you can keep track of your purchased orders, review the details and leave reviews!</h3>
             <div class="opening-icon"></div>
@@ -14,18 +14,18 @@
                 <a href="#{{ detail.id }}" class="btn btn-primary">Order {{ detail.id }}</a>
             {% endfor %}
         </div>
-        <div class="transcript-tracker">
+        <div class="transcript-tracker ticket">
 
             {% for detail in transcript_details %}
 
-                <div class="transcript-tracker-box" id="{{ detail.id }}">
-                    <div class="transcript-tracker-id">
+                <div class="transcript-tracker box" id="{{ detail.id }}">
+                    <div class="transcript-tracker id">
                         <h3>Order {{ detail.id }}</h3>
                     </div>
-                    <div class="transcript-tracker-main">
-                        <div class="transcript-tracker-left">
-                            <div class="transcript-tracker-left-details">
-                                <div class="tracker-left-details-1">
+                    <div class="transcript-tracker main">
+                        <div class="transcript-tracker left">
+                            <div class="transcript-tracker left-details">
+                                <div class="transcript-tracker left-details-1">
                                     <h4>Due</h4>
                                     <p>
                                         {% if detail.is_past_due %}Please Check Your Email{% else %}
@@ -35,7 +35,7 @@
                                     <h4>Receiver Email</h4>
                                     <p>{{ user.email }}</p>
                                 </div>
-                                <div class="tracker-left-details-2">
+                                <div class="transcript-tracker left-details-2">
                                     <a class="btn btn-success" href="{% url 'contact' %}">Contact Us</a>
                                 </div>
                             </div>
@@ -51,12 +51,12 @@
                             </div>
                         </div>
 
-                        <div class="transcript-tracker-right">
+                        <div class="transcript-tracker right">
                             <h3>Full Details</h3>
 
-                            <div class="transcript-tracker-right-details">
+                            <div class="transcript-tracker right-details">
                                 <div class="space"></div>
-                                <div class="transcript-tracker-full-details">
+                                <div class="transcript-tracker full-details">
                                     <p><span>Category: </span>{{ detail.category }}</p>
                                     <p><span>Number of Speakers: </span>{{ detail.num_speakers }}</p>
                                     <p><span>Timestamps: </span>{{ detail.timestamps }}</p>
@@ -67,7 +67,7 @@
 
                         </div>
                     </div>
-                    <div class="transcript-tracker-review">
+                    <div class="transcript-tracker review">
                         {% for review in detail.reviews.all %}
                             <h4>Your Review</h4>
                             {% include "review.html" %}
