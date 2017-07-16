@@ -1,8 +1,11 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 {% block content %}
     <div class="faq">
-    <h1>FAQ</h1>
+        <h1>FAQ</h1>
         <h3>We're here to answer your questions</h3>
+        <h4>If you can't find what you are looking for here, please <a class="faq-contact" href="{% url 'contact' %}">Contact Us</a></h4>
+        <div class="big-typewriter"></div>
         <div class="page-div">
 
             <div class="container">
@@ -10,160 +13,166 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-                                <div class="faq-plus"></div></a>
+                                <div class="faq-plus"></div>
+                            </a>
                             <h3 class="panel-title">
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
                                     How Does It Work?</a>
                             </h3>
                         </div>
                         <div id="collapse1" class="panel-collapse collapse">
-                            <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                                minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                commodo consequat.
+                            <div class="panel-body">
+                                <p>Simply create an account and upload your audio or video files. Then
+                                choose your preferred transcription
+                                options, pay using Paypal and wait for your transcripts to be returned within the
+                                specified turnaround time.</p>
                             </div>
                         </div>
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-                                <div class="faq-plus"></div></a>
+                                <div class="faq-plus"></div>
+                            </a>
                             <h3 class="panel-title">
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
                                     Why Choose Us?</a>
                             </h3>
                         </div>
                         <div id="collapse2" class="panel-collapse collapse">
-                            <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                                minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                commodo consequat.
+                            <div class="panel-body">
+                                <p>You should choose Type It Now Transcription because of our ability
+                                to produce high-quality transcripts at very competitive and reasonable rates! Our
+                                transcripts are 99% accurate and we provide free speaker id!</p>
                             </div>
                         </div>
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-                                <div class="faq-plus"></div></a>
+                                <div class="faq-plus"></div>
+                            </a>
                             <h3 class="panel-title">
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
                                     How Much Does It Cost?</a>
                             </h3>
                         </div>
                         <div id="collapse3" class="panel-collapse collapse">
-                            <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                                minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                commodo consequat.
+                            <div class="panel-body">
+                                <p>Type It Now Transcription offers a standard rate of €1.00 per audio
+                                minute. Additional rates may apply when choosing transcription options such as: Verbatim
+                                transcripts, 3+ speakers, and poor audio quality. More information on these rates can be
+                                viewed via our transcription calculator.</p>
                             </div>
                         </div>
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
-                                <div class="faq-plus"></div></a>
+                                <div class="faq-plus"></div>
+                            </a>
                             <h3 class="panel-title">
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
                                     How Do I Make A Payment?</a>
                             </h3>
                         </div>
                         <div id="collapse4" class="panel-collapse collapse">
-                            <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                                minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                commodo consequat.
+                            <div class="panel-body">
+                                <p>When you are ready to make a payment for your transcription order,
+                                you may checkout and submit payment via PayPal.</p>
                             </div>
                         </div>
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
-                                <div class="faq-plus"></div></a>
+                                <div class="faq-plus"></div>
+                            </a>
                             <h3 class="panel-title">
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
                                     How Long Does It Take?</a>
                             </h3>
                         </div>
                         <div id="collapse5" class="panel-collapse collapse">
-                            <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                                minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                commodo consequat.
+                            <div class="panel-body">
+                                <p>Our standard turnaround is 3 - 4 business days; however, we do offer
+                                a 24-hour and 48-hour turnaround for a small additional fee.</p>
                             </div>
                         </div>
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">
-                                <div class="faq-plus"></div></a>
+                                <div class="faq-plus"></div>
+                            </a>
                             <h3 class="panel-title">
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">
                                     What Will My Transcripts Look Like?</a>
                             </h3>
                         </div>
                         <div id="collapse6" class="panel-collapse collapse">
-                            <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                                minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                commodo consequat.
+                            <div class="panel-body">
+                                <img src="{% static "img/transcript-preview.png" %}" alt="transcript-preview" />
                             </div>
                         </div>
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapse7">
-                                <div class="faq-plus"></div></a>
+                                <div class="faq-plus"></div>
+                            </a>
                             <h3 class="panel-title">
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse7">
                                     Our Team</a>
                             </h3>
                         </div>
                         <div id="collapse7" class="panel-collapse collapse">
-                            <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                                minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                commodo consequat.
+                            <div class="panel-body">
+                                <p>Here at Type It Now Transcription, we hire only experienced and
+                                fully vetted transcriptionists and editors/proofreaders. We hire transcriptionists from
+                                all around the world, so you can be sure that right person will be transcribing your
+                                files accurately and professionally.</p>
                             </div>
                         </div>
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapse8">
-                                <div class="faq-plus"></div></a>
+                                <div class="faq-plus"></div>
+                            </a>
                             <h3 class="panel-title">
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse8">
                                     Our Clients</a>
                             </h3>
                         </div>
                         <div id="collapse8" class="panel-collapse collapse">
-                            <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                                minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                commodo consequat.
+                            <div class="panel-body">
+                                <p>Type It Now Transcription has been in operation for some time and
+                                has worked with many reputable companies and institutions such as:<!--TODO--></p>
                             </div>
                         </div>
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapse9">
-                                <div class="faq-plus"></div></a>
+                                <div class="faq-plus"></div>
+                            </a>
                             <h3 class="panel-title">
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse9">
                                     Confidentiality</a>
                             </h3>
                         </div>
                         <div id="collapse9" class="panel-collapse collapse">
-                            <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                                minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                commodo consequat.
+                            <div class="panel-body">
+                                <p>We understand that confidentiality is important to all of our
+                                clients, so we make sure to keep everything strictly confidential by asking each member
+                                of our transcription team to sign a legally binding confidentiality agreement before
+                                they are hired at Type It Now Transcription.</p>
                             </div>
                         </div>
                     </div>
 
                 </div>
-                <h3>Didn't find the answers you were looking for?</h3>
-                <h3>Why not <a>contact us</a>?</h3>
             </div>
         </div>
     </div>

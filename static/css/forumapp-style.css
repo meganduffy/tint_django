@@ -1,55 +1,76 @@
 /* FORUM APP STYLE */
 
-
 /* FORUM SUBJECTS */
 
 .forum-subjects {
-    padding:100px 0 20px 0;
+    padding: 100px 0 20px 0;
     background: url("../img/blue-clouds-day-fluffy-53594.jpeg") center fixed;
-    background-size:cover;
+    background-size: cover;
 }
 
 .forum-subjects.grid {
-    display:flex;
-    flex-flow:column nowrap;
+    display: flex;
+    flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-    text-align:center;
-    margin-bottom:20px;
-    background-color:white;
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: white;
 }
 
 .form-subjects.subject {
-    border-width:2px 5px;
-    border-color:black;
-    border-style:solid;
-    width:80%;
+    border-width: 2px 0;
+    border-color: black;
+    border-style: solid;
+    width: 80%;
+    margin-bottom: 15px;
+    background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 1%, rgba(255, 255, 255, 1) 6%, rgba(255, 255, 255, 1) 7%, rgba(255, 255, 255, 1) 47%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 1) 93%, rgba(255, 255, 255, 0) 99%, rgba(255, 255, 255, 0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 1%, rgba(255, 255, 255, 1) 6%, rgba(255, 255, 255, 1) 7%, rgba(255, 255, 255, 1) 47%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 1) 93%, rgba(255, 255, 255, 0) 99%, rgba(255, 255, 255, 0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 1%, rgba(255, 255, 255, 1) 6%, rgba(255, 255, 255, 1) 7%, rgba(255, 255, 255, 1) 47%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 1) 93%, rgba(255, 255, 255, 0) 99%, rgba(255, 255, 255, 0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#00ffffff', GradientType=1); /* IE6-9 */
+}
+
+/* THREADS */
+
+.back-btn {
+    color:white;
+}
+
+.jumbotron {
+    background: url("../img/blue-clouds-day-fluffy-53594.jpeg") center fixed;
+    background-size: cover;
+    color:black;
+}
+
+/* FORUM FORMS */
+
+.forum-form {
+    padding: 100px 100px;
+    background: url("../img/blue-clouds-day-fluffy-53594.jpeg") center fixed;
+    background-size: cover;
+}
+
+.forum-form form {
     background-color:white;
+    padding:20px;
+    border-radius: 10px;
 }
 
-.form-subjects.subject h2 {
 
-}
 
-.form-subjects.subject:first-child {
-    border-top-width:5px;
-}
-
-.form-subjects.subject:last-child {
-    border-bottom-width:5px;
-}
+/*//////////////////////////////////////*/
 
 .styled-section {
-    text-align:center;
-    background-color:#d6ebf2;
-    padding:15px 0;
+    text-align: center;
+    background-color: #d6ebf2;
+    padding: 15px 0;
 }
 
 .styled-section a {
     color: black;
 }
 
-.stylled-section p {
+.styled-section p {
     width: 50%;
     margin: auto;
 }
@@ -59,7 +80,7 @@
 }
 
 th {
-    padding-right:20px;
+    padding-right: 20px;
 }
 
 .new-thread-btn {
@@ -67,55 +88,55 @@ th {
 }
 
 .thread-item-section {
-    width:100%;
-    display:flex;
-    flex-flow:row nowrap;
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
     justify-content: space-between;
-    align-items:center;
+    align-items: center;
 }
 
 .thread-item-title {
-    padding-left:10px;
+    padding-left: 10px;
 }
 
 .thread-item-info {
-    margin-left:100px;
-    padding-left:150px;
+    margin-left: 100px;
+    padding-left: 150px;
 }
 
 .comment-btn {
-    margin:20px;
+    margin: 20px;
 }
 
 .poll {
-    position:fixed;
-    margin-top:100px;
+    position: fixed;
+    margin-top: 100px;
 }
 
 .profo-pic {
-    height:80px;
-    width:80px;
+    height: 80px;
+    width: 80px;
 }
 
 .comment {
-    display:flex;
-    flex-flow:row nowrap;
+    display: flex;
+    flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
-    background-color:#FDFDFD;
+    background-color: #FDFDFD;
     margin: 10px 0;
     padding-top: 10px;
     border-radius: 10px;
 }
 
 .comment-profile, .comment-details {
-    flex:1;
+    flex: 1;
 }
 
 .comment-content {
-    flex:2;
+    flex: 2;
 }
 
 .comment-profile {
-    margin-left:10px;
+    margin-left: 10px;
 }

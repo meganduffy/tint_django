@@ -5,20 +5,36 @@
     <div class="page-div">
         <div class="container">
             <div class="row header">
-                <a class="btn btn-primary" href="{% url 'forum' %}">Back to Subjects</a>
+                <p class="back-btn">
+                    <a class="btn btn-primary" href="{% url 'forum' %}">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                        Back to Subjects
+                    </a>
+                </p>
+
                 <div class="jumbotron">
                     <h1>{{ subject.name }}</h1>
                 </div>
+
                 <div class="col-sm-12">
                     {% if user.is_authenticated %}
                         <p class="new-thread-btn">
                             <a href="{% url 'new_thread' subject.id %}" class="btn btn-primary">Start New Thread</a>
                         </p>
                     {% endif %}
-                <hr>
-                    {% for thread in subject.threads.all %}
-                        {% include "thread_item.html" %}
-                    {% endfor %}
+                    <hr>
+                    {% if subject.threads.all %}
+                        {% for thread in subject.threads.all %}
+                            {% include "thread_item.html" %}
+                        {% endfor %}
+                    {% else %}
+
+                        <div class="container">
+                            <h2>Looks like you're the first one here! Why not start the conversation?</h2>
+                            <hr>
+                        </div>
+
+                    {% endif %}
                     {% if user.is_authenticated %}
                         <p class="new-thread-btn">
                             <a href="{% url 'new_thread' subject.id %}" class="btn btn-primary">Start New Thread</a>

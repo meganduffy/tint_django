@@ -1,55 +1,45 @@
-var theForm = document.forms["IQForm"];
+var IQcategory = new Array();
+IQcategory["none"] = 0;
+IQcategory["general"] = 1.15;
+IQcategory["legal"] = 1.25;
+IQcategory["medical"] = 1.25;
+IQcategory["personal"] = 1.15;
+IQcategory["academic"] = 0.99;
 
-// Set Starting Values
-var categoryPrice = 0;
-var speakersPrice = 0;
-var audioQualityPrice = 0;
-var TATPrice = 0;
-var stylePrice = 0;
-var timeStampPrice = 0;
+var IQspeakers = new Array();
+IQspeakers["1"] = 0;
+IQspeakers["2"] = 0;
+IQspeakers["3"] = 0.05;
+IQspeakers["4"] = 0.1;
+IQspeakers["10"] = 0.15;
 
-var category = new Array();
-category["none"] = 0;
-category["general"] = 1.15;
-category["legal"] = 1.25;
-category["medical"] = 1.25;
-category["personal"] = 1.15;
-category["academic"] = 0.99;
+var IQaudioQuality = new Array();
+IQaudioQuality["bad"] = 0.1;
+IQaudioQuality["fair"] = 0.05;
+IQaudioQuality["good"] = 0;
 
-var speakers = new Array();
-speakers["1"] = 0;
-speakers["2"] = 0;
-speakers["3"] = 0.05;
-speakers["4"] = 0.1;
-speakers["10"] = 0.15;
+var IQTAT = new Array();
+IQTAT["24hr"] = 0.35;
+IQTAT["48hr"] = 0.15;
+IQTAT["standard"] = 0;
 
-var audioQuality = new Array();
-audioQuality["bad"] = 0.1;
-audioQuality["fair"] = 0.05;
-audioQuality["good"] = 0;
+var IQtranscriptStyle = new Array();
+IQtranscriptStyle["verbatim"] = 0.15;
+IQtranscriptStyle["intelligent-verbatim"] = 0;
 
-var TAT = new Array();
-TAT["24hr"] = 0.35;
-TAT["48hr"] = 0.15;
-TAT["standard"] = 0;
-
-var transcriptStyle = new Array();
-transcriptStyle["verbatim"] = 0.15;
-transcriptStyle["intelligent-verbatim"] = 0;
-
-var timeStamps = new Array();
-timeStamps["y-stamps"] = 0.15;
-timeStamps["n-stamps"] = 0;
+var IQtimeStamps = new Array();
+IQtimeStamps["y-stamps"] = 0.15;
+IQtimeStamps["n-stamps"] = 0;
 
 function getCategoryPriceIQ() {
-    var default_price = 0;
+    var default_price = 1.15;
     //this function finds the category price based on the dropdown selection
     //get a reference to the form id="IQForm"
     var theForm = document.forms["IQForm"];
     //get a reference to the select id="category"
     var selectedCategory = theForm.elements["category"];
     //set categoryPrice to value user chose
-    categoryPrice = category[selectedCategory.value] || default_price;
+    categoryPrice = IQcategory[selectedCategory.value] || default_price;
     //return categoryPrice
     return categoryPrice;
 }
@@ -58,7 +48,7 @@ function getSpeakersPriceIQ() {
     var default_price = 0;
     var theForm = document.forms["IQForm"];
     var selectedSpeakers = theForm.elements["speakers"];
-    speakersPrice = speakers[selectedSpeakers.value] || default_price;
+    speakersPrice = IQspeakers[selectedSpeakers.value] || default_price;
     return speakersPrice;
 }
 
@@ -66,7 +56,7 @@ function getAudioQualityPriceIQ() {
     var default_price = 0;
     var theForm = document.forms["IQForm"];
     var selectedAudioQuality = theForm.elements["audio-quality"];
-    audioQualityPrice = audioQuality[selectedAudioQuality.value] || default_price;
+    audioQualityPrice = IQaudioQuality[selectedAudioQuality.value] || default_price;
     return audioQualityPrice;
 }
 
@@ -74,7 +64,7 @@ function getTATPriceIQ() {
     var default_price = 0;
     var theForm = document.forms["IQForm"];
     var selectedTAT = theForm.elements["tat"];
-    TATPrice = TAT[selectedTAT.value] || default_price;
+    TATPrice = IQTAT[selectedTAT.value] || default_price;
     return TATPrice;
 }
 
@@ -82,11 +72,13 @@ function getStylePriceIQ() {
     var default_price = 0;
     var theForm = document.forms["IQForm"];
     var selectedStyle = theForm.elements["style"];
-    stylePrice = transcriptStyle[selectedStyle.value] || default_price;
+    stylePrice = IQtranscriptStyle[selectedStyle.value] || default_price;
     return stylePrice;
 }
 
 function getTimeStampPriceIQ() {
+    // var default_price = 0;
+    var timeStampPrice = 0;
     var theForm = document.forms["IQForm"];
     //get reference to time stamp radios with name="stamps"
     var selectedTimeStamp = theForm.elements["stamps"];
@@ -95,7 +87,7 @@ function getTimeStampPriceIQ() {
         //if radio button is checked
         if (selectedTimeStamp[i].checked) {
             //get selected items value
-            timeStampPrice = timeStamps[selectedTimeStamp[i].value];
+            timeStampPrice = IQtimeStamps[selectedTimeStamp[i].value];
             //break loop if match is found
             break;
         }
@@ -126,6 +118,7 @@ function isMinutesValidIQ() {
 }
 
 function calculateTotalIQ() {
+    console.log("THIS IS SCRIPT-QUOTE");
     console.log("Category:" + getCategoryPriceIQ());
     console.log("Speakers:" + getSpeakersPriceIQ());
     console.log("AudioQual:" + getAudioQualityPriceIQ());
