@@ -1,3 +1,25 @@
+/* UPLOAD FILES */
+
+.upload-files {
+    text-align:center;
+}
+
+.upload-files h1 {
+    text-decoration:underline;
+}
+
+.upload-form {
+    margin: auto 200px;
+}
+
+#id_file {
+    margin:auto;
+}
+
+input[type=file] {
+    color:pink;
+}
+
 /* ORDER REVIEW */
 
 .order-item {
