@@ -1,25 +1,39 @@
 {% extends "base.html" %}
 {% load bootstrap_tags %}
 {% block content %}
-    <div class="page-div">
-        <div class="container upload-files">
-            <h1>Step 1</h1>
+    <div class="upload-files">
+        <div class="container">
+            <div class="steps">
+                <h1>Step 1</h1>
+            </div>
 
-            <form role="form" method="post" action="{% url 'uploadfiles' %}" enctype="multipart/form-data" class="upload-form">
+            <div class="legend-div">
                 <legend>Upload Files</legend>
-                {% csrf_token %}
+            </div>
 
-                <h3>Here we go!</h3>
-                <h3>Select the files you would like transcribed!</h3>
+            <div class="container default-form" id="upload-form">
+                <form role="form" method="post" action="{% url 'uploadfiles' %}" enctype="multipart/form-data">
 
-                <div>{{ form.file }}</div>
 
-                <p><small>Use CTRL(Windows) or Command(Mac) to select multiple files.
-                <br>Supported File Types: M4A, MP3, WMV, MP4,WAV, MOV, AVI, VOB, AMR, WMA, OGG, and AIF.</small></p>
-                <div class="form-group" style="margin-top:150px;">
-                    <button type="submit" class="btn btn-primary" id="submit-all">Upload File(s) and Proceed</button>
-                </div>
-            </form>
+                    {% csrf_token %}
+
+                    <h2>Here we go!</h2>
+                    <h3>Select the files you would like transcribed!</h3>
+
+                    <div>{{ form.file }}</div>
+
+                    <p>
+                        Use CTRL(Windows) or Command(Mac) to select multiple files.
+                            <br>Supported File Types: M4A, MP3, WMV, MP4,WAV, MOV, AVI, VOB, AMR, WMA, OGG, and AIF.
+
+                    </p>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary" id="submit-all">Upload File(s) and Proceed
+                        </button>
+                    </div>
+                </form>
+            </div>
+
 
         </div>
     </div>
