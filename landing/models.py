@@ -12,6 +12,8 @@ REFERRAL_CHOICES = (
 )
 
 
+
+
 class CustomQuote(models.Model):
     """
     Model for Custom Quote Form
