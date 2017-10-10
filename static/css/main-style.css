@@ -102,6 +102,7 @@ a:hover {
 
 
 /*About Style */
+
 .about {
     display: flex;
     flex-flow: row wrap;
@@ -153,7 +154,9 @@ a:hover {
 #about-info-default {
     display: flex;
 }
-
+#about-info-2, #about-info-3, #about-info-4, #about-info-5, #about-info-6 {
+    display: none;
+}
 .about-1-icons {
     display: flex;
     flex-flow: row nowrap;
@@ -224,15 +227,17 @@ a:hover {
 
 .about-2-icon-box h4, .about-2-icon-box div {
     opacity: 0.7;
+    transition: all 0.2s ease-in-out;
 }
 
-.active-item h4, .active-item div {
+.active-item {
     opacity: 1;
 }
 
-.active-box {
-    opacity: 1 !important;
+.active-item h4 {
+    opacity: 1;
 }
+
 
 #about-2-icon-1 {
     background: url("../icons/schedule.png") center;
@@ -262,6 +267,10 @@ a:hover {
 #about-2-icon-6 {
     background: url("../icons/secure-payment.png") center;
     background-size: cover;
+}
+.active-box {
+    opacity: 1 !important;
+    transition: all 0.2s ease-in-out;
 }
 
 /* Services Style */
@@ -418,6 +427,8 @@ a:hover {
     align-items: center;
     background-color: #50A6C2;
     padding:25px 50px;
+    -webkit-box-shadow: 0 -5px 5px -5px #999;
+    -moz-box-shadow: 0 -5px 5px -5px #999;
     box-shadow: 0 -5px 5px -5px #999;
 }
 
@@ -429,13 +440,13 @@ a:hover {
     cursor:pointer;
 }
 
-.process-box-1, .process-box-2 {
-    opacity:0.5;
-}
+/*.process-box-1, .process-box-2 {*/
+    /*opacity:0.5;*/
+/*}*/
 
-.active-item.process-box-1#process-icon-1, .active-item.process-box-1 h4,
-.active-item.process-box-2#process-num-1 {
-    opacity:1 !important;
+.process-fade {
+    opacity: 0.7;
+    transition: all 0.2s ease-in-out;
 }
 
 #process-icon-1, #process-icon-2, #process-icon-3, #process-icon-4 {
@@ -471,12 +482,15 @@ a:hover {
     border-radius: 100%;
 }
 
+.process-info-main {
+    background-color: #50A6C2;
+}
+
 .process-info {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
     align-items: center;
-    background-color: #50A6C2;
     padding:20px 35px 55px 35px;
     margin-bottom:100px;
     -webkit-box-shadow: 0 8px 6px -6px #999;
@@ -499,6 +513,10 @@ a:hover {
 
 .process-info-content p {
     width:80%;
+}
+
+#process-box-info-2, #process-box-info-3, #process-box-info-4 {
+    display:none;
 }
 
 /* Testimonials */
