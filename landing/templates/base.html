@@ -16,12 +16,18 @@
     <link rel="stylesheet" href="{% static "css/forumapp-style.css" %}">
     <link rel="stylesheet" href="{% static "css/accountsapp-style.css" %}">
     <link rel="stylesheet" href="{% static "css/font-awesome-4.7.0/css/font-awesome.css" %}">
+    <link rel="stylesheet" href="{% static "css/animations.css" %}">
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="{% static "css/animations-ie-fix.css" %}">
+    <![endif]-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,700i,800|Oswald|Roboto:400,500,700,700i,900" rel="stylesheet">
+
     <!-- Script References -->
     <script src="{% static "js/jquery.min.js" %}"></script>
     <script src="{% static "js/bootstrap.min.js" %}"></script>
     <script src="{% static "js/script-main.js" %}"></script>
-
+    <script src="{% static "js/css3-animate-it.js" %}"></script>
 
     {% block landing_resources %}{% endblock landing_resources %}
     {% block upload_resources %}{% endblock upload_resources %}

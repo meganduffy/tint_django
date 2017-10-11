@@ -3,8 +3,8 @@ body {
 }
 
 a, a:hover, a:visited {
-    text-decoration:none;
-    color:inherit;
+    text-decoration: none;
+    color: inherit;
 }
 
 .container {
@@ -41,7 +41,7 @@ a:hover {
 }
 
 #process-anchor {
-    height:60px;
+    height: 60px;
 }
 
 /* Landing Style */
@@ -55,51 +55,50 @@ a:hover {
 }
 
 .landing-heading {
-    padding-top:100px;
-    margin-top:0;
+    padding-top: 100px;
+    margin-top: 0;
 }
 
 .landing-icons {
-    display:flex;
-    flex-flow:row nowrap;
+    display: flex;
+    flex-flow: row nowrap;
     justify-content: space-around;
     align-items: center;
-    padding-top:200px;
+    padding-top: 200px;
 }
 
 .landing-icon-box {
-    display:flex;
-    flex-flow:column nowrap;
+    display: flex;
+    flex-flow: column nowrap;
     justify-content: space-around;
     align-items: center;
-    width:30%;
+    width: 30%;
 }
 
 .landing-icon-text {
-    color:white;
+    color: white;
 }
 
 #landing-icon-1, #landing-icon-2, #landing-icon-3 {
-    height:200px;
-    width:200px;
+    height: 200px;
+    width: 200px;
     /*flex:1;*/
 }
 
 #landing-icon-1 {
-    background:url("../icons/headphones-big.png") center no-repeat;
-    background-size:contain;
+    background: url("../icons/headphones-big.png") center no-repeat;
+    background-size: contain;
 }
 
 #landing-icon-2 {
-    background:url("../icons/typewriter-big.png") center no-repeat;
-    background-size:contain;
+    background: url("../icons/typewriter-big.png") center no-repeat;
+    background-size: contain;
 }
 
 #landing-icon-3 {
-    background:url("../icons/document-big.png") center no-repeat;
-    background-size:contain;
+    background: url("../icons/document-big.png") center no-repeat;
+    background-size: contain;
 }
-
 
 /*About Style */
 
@@ -154,9 +153,11 @@ a:hover {
 #about-info-default {
     display: flex;
 }
+
 #about-info-2, #about-info-3, #about-info-4, #about-info-5, #about-info-6 {
     display: none;
 }
+
 .about-1-icons {
     display: flex;
     flex-flow: row nowrap;
@@ -170,6 +171,7 @@ a:hover {
     width: 25px;
     margin-left: 10px;
     margin-right: 10px;
+    cursor: pointer;
 }
 
 #about-1-fb {
@@ -198,7 +200,7 @@ a:hover {
 }
 
 .abbout-2 h1 {
-    margin-bottom:35px;
+    margin-bottom: 35px;
 }
 
 .about-2-icons {
@@ -238,7 +240,6 @@ a:hover {
     opacity: 1;
 }
 
-
 #about-2-icon-1 {
     background: url("../icons/schedule.png") center;
     background-size: cover;
@@ -268,6 +269,7 @@ a:hover {
     background: url("../icons/secure-payment.png") center;
     background-size: cover;
 }
+
 .active-box {
     opacity: 1 !important;
     transition: all 0.2s ease-in-out;
@@ -321,7 +323,7 @@ a:hover {
     -webkit-box-shadow: 0 8px 6px -6px #999;
     -moz-box-shadow: 0 8px 6px -6px #999;
     box-shadow: 0 8px 6px -6px #999;
-    border-radius:100px;
+    border-radius: 100px;
 }
 
 #services-icon-1 {
@@ -377,7 +379,48 @@ a:hover {
     -webkit-box-shadow: 0 8px 6px -6px #999;
     -moz-box-shadow: 0 8px 6px -6px #999;
     box-shadow: 0 8px 6px -6px #999;
+    /*test*/
+
+    -webkit-animation-duration: 1000ms;
+    -webkit-animation-iteration-count: 2;
+    -webkit-animation-timing-function: linear;
+    /*-moz-animation-name: spin;*/
+    /*-moz-animation-duration: 2000ms;*/
+    /*-moz-animation-iteration-count: 1;*/
+    /*-moz-animation-timing-function: linear;*/
+    /*-ms-animation-name: spin;*/
+    /*-ms-animation-duration: 2000ms;*/
+    /*-ms-animation-iteration-count: 1;*/
+    /*-ms-animation-timing-function: linear;*/
+    /*-o-transition: rotate(3600deg);*/
 }
+
+/*test*/
+
+/*@-moz-keyframes spin {*/
+    /*from { -moz-transform: rotate(0deg); }*/
+    /*to { -moz-transform: rotate(360deg); }*/
+/*}*/
+/*@-webkit-keyframes spin {*/
+    /*from { -webkit-transform: rotate(0deg); }*/
+    /*to { -webkit-transform: rotate(360deg); }*/
+/*}*/
+/*@keyframes spin1 {*/
+    /*0% {transform:rotate(0deg);}*/
+    /*100% {transform:rotate(360deg);}*/
+/*}*/
+/*@keyframes spin2 {*/
+    /*0% {transform:rotate(360deg);}*/
+    /*100% {transform:rotate(0deg);}*/
+/*}*/
+
+/*#quote-circ-1 {*/
+    /*-webkit-animation-name: spin1;*/
+/*}*/
+
+/*#quote-circ-2 {*/
+    /*-webkit-animation-name: spin2;*/
+/*}*/
 
 .quote-circ-background {
     background: url("../icons/question.png") center;
@@ -426,7 +469,7 @@ a:hover {
     justify-content: space-around;
     align-items: center;
     background-color: #50A6C2;
-    padding:25px 50px;
+    padding: 25px 50px;
     -webkit-box-shadow: 0 -5px 5px -5px #999;
     -moz-box-shadow: 0 -5px 5px -5px #999;
     box-shadow: 0 -5px 5px -5px #999;
@@ -437,15 +480,11 @@ a:hover {
     flex-flow: column nowrap;
     align-items: center;
     justify-content: space-around;
-    cursor:pointer;
+    cursor: pointer;
 }
 
-/*.process-box-1, .process-box-2 {*/
-    /*opacity:0.5;*/
-/*}*/
-
-.process-fade {
-    opacity: 0.7;
+.process-boxs {
+    opacity: 0.5;
     transition: all 0.2s ease-in-out;
 }
 
@@ -455,28 +494,28 @@ a:hover {
 }
 
 #process-icon-1 {
-    background:url("../icons/test.png") center;
-    background-size:cover;
+    background: url("../icons/test.png") center;
+    background-size: cover;
 }
 
 #process-icon-2 {
-    background:url("../icons/cloud-computing.png") center;
-    background-size:cover;
+    background: url("../icons/cloud-computing.png") center;
+    background-size: cover;
 }
 
 #process-icon-3 {
-    background:url("../icons/stopwatch.png") center;
-    background-size:cover;
+    background: url("../icons/stopwatch.png") center;
+    background-size: cover;
 }
 
 #process-icon-4 {
-    background:url("../icons/thumb-up.png") center;
-    background-size:cover;
+    background: url("../icons/thumb-up.png") center;
+    background-size: cover;
 }
 
 #process-num-1, #process-num-2, #process-num-3, #process-num-4 {
     font-weight: bold;
-    font-size:18px;
+    font-size: 18px;
     border: 3px solid white;
     padding: 10px 15px;
     border-radius: 100%;
@@ -491,8 +530,8 @@ a:hover {
     flex-flow: row wrap;
     justify-content: space-around;
     align-items: center;
-    padding:20px 35px 55px 35px;
-    margin-bottom:100px;
+    padding: 20px 35px 55px 35px;
+    margin-bottom: 100px;
     -webkit-box-shadow: 0 8px 6px -6px #999;
     -moz-box-shadow: 0 8px 6px -6px #999;
     box-shadow: 0 8px 6px -6px #999;
@@ -500,50 +539,50 @@ a:hover {
 
 .process-info-header {
     font-weight: bold;
-    margin-right:20px;
-    min-width:160px;
+    margin-right: 20px;
+    min-width: 160px;
     flex: 1;
 }
 
 .process-info-content {
-    text-align:center;
-    min-width:260px;
+    text-align: center;
+    min-width: 260px;
     flex: 4;
 }
 
 .process-info-content p {
-    width:80%;
+    width: 80%;
 }
 
 #process-box-info-2, #process-box-info-3, #process-box-info-4 {
-    display:none;
+    display: none;
 }
 
 /* Testimonials */
 .testimonials {
-    padding-bottom:150px;
-    color:black;
+    padding-bottom: 150px;
+    color: black;
 }
 
 .testimonials h1 {
-    margin-bottom:35px;
+    margin-bottom: 35px;
 }
 
 .testimonial-box {
-    display:flex;
-    flex-flow:column nowrap;
+    display: flex;
+    flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
 }
 
 .carousel-inner .item blockquote {
     /*background-color: rgba(46, 134, 255, 0.2);*/
-    background-color:#65c3ba;
+    background-color: #65c3ba;
     margin: 0 50px;
-    height:250px;
-    border:none;
-    display:flex;
-    flex-flow:column nowrap;
+    height: 250px;
+    border: none;
+    display: flex;
+    flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
     border-radius: 5px;
@@ -554,8 +593,8 @@ a:hover {
 }
 
 .carousel-inner small {
-    color:white;
-    font-weight:bold;
+    color: white;
+    font-weight: bold;
 }
 
 .carousel-control.left, .carousel-control.right {
@@ -564,12 +603,12 @@ a:hover {
 
 /* Forms */
 .page-div {
-    margin-top:100px;
+    margin-top: 100px;
 }
 
 .form-div legend {
     font-size: 35px;
-    font-weight:bold;
+    font-weight: bold;
 }
 
 .form-div input {
@@ -578,14 +617,14 @@ a:hover {
 
 /* IQ Form */
 #total-cost {
-    display:none;
+    display: none;
 }
 
 /* Profile */
 
 .profo-pic {
-    height:150px;
-    width:150px;
+    height: 150px;
+    width: 150px;
 }
 
 /* FAQ */
@@ -594,66 +633,66 @@ a:hover {
     background: url("../img/pexels-photo-57832.jpeg") center fixed;
     background-size: cover;
     padding-top: 100px;
-    text-align:center;
+    text-align: center;
 }
 
 .faq h1 {
-    font-size:65px;
+    font-size: 65px;
 }
 
 .faq-plus {
-    height:30px;
-    width:30px;
-    background:url("../icons/plus.png") center;
-    background-size:cover;
-    display:inline-block;
+    height: 30px;
+    width: 30px;
+    background: url("../icons/plus.png") center;
+    background-size: cover;
+    display: inline-block;
 }
 
 .panel-heading {
-    display:flex;
-    flex-flow:row nowrap;
+    display: flex;
+    flex-flow: row nowrap;
     justify-content: flex-start;
     align-items: flex-start;
-    text-align:left;
-    border-radius:20px;
+    text-align: left;
+    border-radius: 20px;
 }
 
 .panel-heading h3 {
     line-height: 30px;
-    margin-left:10px;
+    margin-left: 10px;
 }
 
 .panel-heading:hover a {
-    text-decoration:none;
+    text-decoration: none;
 }
 
 .panel-group .panel {
-    border-radius:20px;
+    border-radius: 20px;
 }
 
 .panel-body p {
-    width:70%;
-    margin:auto;
-    padding:20px 0;
-    font-weight:bold;
+    width: 70%;
+    margin: auto;
+    padding: 20px 0;
+    font-weight: bold;
 }
 
 .faq-contact {
-    text-decoration:underline;
+    text-decoration: underline;
 }
 
 .big-typewriter {
-    height:70px;
-    width:70px;
-    background:url("../icons/typewriter.png") center;
-    background-size:contain;
-    margin:20px auto auto auto;
+    height: 70px;
+    width: 70px;
+    background: url("../icons/typewriter.png") center;
+    background-size: contain;
+    margin: 20px auto auto auto;
 }
 
 /* Messages */
 
 div.alert.alert-success {
-    position:relative !important;
+    position: relative !important;
     top: 70px !important;
 }
 
@@ -715,7 +754,7 @@ div.alert.alert-success {
     background-color: #edf6f8;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    padding:25px;
+    padding: 25px;
 }
 
 .default-form h4 {
@@ -731,14 +770,14 @@ div.alert.alert-success {
 }
 
 #legend-login {
-    margin:0 97px;
+    margin: 0 97px;
 }
 
 legend {
-    font-size:40px;
+    font-size: 40px;
     border-color: grey;
     text-align: center;
-    margin:0;
+    margin: 0;
     padding: 12px;
 }
 
@@ -753,8 +792,8 @@ legend {
 
 /*INSTANT QUOTE*/
 .instant-quote {
-    display:flex;
-    flex-flow:row nowrap;
+    display: flex;
+    flex-flow: row nowrap;
     justify-content: space-around;
     align-items: center;
 }

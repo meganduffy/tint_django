@@ -23,14 +23,12 @@ Uploads:
 
 LANDING
 
-ABOUT:
+ABOUT TEXT
 
-if class == .tat:
-    title = TAT
-    text = TAT TEXT
-elif:
-
-else:
+Type It Now is an audio and video transcription service. We do academic, medical,
+                        and legal transcription. The transcripts we produce are manually typed by experienced
+                        transcriptionists and are at least 99% accurate – transcripts are delivered in Microsoft
+                        Word documents.
 
 
 
