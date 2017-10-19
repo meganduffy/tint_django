@@ -92,7 +92,7 @@ $(document).ready(function() {
        $(this).addClass("active-box");
        $(".process-boxs").removeClass("active-item");
        $("#process-icon-1").addClass("active-item");
-       $("#process-box-info-2, #process-box-info-3, #process-box-info-4").hide();
+       $("#process-box-info-1, #process-box-info-2, #process-box-info-3, #process-box-info-4").hide();
        $("#process-box-info-1").fadeIn(450).css({"display":"flex"});
    });
 
