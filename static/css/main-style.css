@@ -12,8 +12,12 @@ a, a:hover, a:visited {
     padding-left: 10px !important;
 }
 
+.my-conatiner {
+    padding-right: 10px !important;
+    padding-left: 10px !important;
+}
+
 .index {
-    /*background-color: #edf6f8;*/
     background: url("../img/pexels-photo-57832.jpeg") center fixed;
     background-size: cover;
     text-align: center;
@@ -48,7 +52,6 @@ a:hover {
 
 .landing {
     height: 100vh;
-    /*background: url("../img/pexels-photo-water.jpg") center;*/
     background: url("../img/pexels-photo-57832.jpeg") center fixed;
     background-size: cover;
     margin-left: 0 !important;
@@ -484,6 +487,10 @@ a:hover {
     cursor: pointer;
 }
 
+#active-process {
+    opacity: 0;
+}
+
 .process-boxs {
     opacity: 0.5;
     transition: all 0.2s ease-in-out;
@@ -580,7 +587,7 @@ a:hover {
     background-color: #65c3ba;
     margin: 0 50px;
     border: none;
-    height: 40vmin;
+    height: 41vmin;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
@@ -755,7 +762,8 @@ div.alert.alert-success {
     background-color: #edf6f8;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    padding: 25px;
+    padding: 45px 45px 65px 45px;
+    margin: 0 90px;
 }
 
 .default-form h4 {
