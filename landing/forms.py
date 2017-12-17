@@ -28,7 +28,7 @@ class CustomQuoteForm(forms.ModelForm):
     new_client = forms.BooleanField(required=False)
 
     description = forms.CharField(
-        label='Description of Project',
+        label='Description of Project *',
         widget=forms.Textarea
     )
 

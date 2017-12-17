@@ -388,43 +388,8 @@ a:hover {
     -webkit-animation-duration: 1000ms;
     -webkit-animation-iteration-count: 2;
     -webkit-animation-timing-function: linear;
-    /*-moz-animation-name: spin;*/
-    /*-moz-animation-duration: 2000ms;*/
-    /*-moz-animation-iteration-count: 1;*/
-    /*-moz-animation-timing-function: linear;*/
-    /*-ms-animation-name: spin;*/
-    /*-ms-animation-duration: 2000ms;*/
-    /*-ms-animation-iteration-count: 1;*/
-    /*-ms-animation-timing-function: linear;*/
-    /*-o-transition: rotate(3600deg);*/
 }
 
-/*test*/
-
-/*@-moz-keyframes spin {*/
-/*from { -moz-transform: rotate(0deg); }*/
-/*to { -moz-transform: rotate(360deg); }*/
-/*}*/
-/*@-webkit-keyframes spin {*/
-/*from { -webkit-transform: rotate(0deg); }*/
-/*to { -webkit-transform: rotate(360deg); }*/
-/*}*/
-/*@keyframes spin1 {*/
-/*0% {transform:rotate(0deg);}*/
-/*100% {transform:rotate(360deg);}*/
-/*}*/
-/*@keyframes spin2 {*/
-/*0% {transform:rotate(360deg);}*/
-/*100% {transform:rotate(0deg);}*/
-/*}*/
-
-/*#quote-circ-1 {*/
-/*-webkit-animation-name: spin1;*/
-/*}*/
-
-/*#quote-circ-2 {*/
-/*-webkit-animation-name: spin2;*/
-/*}*/
 
 .quote-circ-background {
     background: url("../icons/question.png") center;
@@ -763,7 +728,7 @@ div.alert.alert-success {
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     padding: 45px 45px 65px 45px;
-    margin: 0 90px;
+    margin: 0 90px 20px 90px;
 }
 
 .default-form h4 {
@@ -822,4 +787,28 @@ legend {
     border-radius: 20px;
     margin-bottom:0;
     padding-bottom:0;
+}
+
+
+/* Confirm Pages */
+
+.confirm-page {
+    background-color: #edf6f8;
+    color:#50A6C2;
+    height:80vmin;
+    margin: 0 40px;
+    display:flex;
+    flex-flow:column nowrap;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    text-align:center;
+}
+
+.confirm-icon {
+    height: 70px;
+    width: 70px;
+    background: url("../icons/typewriter.png") center;
+    background-size: cover;
+    margin:40px 0;
 }
