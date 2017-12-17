@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {% load bootstrap_tags %}
 {% block content %}
-    <div class="page-div">
-        <div class="legend-div" id="legend-login"><legend>Login</legend></div>
+    <div class="page-div login-div">
+
+        <legend style="background-color:#50A6C2;">Login</legend>
         <div class="container default-form">
 
             <form role="form" method="post" action="{% url 'login' %}">

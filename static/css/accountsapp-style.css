@@ -132,15 +132,6 @@
     margin-right: 10px;
 }
 
-/*.order-number {*/
-/*background-color:red;*/
-/*padding: 50px 20px 0 20px;*/
-/*margin:0;*/
-/*color:black;*/
-/*border-top-left-radius: 10px;*/
-/*border-bottom-right-radius: 10px;*/
-/*}*/
-
 .profile-tracker {
     background-color: lightblue;
 }
@@ -175,6 +166,10 @@
 }
 
 /*LOGIN*/
+.login-div {
+    background-color: #edf6f8;
+}
+
 .login-flex {
     display: flex;
     flex-flow: row wrap;

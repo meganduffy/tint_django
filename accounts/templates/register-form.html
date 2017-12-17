@@ -3,7 +3,7 @@
 {% block content %}
     <div class="page-div">
         <div class="legend-div"><legend>Create a new account</legend></div>
-        <div class="container default-form">
+        <div class="default-form">
             <form role="form" method="post" action="{% url 'register' %}" enctype="multipart/form-data">
 
                 {% csrf_token %}
