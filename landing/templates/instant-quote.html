@@ -7,12 +7,13 @@
 
     <div class="instantquote">
     <div class="page-div">
-        <div class="container">
+
+        <div class="legend-div"><legend>Instant Quote</legend></div>
             <div class="instantquote-form">
-                <div class="container">
+                <div class="default-form">
                     <form id="IQForm" name="IQForm" action="" onsubmit="return false" novalidate>
                         <fieldset>
-                            <legend>Instant Quote</legend>
+
                             <div class="row">
 
                                 <div class="col-sm-6 form-group">
@@ -70,11 +71,9 @@
                                 </div>
 
                                 <div class="col-sm-6 form-group">
-                                    <label for="stamps">Time Stamps</label>
-                                    <input type="radio" name="stamps" value="y-stamps" onclick="calculateTotalIQ()" />
-                                    Yes
-                                    <input type="radio" name="stamps" value="n-stamps" onclick="calculateTotalIQ()" />
-                                    No
+                                    <label for="stamps">Time Stamps</label><br>
+                                    <label class="radio-inline"><input type="radio" name="stamps" value="y-stamps" onclick="calculateTotalIQ()" />Yes</label>
+                                    <label class="radio-inline"><input type="radio" name="stamps" value="n-stamps" onclick="calculateTotalIQ()" />No</label>
                                 </div>
                             </div>
 
@@ -85,23 +84,28 @@
                                     <input type="text" name="audio-minutes" id ="audio-minutes" class="form-control" oninput="calculateTotalIQ()" value="" />
                                 </div>
 
-                                <div class="col-sm-6 form-group">
+
+
+                                <div class="col-sm-3 form-group" id="per-min">
                                     <label for="minute-cost">Cost Per Minute</label>
-                                    <p>Cost Per Minute: €<span id="minuteCost">0.00</span></p>
+                                    <p>€<span id="minuteCost">0.00</span></p>
                                 </div>
 
-                                <div class="col-sm-6 form-group" id="total-cost">
+                                <div class="col-sm-3 form-group" id="total-cost">
                                     <label for="total-cost">Total Cost</label>
-                                    <p>Total Cost: €<span id="totalCost"></span></p>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+                                    <p>€<span id="totalCost"></span></p>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+                                    <div class="btn btn-primary btn-lg"><a href="{% url "login" %}">Order Now</a></div>
                                 </div>
 
                             </div>
                         </fieldset>
                     </form>
                 </div>
+
             </div>
         </div>
     </div>
-    </div>
+
 
 {% endblock %}
+

@@ -806,3 +806,20 @@ legend {
     justify-content: space-around;
     align-items: center;
 }
+
+#audio-minutes {
+    width:20vmin;
+}
+
+#per-min {
+
+    border-radius: 20px;
+     font-size:4vmin;
+}
+
+#total-cost {
+    font-size:4vmin;
+    border-radius: 20px;
+    margin-bottom:0;
+    padding-bottom:0;
+}

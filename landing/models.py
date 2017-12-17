@@ -12,8 +12,6 @@ REFERRAL_CHOICES = (
 )
 
 
-
-
 class CustomQuote(models.Model):
     """
     Model for Custom Quote Form
@@ -32,7 +30,7 @@ class CustomQuote(models.Model):
     new_client = models.BooleanField()
     referral = models.CharField(max_length=3, choices=REFERRAL_CHOICES, blank=True, null=True)
     description = models.TextField(default='', blank=True, null=True)
-    audio_minutes = models.IntegerField()
+    audio_minutes = models.IntegerField(null=True, blank=True)
 
     def __unicode__(self):
         return self.email1
