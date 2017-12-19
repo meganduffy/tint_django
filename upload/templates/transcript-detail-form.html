@@ -6,121 +6,135 @@
 {% endblock %}
 {% block content %}
     <div class="page-div">
-        <div class="container">
-        {% if uploads %}
-            <div class="col-sm-12">
-                <h1>TOTAL TIME: <span id="total-time">{{ total_time.file_length_mins__sum }}</span>mins</h1>
-            </div>
-            <br>
-            {% for upload in uploads %}
-                <div class="col-sm-6">
-                    <p><strong>File Name:</strong> {{ upload.file_name }}</p>
-                    <p><strong>Uploaded at:</strong> {{ upload.uploaded_at }}</p>
-                    <p><strong>File Length:</strong> {{ upload.file_length_mins }}mins</p>
-                    <p><strong>Status:</strong> {{ upload.status }}</p>
-                    <a class="btn btn-danger" href="{% url 'removefile' upload.id %}" style="float:right;">Remove File</a>
-                    <br>
-                    <hr>
+        <div class="container trans-det-1">
+            {% if uploads %}
+
+                <div class="detail-overview">
+                    <h1>Here's what we got!</h1>
                 </div>
-            {% endfor %}
-            <h3>Want to add more files to your order?</h3>
-            <a class="btn btn-default" href="{% url 'uploadfiles' %}">Upload More Files</a>
-            <div class="container">
-                <form id="TDForm" name="TDForm" role="form" method="post" action="{% url 'transcriptdetails' %}">
-                    <legend>Transcription Details</legend>
-                    {% csrf_token %}
 
-                    <div class="row">
-                        <div class="col-sm-4 form-group">
-                            {{ form.category.label_tag }}
-                            <select name="category" class="form-control" id="category" onclick="calculateTotal()">
-                                <option value="none">Select Category</option>
-                                {% for id, name in form.category.field.choices %}
-                                    <option value="{{ id }}">{{ name }}</option>
-                                {% endfor %}
-                            </select>
-                            {{ form.category.errors }}
-                        </div>
-
-                        <div class="col-sm-4 form-group">
-                            {{ form.text_format.label_tag }}
-                            <select name="text_format" class="form-control" id="style" onclick="calculateTotal()">
-                                <option value="none">Select Text Format</option>
-                                {% for id, name in form.text_format.field.choices %}
-                                    <option value="{{ id }}">{{ name }}</option>
-                                {% endfor %}
-                            </select>
-                            {{ form.text_format.errors }}
-                        </div>
-
-                        <div class="col-sm-4 form-group">
-                            {{ form.num_speakers.label_tag }}
-                            <select name="num_speakers" class="form-control" id="speakers" onclick="calculateTotal()">
-                                <option value="none">Select Number of Speakers</option>
-                                {% for id, name in form.num_speakers.field.choices %}
-                                    <option value="{{ id }}">{{ name }}</option>
-                                {% endfor %}
-                            </select>
-                            {{ form.num_speakers.errors }}
-                        </div>
-
-                        <div class="col-sm-4 form-group">
-                            {{ form.timestamps.label_tag }}
-                            <select name="timestamps" class="form-control" id="timestamps" onclick="calculateTotal()">
-                                <option value="none">Select Time Stamp Option</option>
-                                {% for id, name in form.timestamps.field.choices %}
-                                    <option value="{{ id }}">{{ name }}</option>
-                                {% endfor %}
-                            </select>
-                            {{ form.timestamps.errors }}
-                        </div>
-
-                        <div class="col-sm-4 form-group">
-                            {{ form.tat.label_tag }}
-                            <select name="tat" class="form-control" id="tat" onclick="calculateTotal()">
-                                <option value="none">Select Turn Around Time</option>
-                                {% for id, name in form.tat.field.choices %}
-                                    <option value="{{ id }}">{{ name }}</option>
-                                {% endfor %}
-                            </select>
-                            {{ form.tat.errors }}
-                        </div>
-
-                        <div class="col-sm-4 form-group">
-                            {{ form.audio_quality.label_tag }}
-                            <select name="audio_quality" class="form-control" id="audio-quality" onclick="calculateTotal()">
-                                <option value="none">Select Audio Quality</option>
-                                {% for id, name in form.audio_quality.field.choices %}
-                                    <option value="{{ id }}">{{ name }}</option>
-                                {% endfor %}
-                            </select>
-                            {{ form.audio_quality.errors }}
-                        </div>
-
-
+                {% for upload in uploads %}
+                    <div class="col-sm-6 ">
+                        <p><strong>File Name:</strong> {{ upload.file_name }}</p>
+                        <p><strong>Uploaded at:</strong> {{ upload.uploaded_at }}</p>
+                        <p><strong>File Length:</strong> {{ upload.file_length_mins }}mins</p>
+                        <p><strong>Status:</strong> {{ upload.status }}</p>
+                        <a class="btn btn-danger" href="{% url 'removefile' upload.id %}" style="float:right;">Remove
+                            File</a>
+                        <br>
+                        <hr>
                     </div>
+                {% endfor %}
+                <div class="detail-overview">
+                    <h2>Total Time: <span id="total-time">{{ total_time.file_length_mins__sum }}</span> mins</h2>
+                    <h4>Want to add more files to your order?</h4>
+                    <a class="btn btn-default" href="{% url 'uploadfiles' %}">Upload More Files</a>
+                </div>
 
-                    <div class="col-sm-4 form-group">
-                        <label for="minute-cost">Cost Per Minute</label>
-                        <p>Cost Per Minute: €<span id="minuteCost">0.00</span></p>
-                    </div>
 
-                    <div class="col-sm-4 form-group" id="total-cost">
-                        <label for="total-cost">Total Cost</label>
-                        <p>Total Cost: €<span id="totalCost"></span></p>
-                        ​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
-                    </div>
-                    <div class="col-sm-4 form-group">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </form>
 
-            </div>
-        {% else %}
-        <h1>It looks like you haven't uploaded any files yet!</h1>
-        <a class="btn btn-primary" href="{% url 'uploadfiles' %}">Upload Files</a>
-        {% endif %}
-        </div>
+
+                <!-- Transcription Detail Form -->
+                <div class=" transcription-detail-form">
+                    <form id="TDForm" name="TDForm" role="form" method="post" action="{% url 'transcriptdetails' %}">
+                        <legend>Transcription Details</legend>
+                        <br>
+                        {% csrf_token %}
+
+                        <div class="row">
+                            <div class="col-sm-4 form-group">
+                                {{ form.category.label_tag }}
+                                <select name="category" class="form-control" id="category" onclick="calculateTotal()">
+                                    <option value="none">Select Category</option>
+                                    {% for id, name in form.category.field.choices %}
+                                        <option value="{{ id }}">{{ name }}</option>
+                                    {% endfor %}
+                                </select>
+                                {{ form.category.errors }}
+                            </div>
+
+                            <div class="col-sm-4 form-group">
+                                {{ form.text_format.label_tag }}
+                                <select name="text_format" class="form-control" id="style" onclick="calculateTotal()">
+                                    <option value="none">Select Text Format</option>
+                                    {% for id, name in form.text_format.field.choices %}
+                                        <option value="{{ id }}">{{ name }}</option>
+                                    {% endfor %}
+                                </select>
+                                {{ form.text_format.errors }}
+                            </div>
+
+                            <div class="col-sm-4 form-group">
+                                {{ form.num_speakers.label_tag }}
+                                <select name="num_speakers" class="form-control" id="speakers"
+                                        onclick="calculateTotal()">
+                                    <option value="none">Select Number of Speakers</option>
+                                    {% for id, name in form.num_speakers.field.choices %}
+                                        <option value="{{ id }}">{{ name }}</option>
+                                    {% endfor %}
+                                </select>
+                                {{ form.num_speakers.errors }}
+                            </div>
+
+                            <div class="col-sm-4 form-group">
+                                {{ form.timestamps.label_tag }}
+                                <select name="timestamps" class="form-control" id="timestamps"
+                                        onclick="calculateTotal()">
+                                    <option value="none">Select Time Stamp Option</option>
+                                    {% for id, name in form.timestamps.field.choices %}
+                                        <option value="{{ id }}">{{ name }}</option>
+                                    {% endfor %}
+                                </select>
+                                {{ form.timestamps.errors }}
+                            </div>
+
+                            <div class="col-sm-4 form-group">
+                                {{ form.tat.label_tag }}
+                                <select name="tat" class="form-control" id="tat" onclick="calculateTotal()">
+                                    <option value="none">Select Turn Around Time</option>
+                                    {% for id, name in form.tat.field.choices %}
+                                        <option value="{{ id }}">{{ name }}</option>
+                                    {% endfor %}
+                                </select>
+                                {{ form.tat.errors }}
+                            </div>
+
+                            <div class="col-sm-4 form-group">
+                                {{ form.audio_quality.label_tag }}
+                                <select name="audio_quality" class="form-control" id="audio-quality"
+                                        onclick="calculateTotal()">
+                                    <option value="none">Select Audio Quality</option>
+                                    {% for id, name in form.audio_quality.field.choices %}
+                                        <option value="{{ id }}">{{ name }}</option>
+                                    {% endfor %}
+                                </select>
+                                {{ form.audio_quality.errors }}
+                            </div>
+
+
+                        </div>
+
+                        <div class="col-sm-4 form-group">
+                            <label for="minute-cost">Cost Per Minute</label>
+                            <p>Cost Per Minute: €<span id="minuteCost">0.00</span></p>
+                        </div>
+
+                        <div class="col-sm-4 form-group" id="total-cost">
+                            <label for="total-cost">Total Cost</label>
+                            <p>Total Cost: €<span id="totalCost"></span></p>
+                            ​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+                        </div>
+                        <div class="col-sm-4 form-group">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+
+                </div>
+            {% else %}
+                <h1>It looks like you haven't uploaded any files yet!</h1>
+                <a class="btn btn-primary" href="{% url 'uploadfiles' %}">Upload Files</a>
+            {% endif %}
+    </div>
     </div>
 
 {% endblock %}

@@ -19,7 +19,7 @@ def forum(request):
 @login_required(login_url='/login/')
 def threads(request, subject_id):
     subject = get_object_or_404(Subject, pk=subject_id)
-    return render(request, 'threads.html', {'subject':subject})
+    return render(request, 'threads.html', {'subject': subject})
 
 
 @login_required(login_url='/login/')
@@ -57,7 +57,7 @@ def new_thread(request, subject_id):
 
             messages.success(request, "You have created a new thread")
 
-            return redirect(reverse('thread', args={thread.pk}))
+            return redirect(reverse('threads', args={thread.pk}))
 
     else:
         thread_form = ThreadForm()

@@ -120,3 +120,15 @@
 
 /* Form styles END */
 
+
+/* Accounts */
+
+/* Order Review */
+
+@media (min-width: 1280px) {
+    .box {
+        height: 50vmax;
+    }
+}
+
+/* Order Review END */

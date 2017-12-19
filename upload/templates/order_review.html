@@ -1,45 +1,28 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% block content %}
-    <div class="page-div">
-        <div class="order-review">
-            <div class="container">
 
-                <h1>Order Review</h1>
+    <div class="order-review opening center">
+        <h1>Nearly there!</h1>
+    </div>
 
-                <div class="order-main">
+    <div class="order-review ticket">
 
-                    {% for detail in transcript_details %}
-                        <p><strong>Order Number: </strong>{{ detail.id }}</p>
-                        <div class="order-item">
-
-                            <div class="col-sm-6 transcript-details-box">
-                                <p><strong>Category: </strong>{{ detail.category }}</p>
-                                <p><strong>Number of Speakers: </strong>{{ detail.num_speakers }}</p>
-                                <p><strong>TimeStamps: </strong>{{ detail.timestamps }}</p>
-                                <p><strong>Turn Around Time: </strong>{{ detail.tat }}</p>
-                                <p><strong>Audio Quality: </strong>{{ detail.audio_quality }}</p>
-                            </div>
-
-                            {% for upload in detail.uploaded_files.all %}
-                                <div class="col-sm-6 upload-details-box">
-                                    <p><strong>File Name: </strong>{{ upload.file_name }}</p>
-                                    <p><strong>File Length: </strong>{{ upload.file_length_mins }} mins</p>
-                                </div>
-                            {% endfor %}
-
-                            <div class="purchase-order-box">
-                                <h1><strong>Total Cost: </strong>{{ detail.total_price }}</h1>
-                                {{ detail.paypal_form.sandbox }}
-                            </div>
-
+        {% for detail in transcript_details %}
+            <div class="order-review box">
+                <div class="order-review id">
+                    <h3>{{ detail.id }}</h3>
+                </div>
+                <div class="order-review main">
+                    <div class="order-review left">
+                        <div class="order-review left-details">
+                            <div class="order "
                         </div>
-                        <h2>Not ready to purchase just yet?</h2>
-                        <h3>Save your order for later!</h3>
-                        <a class="btn btn-success" href="{% url 'save_order_for_later' detail.id %}">Save For Later!</a>
-                    {% endfor %}
+                    </div>
                 </div>
             </div>
-        </div>
+
+        {% endfor %}
     </div>
+
 {% endblock %}
