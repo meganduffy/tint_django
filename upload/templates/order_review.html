@@ -2,8 +2,9 @@
 {% load staticfiles %}
 {% block content %}
 
-    <div class="order-review opening center">
+    <div class="order-review center order-top">
         <h1>Nearly there!</h1>
+        <h2>Please review your order below!</h2>
     </div>
 
     <div class="order-review ticket">
@@ -11,18 +12,56 @@
         {% for detail in transcript_details %}
             <div class="order-review box">
                 <div class="order-review id">
-                    <h3>{{ detail.id }}</h3>
+                    <h3>Order {{ detail.id }}</h3>
                 </div>
                 <div class="order-review main">
                     <div class="order-review left">
                         <div class="order-review left-details">
-                            <div class="order "
+                            <div class="order-review left-details-1">
+                                <h4>Receiver Email</h4>
+                                <p>{{ user.email }}</p>
+                            </div>
+
+                        </div>
+
+                        <div class="file-div">
+                            {% for file in detail.uploaded_files.all %}
+                                <p>{{ file.file_name }}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="order-review right">
+                        <h3>Full Details</h3>
+                        <div class="order-review right-details">
+                            <div class="space"></div>
+                            <div class="order-review full-details">
+                                <p><span>Category: </span>{{ detail.category }}</p>
+                                <p><span>Number of Speakers: </span>{{ detail.num_speakers }}</p>
+                                <p><span>Timestamps: </span>{{ detail.timestamps }}</p>
+                                <p><span>Turn Around Time: </span>{{ detail.tat }}</p>
+                                <p><span>Audio Quality: </span>{{ detail.audio_quality }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+
+                <div class="saved-for-later paypal">
+                    <h4><span>Total Cost: </span>{{ detail.total_price }}</h4>
+                    {{ detail.paypal_form.sandbox }}
+                </div>
             </div>
 
+
+            </div>
+            <div class="center">
+                <h2>Not ready to purchase just yet?</h2>
+                <h3>Save your order for later!</h3>
+                <a class="btn btn-success" href="{% url 'save_order_for_later' detail.id %}">Save For Later!</a>
+            </div>
+
+
         {% endfor %}
-    </div>
 
 {% endblock %}

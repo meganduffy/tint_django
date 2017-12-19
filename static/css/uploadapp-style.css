@@ -268,19 +268,19 @@ input[type=file] {
     background-size:cover;
 }
 
-.saved-for-later.box {
+.saved-for-later.box, .order-review.box {
     border: 5px solid #28a1c5;
 }
 
-.saved-for-later.id {
+.saved-for-later.id,  .order-review.id {
     background-color:#28a1c5;
 }
 
-.saved-for-later.left-details {
+.saved-for-later.left-details, .order-review.left-details {
     margin-top:5px;
 }
 
-.saved-for-later.right {
+.saved-for-later.right, .order-review.right {
     background-color:#a9d9e7;
 }
 
@@ -291,4 +291,9 @@ input[type=file] {
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
     color:white;
+}
+
+/* ORDER REVIEW */
+.order-review.order-top {
+    padding:100px 0 50px 0;
 }
