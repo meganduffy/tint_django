@@ -57,7 +57,7 @@ def new_thread(request, subject_id):
 
             messages.success(request, "You have created a new thread")
 
-            return redirect(reverse('threads', args={thread.pk}))
+            return redirect(reverse('thread', args={thread.pk}))
 
     else:
         thread_form = ThreadForm()

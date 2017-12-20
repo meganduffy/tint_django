@@ -63,7 +63,7 @@ urlpatterns = [
     url(r'^paypal-return', paypal_views.paypal_return, name='paypal-return'),
     url(r'^paypal-cancel', paypal_views.paypal_cancel, name='paypal-cancel'),
 
-    #Forum
+    # Forum
     url(r'^forum/$', forum_views.forum, name='forum'),
     url(r'^threads/(?P<subject_id>\d+)/$', forum_views.threads, name='threads'),
     url(r'^new_thread/(?P<subject_id>\d+)/$', forum_views.new_thread, name='new_thread'),

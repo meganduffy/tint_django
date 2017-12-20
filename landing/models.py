@@ -52,4 +52,4 @@ class Contact(models.Model):
     message = models.TextField(default='')
 
     def __unicode__(self):
-        return self.email1
+        return self.email
