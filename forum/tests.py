@@ -21,4 +21,10 @@ class ForumPageTest(TestCase):
 
     def test_page_status_code(self):
         page = self.client.get('/forum/')
+        self.assertEqual(page.status_code, 302)
+
+    def test_page_logged_status_code(self):
+        self.client.login(username='testuser', password='demo123')
+        page = self.client.get('/forum/')
         self.assertEqual(page.status_code, 200)
+

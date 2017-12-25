@@ -50,6 +50,11 @@ class ProfilePageTest(TestCase):
         page_template_output = render_to_response("profile.html", {'user': self.user}).content
         self.assertEqual(page.content, page_template_output)
 
+    def test_page_logged_status_code(self):
+        self.client.login(username='testuser', password='demo123')
+        page = self.client.get('/profile/')
+        self.assertEqual(page.status_code, 200)
+
 
 class EditProfilePageTest(TestCase):
     def setUp(self):
@@ -87,7 +92,7 @@ class LoginPageTest(TestCase):
         page = self.client.get('/login/')
         self.assertEqual(page.status_code, 200)
 
-    def test_paged_logged_in_code(self):
+    def test_paged_logged_status_in_code(self):
         self.client.login(username='testuser', password='demo123')
         page = self.client.get('/login/')
         self.assertEqual(page.status_code, 200)
@@ -108,7 +113,7 @@ class LogoutPageTest(TestCase):
         page = self.client.get('/logout/')
         self.assertEqual(page.status_code, 302)
 
-    def test_paged_logged_in_code(self):
+    def test_paged_logged_status_code(self):
         self.client.login(username='testuser', password='demo123')
         page = self.client.get('/logout/')
         self.assertEqual(page.status_code, 302)
