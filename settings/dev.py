@@ -3,8 +3,6 @@ from base import *
 # Debug mode
 DEBUG = True
 
-# INSTALLED_APPS.append('debug_toolbar')
-
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
