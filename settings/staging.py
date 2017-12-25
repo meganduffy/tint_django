@@ -8,8 +8,8 @@ DEBUG = False
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-    'default': {dj_database_url.config('mysql://bc8a1f6390516f:3cbdc587@eu-cdbr-west-01.cleardb.com/heroku_b91badd0d37c867?reconnect=true')
-    }
+    'default': dj_database_url.config(
+        'mysql://bc8a1f6390516f:3cbdc587@eu-cdbr-west-01.cleardb.com/heroku_b91badd0d37c867?reconnect=true')
 }
 
 # PayPal Settings
@@ -21,17 +21,17 @@ PAYPAL_TEST = True
 ALLOWED_HOSTS.append('http://0bae84f3.ngrok.io')
 
 LOGGING = {
-    'version' : 1,
-    'disable_existing_loggers' : False,
-    'handlers' : {
-        'console' : {
-            'class' : 'logging.StreamHandler',
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
         },
     },
-    'loggers' : {
-        'django' : {
-            'handlers' : ['console'],
-            'level' : os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
         },
     },
 }
