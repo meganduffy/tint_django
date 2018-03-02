@@ -1,1 +1,1 @@
-web: gunicorn tint_django.wsgi:applicationheroku
+web: gunicorn tint_django.wsgi:application
