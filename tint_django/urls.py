@@ -23,6 +23,8 @@ from accounts import views as accounts_views
 from upload import views as upload_views
 from paypal_store import views as paypal_views
 from forum import views as forum_views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     # Admin
@@ -72,4 +74,4 @@ urlpatterns = [
     url(r'^post/edit/(?P<thread_id>\d+)/(?P<post_id>\d+)/$', forum_views.edit_post, name='edit_post'),
     url(r'^post/delete/(?P<thread_id>\d+)/(?P<post_id>\d+)/$', forum_views.delete_post, name="delete_post"),
     url(r'^thread/vote/(?P<thread_id>\d+)/(?P<subject_id>\d+)/$', forum_views.thread_vote, name='cast_vote'),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
