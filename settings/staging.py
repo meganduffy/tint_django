@@ -13,12 +13,13 @@ DATABASES = {
 }
 
 # PayPal Settings
-SITE_URL = 'http://0bae84f3.ngrok.io'
+SITE_URL = 'https://typeitnow.herokuapp.com'
 PAYPAL_NOTIFY_URL = 'http://0bae84f3.ngrok.io/a-very-hard-to-guess-url/'
 PAYPAL_RECEIVER_EMAIL = 'meganemilyduffy@gmail.com'
 PAYPAL_TEST = True
 
-ALLOWED_HOSTS.append('http://0bae84f3.ngrok.io')
+
+ALLOWED_HOSTS.append('typeitnow.herokuapp.com')
 
 LOGGING = {
     'version': 1,
