@@ -20,7 +20,7 @@ class UploadFiles(models.Model):
     uploaded_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     file_name = models.CharField(max_length=500, default='')
     file_length_mins = models.CharField(max_length=255, default='', blank=True, null=True)
-    status = models.CharField(max_length=10, default='Processingpu', choices=STATUS_CHOICES)
+    status = models.CharField(max_length=10, default='Processing', choices=STATUS_CHOICES)
 
 
 class TranscriptDetails(models.Model):
