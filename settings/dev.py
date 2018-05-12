@@ -14,8 +14,8 @@ DATABASES = {
 }
 
 # PayPal Settings
-# SITE_URL = 'http://127.0.0.1:8000'
-SITE_URL = 'http://typeitnow.herokuapp.com'
+SITE_URL = 'http://127.0.0.1:8000'
+# SITE_URL = 'http://typeitnow.herokuapp.com'
 PAYPAL_NOTIFY_URL = 'http://typeitnow.herokuapp.com/a-very-hard-to-guess-url/'
 PAYPAL_RECEIVER_EMAIL = 'meganemilyduffy@gmail.com'
 PAYPAL_TEST = True

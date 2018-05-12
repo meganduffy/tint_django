@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'xfch%ek+8hms7-q$4!c=@kq!@b9$#$$wx)abq8oan95=1tt+k8'
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'typeitnow.herokuapp.com']
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -53,7 +53,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'tint_django.urls'
@@ -76,9 +75,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'tint_django.wsgi.application'
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
 
 AUTH_USER_MODEL = 'accounts.User'
 
