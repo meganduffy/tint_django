@@ -20,7 +20,7 @@ class UploadFiles(models.Model):
     uploaded_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     file_name = models.CharField(max_length=500, default='')
     file_length_mins = models.CharField(max_length=255, default='', blank=True, null=True)
-    status = models.CharField(max_length=10, default='Processing', choices=STATUS_CHOICES)
+    status = models.CharField(max_length=100, default='Processing', choices=STATUS_CHOICES)
 
 
 class TranscriptDetails(models.Model):
@@ -32,7 +32,7 @@ class TranscriptDetails(models.Model):
     tat = models.CharField(max_length=8, choices=TAT_CHOICES)
     audio_quality = models.CharField(max_length=4, choices=AUDIO_QUAL_CHOICES)
     total_price = models.DecimalField(max_digits=6, decimal_places=2)
-    status = models.CharField(max_length=10, default='Processing', choices=STATUS_CHOICES)
+    status = models.CharField(max_length=100, default='Processing', choices=STATUS_CHOICES)
     saved = models.BooleanField(default=False)
     purchased_at = models.DateTimeField(blank=True, null=True)
     deadline = models.DateTimeField(blank=True, null=True)
