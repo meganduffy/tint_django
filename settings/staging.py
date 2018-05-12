@@ -8,9 +8,21 @@ DEBUG = False
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        'mysql://bc8a1f6390516f:3cbdc587@eu-cdbr-west-01.cleardb.com/heroku_b91badd0d37c867?reconnect=true')
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
 }
+
+DATABASES['default'] = dj_database_url.parse(
+    "mysql://bc8a1f6390516f:3cbdc587@eu-cdbr-west-01.cleardb.com/heroku_b91badd0d37c867"
+)
+
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         'mysql://bc8a1f6390516f:3cbdc587@eu-cdbr-west-01.cleardb.com/heroku_b91badd0d37c867')
+#
+# }
 
 # PayPal Settings
 SITE_URL = 'https://typeitnow.herokuapp.com'
